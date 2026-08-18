@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>hrk_design — Hiroki Toyoshima</title>
+  <meta name="description" content="Portfolio of Hiroki Toyoshima / hrk_design." />
+  <meta property="og:title" content="hrk_design — Hiroki Toyoshima" />
+  <meta property="og:description" content="Portfolio of Hiroki Toyoshima / hrk_design." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" data-header>
+    <a class="logo" href="#/" aria-label="hrk_design home">hrk_design</a>
+    <nav class="main-nav" aria-label="Primary">
+      <a href="#/work">work</a>
+      <a href="#/about">about</a>
+      <a href="#/contact">contact</a>
+    </nav>
+    <button class="theme-toggle" data-theme-toggle type="button" aria-label="Toggle dark mode">
+      <span data-theme-label>LIGHT</span>
+    </button>
+  </header>
+
+  <main id="main" data-app></main>
+
+  <footer class="site-footer">
+    <span>© <span data-year></span> hrk_design</span>
+    <span>hiroki toyoshima — phnom penh</span>
+  </footer>
+
+  <div class="cursor-tag" data-cursor-tag aria-hidden="true">VIEW</div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls -la ~/Desktop/hrk_design 2>&1; echo \"---\"; ls -la ~/Desktop 2>&1 | head -30)"
+    ]
+  }
+}

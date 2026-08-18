@@ -1,0 +1,814 @@
+{
+  "works": [
+    {
+      "id": "flyer-001",
+      "title": "Amazing Cambodia",
+      "client": "Amazing Cambodia",
+      "type": "Flyer",
+      "category": "flyer",
+      "originalProjectUrl": "https://hrkdesign.myportfolio.com/flyer",
+      "image": "assets/portfolio/flyer/001.jpg",
+      "year": "unknown"
+    },
+    {
+      "id": "flyer-002",
+      "title": "JICA",
+      "client": "JICA",
+      "type": "Poster",
+      "category": "flyer",
+      "originalProjectUrl": "https://hrkdesign.myportfolio.com/flyer",
+      "image": "assets/portfolio/flyer/002.jpg",
+      "year": "unknown"
+    },
+    {
+      "id": "flyer-003",
+      "title": "JICA",
+      "client": "JICA",
+      "type": "Poster",
+      "category": "flyer",
+      "originalProjectUrl": "https://hrkdesign.myportfolio.com/flyer",
+      "image": "assets/portfolio/flyer/003.jpg",
+      "year": "unknown"
+    },
+    {
+      "id": "flyer-004",
+      "title": "Daishin Trading / Kin no Inaho",
+      "client": "Daishin Trading / Kin no Inaho",
+      "type": "Package",
+      "category": "flyer",
+      "originalProjectUrl": "https://hrkdesign.myportfolio.com/flyer",
+      "image": "assets/portfolio/flyer/004.jpg",
+      "year": "unknown"
+    },
+    {
+      "id": "flyer-005",
+      "title": "JICA",
+      "client": "JICA",
+      "type": "Brochure",
+      "category": "flyer",
+      "originalProjectUrl": "https://hrkdesign.myportfolio.com/flyer",
+      "image": "assets/portfolio/flyer/005.png",
+      "year": "unknown"
+    },
+    {
+      "id": "flyer-006",
+      "title": "JICA",
+      "client": "JICA",
+      "type": "Poster",
+      "category": "flyer",
+      "originalProjectUrl": "https://hrkdesign.myportfolio.com/flyer",
+      "image": "assets/portfolio/flyer/006.png",
+      "year": "unknown"
+    },
+    {
+      "id": "flyer-007",
+      "title": "H22/D22 Hotel & Dining",
+      "client": "H22/D22 Hotel & Dining",
+      "type": "Flyer",
+      "category": "flyer",
+      "originalProjectUrl": "https://hrkdesign.myportfolio.com/flyer",
+      "image": "assets/portfolio/flyer/007.png",
+      "year": "unknown"
+    },
+    {
+      "id": "flyer-008",
+      "title": "JICA",
+      "client": "JICA",
+      "type": "Poster",
+      "category": "flyer",
+      "originalProjectUrl": "https://hrkdesign.myportfolio.com/flyer",
+      "image": "assets/portfolio/flyer/008.png",
+      "year": "unknown"
+    },
+    {
+      "id": "flyer-009",
+      "title": "AEON MALL Sen Sok City",
+      "client": "AEON MALL Sen Sok City",
+      "type": "Flyer",
+      "category": "flyer",
+      "originalProjectUrl": "https://hrkdesign.myportfolio.com/flyer",
+      "image": "assets/portfolio/flyer/009.jpg",
+      "year": "unknown"
+    },
+    {
+      "id": "flyer-010",
+      "title": "TAMASA",
+      "client": "TAMASA",
+      "type": "Flyer",
+      "category": "flyer",
+      "originalProjectUrl": "https://hrkdesign.myportfolio.com/flyer",
+      "image": "assets/portfolio/flyer/010.jpg",
+      "year": "unknown"
+    },
+    {
+      "id": "flyer-011",
+      "title": "JICA",
+      "client": "JICA",
+      "type": "Poster",
+      "category": "flyer",
+      "originalProjectUrl": "https://hrkdesign.myportfolio.com/flyer",
+      "image": "assets/portfolio/flyer/011.jpg",
+      "year": "unknown"
+    },
+    {
+      "id": "flyer-012",
+      "title": "Daishin Trading / Kin no Inaho",
+      "client": "Daishin Trading / Kin no Inaho",
+      "type": "Package",
+      "category": "flyer",
+      "originalProjectUrl": "https://hrkdesign.myportfolio.com/flyer",
+      "image": "assets/portfolio/flyer/012.jpg",
+      "year": "unknown"
+    },
+    {
+      "id": "flyer-013",
+      "title": "Karaoke SURVI Bar",
+      "client": "Karaoke SURVI Bar",
+      "type": "Flyer",
+      "category": "flyer",
+      "originalProjectUrl": "https://hrkdesign.myportfolio.com/flyer",
+      "image": "assets/portfolio/flyer/013.jpg",
+      "year": "unknown"
+    },
+    {
+      "id": "flyer-014",
+      "title": "Amazing Cambodia",
+      "client": "Amazing Cambodia",
+      "type": "Flyer",
+      "category": "flyer",
+      "originalProjectUrl": "https://hrkdesign.myportfolio.com/flyer",
+      "image": "assets/portfolio/flyer/014.jpg",
+      "year": "unknown"
+    },
+    {
+      "id": "flyer-015",
+      "title": "TagCast",
+      "client": "TagCast",
+      "type": "Flyer",
+      "category": "flyer",
+      "originalProjectUrl": "https://hrkdesign.myportfolio.com/flyer",
+      "image": "assets/portfolio/flyer/015.png",
+      "year": "unknown"
+    },
+    {
+      "id": "flyer-016",
+      "title": "Daishin Trading / Kin no Inaho",
+      "client": "Daishin Trading / Kin no Inaho",
+      "type": "Package",
+      "category": "flyer",
+      "originalProjectUrl": "https://hrkdesign.myportfolio.com/flyer",
+      "image": "assets/portfolio/flyer/016.png",
+      "year": "unknown"
+    },
+    {
+      "id": "flyer-017",
+      "title": "Fun Square / AEON",
+      "client": "Fun Square / AEON",
+      "type": "Flyer",
+      "category": "flyer",
+      "originalProjectUrl": "https://hrkdesign.myportfolio.com/flyer",
+      "image": "assets/portfolio/flyer/017.jpg",
+      "year": "unknown"
+    },
+    {
+      "id": "flyer-018",
+      "title": "Agri Tourism Festival",
+      "client": "Agri Tourism Festival",
+      "type": "Flyer",
+      "category": "flyer",
+      "originalProjectUrl": "https://hrkdesign.myportfolio.com/flyer",
+      "image": "assets/portfolio/flyer/018.jpg",
+      "year": "unknown"
+    },
+    {
+      "id": "flyer-019",
+      "title": "AEON MALL Sen Sok City",
+      "client": "AEON MALL Sen Sok City",
+      "type": "Flyer",
+      "category": "flyer",
+      "originalProjectUrl": "https://hrkdesign.myportfolio.com/flyer",
+      "image": "assets/portfolio/flyer/019.jpg",
+      "year": "unknown"
+    },
+    {
+      "id": "flyer-020",
+      "title": "ASJ Architects Studio Japan",
+      "client": "ASJ Architects Studio Japan",
+      "type": "Flyer",
+      "category": "flyer",
+      "originalProjectUrl": "https://hrkdesign.myportfolio.com/flyer",
+      "image": "assets/portfolio/flyer/020.jpg",
+      "year": "unknown"
+    },
+    {
+      "id": "flyer-021",
+      "title": "JICA",
+      "client": "JICA",
+      "type": "Map",
+      "category": "flyer",
+      "originalProjectUrl": "https://hrkdesign.myportfolio.com/flyer",
+      "image": "assets/portfolio/flyer/021.jpg",
+      "year": "unknown"
+    },
+    {
+      "id": "flyer-022",
+      "title": "JICA",
+      "client": "JICA",
+      "type": "Map",
+      "category": "flyer",
+      "originalProjectUrl": "https://hrkdesign.myportfolio.com/flyer",
+      "image": "assets/portfolio/flyer/022.jpg",
+      "year": "unknown"
+    },
+    {
+      "id": "flyer-023",
+      "title": "Sui-Joh",
+      "client": "Sui-Joh",
+      "type": "Flyer",
+      "category": "flyer",
+      "originalProjectUrl": "https://hrkdesign.myportfolio.com/flyer",
+      "image": "assets/portfolio/flyer/023.jpg",
+      "year": "unknown"
+    },
+    {
+      "id": "menu-001",
+      "title": "HIKARU",
+      "client": "HIKARU",
+      "type": "Menu",
+      "category": "menu",
+      "originalProjectUrl": "https://hrkdesign.myportfolio.com/menu",
+      "image": "assets/portfolio/menu/001.png",
+      "year": "unknown"
+    },
+    {
+      "id": "menu-002",
+      "title": "Menu Work 002",
+      "client": "unknown",
+      "type": "Menu",
+      "category": "menu",
+      "originalProjectUrl": "https://hrkdesign.myportfolio.com/menu",
+      "image": "assets/portfolio/menu/002.png",
+      "year": "unknown"
+    },
+    {
+      "id": "menu-003",
+      "title": "Menu Work 003",
+      "client": "unknown",
+      "type": "Menu",
+      "category": "menu",
+      "originalProjectUrl": "https://hrkdesign.myportfolio.com/menu",
+      "image": "assets/portfolio/menu/003.png",
+      "year": "unknown"
+    },
+    {
+      "id": "menu-004",
+      "title": "Menu Work 004",
+      "client": "unknown",
+      "type": "Menu",
+      "category": "menu",
+      "originalProjectUrl": "https://hrkdesign.myportfolio.com/menu",
+      "image": "assets/portfolio/menu/004.png",
+      "year": "unknown"
+    },
+    {
+      "id": "menu-005",
+      "title": "SAKANA LAB",
+      "client": "SAKANA LAB",
+      "type": "Menu",
+      "category": "menu",
+      "originalProjectUrl": "https://hrkdesign.myportfolio.com/menu",
+      "image": "assets/portfolio/menu/005.png",
+      "year": "unknown"
+    },
+    {
+      "id": "menu-006",
+      "title": "SAKANA LAB",
+      "client": "SAKANA LAB",
+      "type": "Menu",
+      "category": "menu",
+      "originalProjectUrl": "https://hrkdesign.myportfolio.com/menu",
+      "image": "assets/portfolio/menu/006.png",
+      "year": "unknown"
+    },
+    {
+      "id": "menu-007",
+      "title": "Menu Work 007",
+      "client": "unknown",
+      "type": "Menu",
+      "category": "menu",
+      "originalProjectUrl": "https://hrkdesign.myportfolio.com/menu",
+      "image": "assets/portfolio/menu/007.png",
+      "year": "unknown"
+    },
+    {
+      "id": "menu-008",
+      "title": "Menu Work 008",
+      "client": "unknown",
+      "type": "Menu",
+      "category": "menu",
+      "originalProjectUrl": "https://hrkdesign.myportfolio.com/menu",
+      "image": "assets/portfolio/menu/008.png",
+      "year": "unknown"
+    },
+    {
+      "id": "menu-009",
+      "title": "Menu Work 009",
+      "client": "unknown",
+      "type": "Menu",
+      "category": "menu",
+      "originalProjectUrl": "https://hrkdesign.myportfolio.com/menu",
+      "image": "assets/portfolio/menu/009.png",
+      "year": "unknown"
+    },
+    {
+      "id": "menu-010",
+      "title": "Menu Work 010",
+      "client": "unknown",
+      "type": "Menu",
+      "category": "menu",
+      "originalProjectUrl": "https://hrkdesign.myportfolio.com/menu",
+      "image": "assets/portfolio/menu/010.png",
+      "year": "unknown"
+    },
+    {
+      "id": "menu-011",
+      "title": "Menu Work 011",
+      "client": "unknown",
+      "type": "Menu",
+      "category": "menu",
+      "originalProjectUrl": "https://hrkdesign.myportfolio.com/menu",
+      "image": "assets/portfolio/menu/011.jpg",
+      "year": "unknown"
+    },
+    {
+      "id": "menu-012",
+      "title": "Menu Work 012",
+      "client": "unknown",
+      "type": "Menu",
+      "category": "menu",
+      "originalProjectUrl": "https://hrkdesign.myportfolio.com/menu",
+      "image": "assets/portfolio/menu/012.jpg",
+      "year": "unknown"
+    },
+    {
+      "id": "menu-013",
+      "title": "Menu Work 013",
+      "client": "unknown",
+      "type": "Menu",
+      "category": "menu",
+      "originalProjectUrl": "https://hrkdesign.myportfolio.com/menu",
+      "image": "assets/portfolio/menu/013.png",
+      "year": "unknown"
+    },
+    {
+      "id": "menu-014",
+      "title": "MENYA GENTO",
+      "client": "MENYA GENTO",
+      "type": "Menu",
+      "category": "menu",
+      "originalProjectUrl": "https://hrkdesign.myportfolio.com/menu",
+      "image": "assets/portfolio/menu/014.png",
+      "year": "unknown"
+    },
+    {
+      "id": "menu-015",
+      "title": "Menu Work 015",
+      "client": "unknown",
+      "type": "Menu",
+      "category": "menu",
+      "originalProjectUrl": "https://hrkdesign.myportfolio.com/menu",
+      "image": "assets/portfolio/menu/015.png",
+      "year": "unknown"
+    },
+    {
+      "id": "menu-016",
+      "title": "Menu Work 016",
+      "client": "unknown",
+      "type": "Menu",
+      "category": "menu",
+      "originalProjectUrl": "https://hrkdesign.myportfolio.com/menu",
+      "image": "assets/portfolio/menu/016.png",
+      "year": "unknown"
+    },
+    {
+      "id": "menu-017",
+      "title": "Ninja",
+      "client": "Ninja",
+      "type": "Menu",
+      "category": "menu",
+      "originalProjectUrl": "https://hrkdesign.myportfolio.com/menu",
+      "image": "assets/portfolio/menu/017.png",
+      "year": "unknown"
+    },
+    {
+      "id": "menu-018",
+      "title": "Ninja",
+      "client": "Ninja",
+      "type": "Menu",
+      "category": "menu",
+      "originalProjectUrl": "https://hrkdesign.myportfolio.com/menu",
+      "image": "assets/portfolio/menu/018.png",
+      "year": "unknown"
+    },
+    {
+      "id": "menu-019",
+      "title": "Shake's Cafe",
+      "client": "Shake's Cafe",
+      "type": "Menu",
+      "category": "menu",
+      "originalProjectUrl": "https://hrkdesign.myportfolio.com/menu",
+      "image": "assets/portfolio/menu/019.png",
+      "year": "unknown"
+    },
+    {
+      "id": "menu-020",
+      "title": "Shake's Cafe",
+      "client": "Shake's Cafe",
+      "type": "Menu",
+      "category": "menu",
+      "originalProjectUrl": "https://hrkdesign.myportfolio.com/menu",
+      "image": "assets/portfolio/menu/020.png",
+      "year": "unknown"
+    },
+    {
+      "id": "menu-021",
+      "title": "SHIN-YA",
+      "client": "SHIN-YA",
+      "type": "Menu",
+      "category": "menu",
+      "originalProjectUrl": "https://hrkdesign.myportfolio.com/menu",
+      "image": "assets/portfolio/menu/021.png",
+      "year": "unknown"
+    },
+    {
+      "id": "menu-022",
+      "title": "SHIN-YA",
+      "client": "SHIN-YA",
+      "type": "Menu",
+      "category": "menu",
+      "originalProjectUrl": "https://hrkdesign.myportfolio.com/menu",
+      "image": "assets/portfolio/menu/022.png",
+      "year": "unknown"
+    },
+    {
+      "id": "menu-023",
+      "title": "RYOMA",
+      "client": "RYOMA",
+      "type": "Menu",
+      "category": "menu",
+      "originalProjectUrl": "https://hrkdesign.myportfolio.com/menu",
+      "image": "assets/portfolio/menu/023.png",
+      "year": "unknown"
+    },
+    {
+      "id": "logotype-001",
+      "title": "FooLaB Group",
+      "client": "FooLaB Group",
+      "type": "Logo",
+      "category": "logotype",
+      "originalProjectUrl": "https://hrkdesign.myportfolio.com/logotype",
+      "image": "assets/portfolio/logotype/001.png",
+      "year": "unknown"
+    },
+    {
+      "id": "logotype-002",
+      "title": "UG Marketing Republic",
+      "client": "UG Marketing Republic",
+      "type": "Logo",
+      "category": "logotype",
+      "originalProjectUrl": "https://hrkdesign.myportfolio.com/logotype",
+      "image": "assets/portfolio/logotype/002.png",
+      "year": "unknown"
+    },
+    {
+      "id": "logotype-003",
+      "title": "UG Marketing Republic",
+      "client": "UG Marketing Republic",
+      "type": "Logo",
+      "category": "logotype",
+      "originalProjectUrl": "https://hrkdesign.myportfolio.com/logotype",
+      "image": "assets/portfolio/logotype/003.png",
+      "year": "unknown"
+    },
+    {
+      "id": "logotype-004",
+      "title": "CamiYui by PROSOL",
+      "client": "CamiYui by PROSOL",
+      "type": "Logo",
+      "category": "logotype",
+      "originalProjectUrl": "https://hrkdesign.myportfolio.com/logotype",
+      "image": "assets/portfolio/logotype/004.png",
+      "year": "unknown"
+    },
+    {
+      "id": "logotype-005",
+      "title": "The JAPAN SHOP",
+      "client": "The JAPAN SHOP",
+      "type": "Logo",
+      "category": "logotype",
+      "originalProjectUrl": "https://hrkdesign.myportfolio.com/logotype",
+      "image": "assets/portfolio/logotype/005.png",
+      "year": "unknown"
+    },
+    {
+      "id": "logotype-006",
+      "title": "The Bluehearts",
+      "client": "The Bluehearts",
+      "type": "Logo",
+      "category": "logotype",
+      "originalProjectUrl": "https://hrkdesign.myportfolio.com/logotype",
+      "image": "assets/portfolio/logotype/006.png",
+      "year": "unknown"
+    },
+    {
+      "id": "logotype-007",
+      "title": "Sakura Buffet",
+      "client": "Sakura Buffet",
+      "type": "Logo",
+      "category": "logotype",
+      "originalProjectUrl": "https://hrkdesign.myportfolio.com/logotype",
+      "image": "assets/portfolio/logotype/007.png",
+      "year": "unknown"
+    },
+    {
+      "id": "logotype-008",
+      "title": "Chadajima Coffee Roasters",
+      "client": "Chadajima Coffee Roasters",
+      "type": "Logo",
+      "category": "logotype",
+      "originalProjectUrl": "https://hrkdesign.myportfolio.com/logotype",
+      "image": "assets/portfolio/logotype/008.png",
+      "year": "unknown"
+    },
+    {
+      "id": "logotype-009",
+      "title": "Shangri-La",
+      "client": "Shangri-La",
+      "type": "Logo",
+      "category": "logotype",
+      "originalProjectUrl": "https://hrkdesign.myportfolio.com/logotype",
+      "image": "assets/portfolio/logotype/009.png",
+      "year": "unknown"
+    },
+    {
+      "id": "logotype-010",
+      "title": "Shangri-La",
+      "client": "Shangri-La",
+      "type": "Logo",
+      "category": "logotype",
+      "originalProjectUrl": "https://hrkdesign.myportfolio.com/logotype",
+      "image": "assets/portfolio/logotype/010.png",
+      "year": "unknown"
+    },
+    {
+      "id": "logotype-011",
+      "title": "Motoyoshi",
+      "client": "Motoyoshi",
+      "type": "Logo",
+      "category": "logotype",
+      "originalProjectUrl": "https://hrkdesign.myportfolio.com/logotype",
+      "image": "assets/portfolio/logotype/011.png",
+      "year": "unknown"
+    },
+    {
+      "id": "logotype-012",
+      "title": "solist",
+      "client": "solist",
+      "type": "Logo",
+      "category": "logotype",
+      "originalProjectUrl": "https://hrkdesign.myportfolio.com/logotype",
+      "image": "assets/portfolio/logotype/012.png",
+      "year": "unknown"
+    },
+    {
+      "id": "logotype-013",
+      "title": "Ueda Cafe Bean",
+      "client": "Ueda Cafe Bean",
+      "type": "Logo",
+      "category": "logotype",
+      "originalProjectUrl": "https://hrkdesign.myportfolio.com/logotype",
+      "image": "assets/portfolio/logotype/013.png",
+      "year": "unknown"
+    },
+    {
+      "id": "logotype-014",
+      "title": "Yum Yum Mookata Beb Thai",
+      "client": "Yum Yum Mookata Beb Thai",
+      "type": "Logo",
+      "category": "logotype",
+      "originalProjectUrl": "https://hrkdesign.myportfolio.com/logotype",
+      "image": "assets/portfolio/logotype/014.png",
+      "year": "unknown"
+    },
+    {
+      "id": "logotype-015",
+      "title": "Nissei Cambodia",
+      "client": "Nissei Cambodia",
+      "type": "Logo",
+      "category": "logotype",
+      "originalProjectUrl": "https://hrkdesign.myportfolio.com/logotype",
+      "image": "assets/portfolio/logotype/015.png",
+      "year": "unknown"
+    },
+    {
+      "id": "logotype-016",
+      "title": "Cafe & Bar CONY",
+      "client": "Cafe & Bar CONY",
+      "type": "Logo",
+      "category": "logotype",
+      "originalProjectUrl": "https://hrkdesign.myportfolio.com/logotype",
+      "image": "assets/portfolio/logotype/016.png",
+      "year": "unknown"
+    },
+    {
+      "id": "logotype-017",
+      "title": "Sakura Foods",
+      "client": "Sakura Foods",
+      "type": "Logo",
+      "category": "logotype",
+      "originalProjectUrl": "https://hrkdesign.myportfolio.com/logotype",
+      "image": "assets/portfolio/logotype/017.png",
+      "year": "unknown"
+    },
+    {
+      "id": "logotype-018",
+      "title": "hotori memento",
+      "client": "hotori memento",
+      "type": "Logo",
+      "category": "logotype",
+      "originalProjectUrl": "https://hrkdesign.myportfolio.com/logotype",
+      "image": "assets/portfolio/logotype/018.png",
+      "year": "unknown"
+    },
+    {
+      "id": "logotype-019",
+      "title": "hotori memento",
+      "client": "hotori memento",
+      "type": "Logo",
+      "category": "logotype",
+      "originalProjectUrl": "https://hrkdesign.myportfolio.com/logotype",
+      "image": "assets/portfolio/logotype/019.png",
+      "year": "unknown"
+    },
+    {
+      "id": "logotype-020",
+      "title": "Roast'n'Roll",
+      "client": "Roast'n'Roll",
+      "type": "Logo",
+      "category": "logotype",
+      "originalProjectUrl": "https://hrkdesign.myportfolio.com/logotype",
+      "image": "assets/portfolio/logotype/020.png",
+      "year": "unknown"
+    },
+    {
+      "id": "logotype-021",
+      "title": "SHIN-YA",
+      "client": "SHIN-YA",
+      "type": "Logo",
+      "category": "logotype",
+      "originalProjectUrl": "https://hrkdesign.myportfolio.com/logotype",
+      "image": "assets/portfolio/logotype/021.png",
+      "year": "unknown"
+    },
+    {
+      "id": "logotype-022",
+      "title": "Give & Grow",
+      "client": "Give & Grow",
+      "type": "Logo",
+      "category": "logotype",
+      "originalProjectUrl": "https://hrkdesign.myportfolio.com/logotype",
+      "image": "assets/portfolio/logotype/022.png",
+      "year": "unknown"
+    },
+    {
+      "id": "logotype-023",
+      "title": "BALL Resort & Restaurant",
+      "client": "BALL Resort & Restaurant",
+      "type": "Logo",
+      "category": "logotype",
+      "originalProjectUrl": "https://hrkdesign.myportfolio.com/logotype",
+      "image": "assets/portfolio/logotype/023.png",
+      "year": "unknown"
+    },
+    {
+      "id": "logotype-024",
+      "title": "KUSA-MEN",
+      "client": "KUSA-MEN",
+      "type": "Logo",
+      "category": "logotype",
+      "originalProjectUrl": "https://hrkdesign.myportfolio.com/logotype",
+      "image": "assets/portfolio/logotype/024.png",
+      "year": "unknown"
+    },
+    {
+      "id": "card-001",
+      "title": "UG Marketing Republic",
+      "client": "UG Marketing Republic",
+      "type": "Card",
+      "category": "card",
+      "originalProjectUrl": "https://hrkdesign.myportfolio.com/card",
+      "image": "assets/portfolio/card/001.png",
+      "year": "unknown"
+    },
+    {
+      "id": "card-002",
+      "title": "CamiYui",
+      "client": "CamiYui",
+      "type": "Card",
+      "category": "card",
+      "originalProjectUrl": "https://hrkdesign.myportfolio.com/card",
+      "image": "assets/portfolio/card/002.png",
+      "year": "unknown"
+    },
+    {
+      "id": "card-003",
+      "title": "solist",
+      "client": "solist",
+      "type": "Card",
+      "category": "card",
+      "originalProjectUrl": "https://hrkdesign.myportfolio.com/card",
+      "image": "assets/portfolio/card/003.png",
+      "year": "unknown"
+    },
+    {
+      "id": "card-004",
+      "title": "solist",
+      "client": "solist",
+      "type": "Card",
+      "category": "card",
+      "originalProjectUrl": "https://hrkdesign.myportfolio.com/card",
+      "image": "assets/portfolio/card/004.png",
+      "year": "unknown"
+    },
+    {
+      "id": "card-005",
+      "title": "CLUB L",
+      "client": "CLUB L",
+      "type": "Card",
+      "category": "card",
+      "originalProjectUrl": "https://hrkdesign.myportfolio.com/card",
+      "image": "assets/portfolio/card/005.png",
+      "year": "unknown"
+    },
+    {
+      "id": "card-006",
+      "title": "aloha",
+      "client": "aloha",
+      "type": "Card",
+      "category": "card",
+      "originalProjectUrl": "https://hrkdesign.myportfolio.com/card",
+      "image": "assets/portfolio/card/006.png",
+      "year": "unknown"
+    },
+    {
+      "id": "card-007",
+      "title": "Antanue Spiritual Resort & Spa",
+      "client": "Antanue Spiritual Resort & Spa",
+      "type": "Card",
+      "category": "card",
+      "originalProjectUrl": "https://hrkdesign.myportfolio.com/card",
+      "image": "assets/portfolio/card/007.png",
+      "year": "unknown"
+    },
+    {
+      "id": "book-001",
+      "title": "PPCBank / Cambodia Business Partners",
+      "client": "PPCBank / Cambodia Business Partners",
+      "type": "Editorial",
+      "category": "book",
+      "originalProjectUrl": "https://hrkdesign.myportfolio.com/etc",
+      "image": "assets/portfolio/book/001.png",
+      "year": "unknown"
+    },
+    {
+      "id": "book-002",
+      "title": "Cambodia Business Partners",
+      "client": "Cambodia Business Partners",
+      "type": "Editorial",
+      "category": "book",
+      "originalProjectUrl": "https://hrkdesign.myportfolio.com/etc",
+      "image": "assets/portfolio/book/002.png",
+      "year": "unknown"
+    },
+    {
+      "id": "book-003",
+      "title": "Woman Life Newspaper",
+      "client": "Woman Life Newspaper",
+      "type": "Book",
+      "category": "book",
+      "originalProjectUrl": "https://hrkdesign.myportfolio.com/etc",
+      "image": "assets/portfolio/book/003.png",
+      "year": "unknown"
+    },
+    {
+      "id": "book-004",
+      "title": "Book Work 004",
+      "client": "unknown",
+      "type": "Editorial",
+      "category": "book",
+      "originalProjectUrl": "https://hrkdesign.myportfolio.com/etc",
+      "image": "assets/portfolio/book/004.png",
+      "year": "unknown"
+    }
+  ]
+}
