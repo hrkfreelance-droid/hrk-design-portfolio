@@ -39,7 +39,7 @@ function workGridSection(withHeading = false) {
       <div class="work-item reveal ${sizeClass(i)}" data-work-id="${w.id}" data-cursor-hover data-category="${w.category}">
         <figure>
           <div class="work-frame">
-            <img src="/${w.image}" alt="${w.client !== "unknown" ? w.client + " — " + w.type : w.type}" loading="lazy" width="1200" height="900" />
+            <img src="${import.meta.env.BASE_URL}${w.image}" alt="${w.client !== "unknown" ? w.client + " — " + w.type : w.type}" loading="lazy" width="1200" height="900" />
           </div>
           <figcaption class="work-caption">
             <span class="client">${w.client === "unknown" ? "unknown" : w.client}</span>
@@ -80,7 +80,7 @@ export function renderProject(id) {
       </dl>
     </div>
     <div class="project-images">
-      <img src="/${work.image}" alt="${work.client} — ${work.type}" loading="lazy" />
+      <img src="${import.meta.env.BASE_URL}${work.image}" alt="${work.client} — ${work.type}" loading="lazy" />
     </div>
     <a class="next-project" href="#/project/${next.id}">
       <span><small>Next Project</small>${next.client === "unknown" ? next.type : next.client}</span>
