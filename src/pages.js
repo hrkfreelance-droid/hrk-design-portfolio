@@ -1,5 +1,6 @@
 import { works, categories, getWork, nextWork } from "./data.js";
 import { renderQR } from "./qr.js";
+import { shuffle } from "./shuffle.js";
 
 function splitChunks(text) {
   return text
@@ -13,30 +14,42 @@ function sizeClass(index) {
   return pattern[index % pattern.length];
 }
 
-export function renderHome() {
+export function renderHero() {
   return `
     <section class="hero" data-hero>
+      <div class="hero-kicker">Hiroki<br>Toyoshima</div>
       <h1 class="hero-title">${splitChunks("hrk_design")}</h1>
       <div class="hero-meta">
-        <span>hiroki toyoshima</span>
         <span>graphic / digital / web</span>
         <span>phnom penh</span>
       </div>
-      <div class="hero-scroll-cue">scroll — work ↓</div>
+      <a class="hero-scroll-cue" href="#/work">scroll — work ↓</a>
     </section>
-    ${workGridSection()}
   `;
 }
 
-export function renderWork() {
-  return workGridSection(true);
+function categoryNav(active) {
+  const items = [
+    { slug: "work", label: "ALL" },
+    ...categories.map((c) => ({ slug: c, label: c.toUpperCase() })),
+  ];
+  return `
+    <nav class="filters" aria-label="Category">
+      ${items
+        .map(
+          (item) =>
+            `<a href="#/${item.slug}" aria-current="${active === item.slug ? "page" : "false"}">${item.label}</a>`
+        )
+        .join("")}
+    </nav>
+  `;
 }
 
-function workGridSection(withHeading = false) {
-  const items = works
+function workGrid(list) {
+  const items = list
     .map(
       (w, i) => `
-      <div class="work-item reveal ${sizeClass(i)}" data-work-id="${w.id}" data-cursor-hover data-category="${w.category}">
+      <div class="work-item reveal ${sizeClass(i)}" data-work-id="${w.id}" data-cursor-hover>
         <figure>
           <div class="work-frame">
             <img src="${import.meta.env.BASE_URL}${w.image}" alt="${w.client !== "unknown" ? w.client + " — " + w.type : w.type}" loading="lazy" width="1200" height="900" />
@@ -51,16 +64,17 @@ function workGridSection(withHeading = false) {
     )
     .join("");
 
+  return `<div class="work-grid" data-work-grid>${items}</div>`;
+}
+
+// category: "work" for all, or one of the category slugs
+export function renderCategory(category) {
+  const list = category === "work" ? works : works.filter((w) => w.category === category);
+  const shuffled = shuffle(list);
   return `
-    ${withHeading ? '<div class="filters" style="padding-top:140px"></div>' : ""}
-    <div class="filters" data-filters>
-      <button type="button" data-filter="all" aria-pressed="true">ALL</button>
-      ${categories
-        .map((c) => `<button type="button" data-filter="${c}" aria-pressed="false">${c.toUpperCase()}</button>`)
-        .join("")}
-    </div>
-    <div class="work-grid" data-work-grid>
-      ${items}
+    <div class="category-page">
+      ${categoryNav(category)}
+      ${workGrid(shuffled)}
     </div>
   `;
 }
