@@ -29,16 +29,14 @@ export function renderHero() {
 }
 
 function categoryNav(active) {
-  const items = [
-    { slug: "work", label: "ALL" },
-    ...categories.map((c) => ({ slug: c, label: c.toUpperCase() })),
-  ];
+  // The logo sits first and does the job "ALL" used to do: every work, unfiltered.
   return `
     <nav class="filters" aria-label="Category">
-      ${items
+      <a class="filters-logo" href="#/work" aria-current="${active === "work" ? "page" : "false"}">hrk_design</a>
+      ${categories
         .map(
-          (item) =>
-            `<a href="#/${item.slug}" aria-current="${active === item.slug ? "page" : "false"}">${item.label}</a>`
+          (c) =>
+            `<a href="#/${c}" aria-current="${active === c ? "page" : "false"}">${c.toUpperCase()}</a>`
         )
         .join("")}
     </nav>

@@ -204,6 +204,14 @@ img { max-width: 100%; display: block; }
   background: currentColor;
   transition: width var(--dur-fast) var(--ease);
 }
+/* Logo stands in for the old "ALL" filter: same row, logotype treatment */
+.filters-logo {
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  text-transform: lowercase;
+  margin-right: 4px;
+}
 .filters a[aria-current="page"] { color: var(--fg); }
 .filters a[aria-current="page"]::after,
 .filters a:hover::after { width: 100%; }
