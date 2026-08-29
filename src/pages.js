@@ -23,7 +23,7 @@ export function renderHero() {
         <span>graphic / digital / web</span>
         <span>phnom penh</span>
       </div>
-      <a class="hero-scroll-cue" href="#/work">scroll — work ↓</a>
+      <a class="hero-scroll-cue" href="#/work">view work →</a>
     </section>
   `;
 }

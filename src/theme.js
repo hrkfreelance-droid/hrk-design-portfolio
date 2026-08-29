@@ -2,22 +2,15 @@ const STORAGE_KEY = "hrk-theme";
 
 export function initTheme() {
   const stored = localStorage.getItem(STORAGE_KEY);
-  const system = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-  const theme = stored || system;
-  applyTheme(theme);
+  // Light is the default; the OS preference does not decide the initial theme.
+  applyTheme(stored === "dark" ? "dark" : "light");
 
   const toggle = document.querySelector("[data-theme-toggle]");
   toggle.addEventListener("click", () => {
-    const current = document.documentElement.getAttribute("data-theme") || system;
+    const current = document.documentElement.getAttribute("data-theme");
     const next = current === "dark" ? "light" : "dark";
     applyTheme(next);
     localStorage.setItem(STORAGE_KEY, next);
-  });
-
-  window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e) => {
-    if (!localStorage.getItem(STORAGE_KEY)) {
-      applyTheme(e.matches ? "dark" : "light");
-    }
   });
 }
 
