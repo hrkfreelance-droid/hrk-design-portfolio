@@ -49,7 +49,7 @@ function workGrid(list) {
   const items = list
     .map(
       (w, i) => `
-      <div class="work-item reveal ${sizeClass(i)}" data-work-id="${w.id}" data-cursor-hover>
+      <div class="work-item reveal ${sizeClass(i)}" data-work-id="${w.id}" data-cursor-hover style="--i:${i % 6}">
         <figure>
           <div class="work-frame">
             <img src="${import.meta.env.BASE_URL}${w.image}" alt="${w.client !== "unknown" ? w.client + " — " + w.type : w.type}" loading="lazy" width="1200" height="900" />
