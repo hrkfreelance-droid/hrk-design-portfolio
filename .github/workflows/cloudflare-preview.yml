@@ -1,0 +1,73 @@
+name: Cloudflare Preview
+
+# Preview deployments of the refresh branch only.
+# Never deploys main, never touches production, DNS or custom domains.
+# - With a CLOUDFLARE_API_TOKEN secret (+ CLOUDFLARE_ACCOUNT_ID): deploys to
+#   the preview-only Pages project "hrk-design-portfolio-preview" as a branch
+#   preview (the project is created on first run if it does not exist).
+# - Without a token: deploys to a temporary Cloudflare preview account
+#   (wrangler --temporary). The URL is printed in the job summary.
+
+on:
+  push:
+    branches:
+      - feature/portfolio-2026-refresh
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: cloudflare-preview
+  cancel-in-progress: true
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      PROJECT: hrk-design-portfolio-preview
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Build for a root URL
+        run: |
+          node scripts/check-data.mjs
+          npx vite build --base=/ --outDir dist-preview
+
+      - name: Deploy Pages branch preview
+        if: env.CLOUDFLARE_API_TOKEN != ''
+        run: |
+          npx --yes wrangler@4 pages project list | grep -q "$PROJECT" \
+            || npx --yes wrangler@4 pages project create "$PROJECT" \
+                 --production-branch=preview-production
+          npx --yes wrangler@4 pages deploy dist-preview \
+            --project-name="$PROJECT" \
+            --branch=portfolio-2026-refresh \
+            --commit-hash="$GITHUB_SHA" | tee deploy.log
+
+      - name: Deploy temporary preview
+        if: env.CLOUDFLARE_API_TOKEN == ''
+        run: |
+          npx --yes wrangler@4 deploy --temporary \
+            --assets ./dist-preview \
+            --name "$PROJECT" \
+            --compatibility-date 2026-10-01 2>&1 | tee deploy.log
+
+      - name: Publish preview URL
+        if: always()
+        run: |
+          URL=$(grep -oE 'https://[A-Za-z0-9._/-]+\.(pages\.dev|workers\.dev)[A-Za-z0-9._/-]*' deploy.log | tail -1 || true)
+          echo "PREVIEW_URL=${URL:-not found}"
+          {
+            echo "### Cloudflare preview"
+            echo ""
+            echo "Commit: \`$GITHUB_SHA\`"
+            echo ""
+            echo "URL: ${URL:-not found — see deploy log}"
+          } >> "$GITHUB_STEP_SUMMARY"
