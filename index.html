@@ -1,39 +1,42 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>hrk_design — Hiroki Toyoshima</title>
-  <meta name="description" content="Selected design work by Hiroki Toyoshima / hrk_design, based in Phnom Penh." />
+  <meta name="description" content="Selected work by Hiroki Toyoshima / hrk_design — graphic designer in Phnom Penh. Brand, print, menu, signage, packaging and digital." />
   <meta property="og:title" content="hrk_design — Hiroki Toyoshima" />
-  <meta property="og:description" content="Selected design work by Hiroki Toyoshima / hrk_design." />
+  <meta property="og:description" content="Selected work by Hiroki Toyoshima, graphic designer in Phnom Penh." />
   <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#111111" media="(prefers-color-scheme: dark)" />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="/src/style.css" />
+  <script>
+    try { if (localStorage.getItem("hrk-theme") === "dark") document.documentElement.dataset.theme = "dark"; } catch (e) {}
+  </script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <header class="site-header" data-header>
-    <a class="logo" href="#/" aria-label="hrk_design home">hrk_design</a>
-
-    <nav class="main-nav" aria-label="Primary">
-      <a href="#/" data-nav="work">work</a>
-      <a href="#/about" data-nav="about">about</a>
-      <a href="#/contact" data-nav="contact">contact</a>
-    </nav>
-
-    <button class="theme-toggle" data-theme-toggle type="button" aria-label="Toggle dark mode">
-      <span>theme /</span>
-      <span data-theme-label>light</span>
-    </button>
+  <header class="site-header">
+    <div class="site-header-inner">
+      <a class="logo" href="#/">hrk_design</a>
+      <nav class="nav" aria-label="Primary">
+        <a href="#/" data-nav="work">work</a>
+        <a href="#/about" data-nav="about">about</a>
+        <a href="#/contact" data-nav="contact">contact</a>
+      </nav>
+      <button class="theme-toggle" type="button" data-theme-toggle>dark</button>
+    </div>
   </header>
 
-  <main id="main" data-app></main>
+  <main id="main" class="main" data-app tabindex="-1"></main>
 
   <footer class="site-footer">
-    <span>© <span data-year></span> hrk_design</span>
-    <span>hiroki toyoshima / phnom penh</span>
+    <div class="site-footer-inner">
+      <span>© <span data-year></span> hrk_design</span>
+      <a href="https://t.me/hiroki_pp" target="_blank" rel="noopener">Telegram / @hiroki_pp</a>
+    </div>
   </footer>
 
   <script type="module" src="/src/main.js"></script>

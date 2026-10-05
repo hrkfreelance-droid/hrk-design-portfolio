@@ -1,814 +1,1984 @@
 {
-  "works": [
+  "version": 2,
+  "note": "Project-based portfolio data. Only projects with visible=true, status=published and at least one asset are rendered, sorted by `order` (ascending). Legacy per-image data: data/portfolio.legacy.json.",
+  "projects": [
     {
-      "id": "flyer-001",
-      "title": "Amazing Cambodia",
-      "client": "Amazing Cambodia",
-      "type": "Flyer",
-      "category": "flyer",
-      "originalProjectUrl": "https://hrkdesign.myportfolio.com/flyer",
-      "image": "assets/portfolio/flyer/001.jpg",
-      "year": "unknown"
-    },
-    {
-      "id": "flyer-002",
+      "id": "jica",
       "title": "JICA",
-      "client": "JICA",
-      "type": "Poster",
-      "category": "flyer",
-      "originalProjectUrl": "https://hrkdesign.myportfolio.com/flyer",
-      "image": "assets/portfolio/flyer/002.jpg",
-      "year": "unknown"
+      "client": "JICA (Japan International Cooperation Agency)",
+      "status": "published",
+      "visible": true,
+      "featured": true,
+      "order": 10,
+      "year": null,
+      "regions": [
+        "Cambodia"
+      ],
+      "types": [
+        "Brochure",
+        "Infographic",
+        "Map"
+      ],
+      "summary": null,
+      "cover": 0,
+      "assets": [
+        {
+          "src": "assets/portfolio/flyer/005.png",
+          "type": "Brochure",
+          "caption": "JICA Profile Cambodia — cover",
+          "legacyId": "flyer-005",
+          "width": 1629,
+          "height": 1142,
+          "web": [
+            960,
+            1629
+          ]
+        },
+        {
+          "src": "assets/portfolio/flyer/006.png",
+          "type": "Brochure",
+          "caption": null,
+          "legacyId": "flyer-006",
+          "width": 1623,
+          "height": 1149,
+          "web": [
+            960,
+            1623
+          ]
+        },
+        {
+          "src": "assets/portfolio/flyer/004.jpg",
+          "type": "Infographic",
+          "caption": null,
+          "legacyId": "flyer-004",
+          "width": 1920,
+          "height": 1357,
+          "web": [
+            960,
+            1920
+          ]
+        },
+        {
+          "src": "assets/portfolio/flyer/007.png",
+          "type": "Infographic",
+          "caption": "Priority Area 1",
+          "legacyId": "flyer-007",
+          "width": 1453,
+          "height": 1024,
+          "web": [
+            960,
+            1453
+          ]
+        },
+        {
+          "src": "assets/portfolio/flyer/008.png",
+          "type": "Infographic",
+          "caption": "Priority Area 2",
+          "legacyId": "flyer-008",
+          "width": 1198,
+          "height": 845,
+          "web": [
+            960,
+            1198
+          ]
+        },
+        {
+          "src": "assets/portfolio/flyer/003.jpg",
+          "type": "Brochure",
+          "caption": "30 years in Cambodia",
+          "legacyId": "flyer-003",
+          "width": 1920,
+          "height": 1357,
+          "web": [
+            960,
+            1920
+          ]
+        },
+        {
+          "src": "assets/portfolio/flyer/021.jpg",
+          "type": "Map",
+          "caption": "Japan's Major ODA Projects — Phnom Penh",
+          "legacyId": "flyer-021",
+          "width": 1753,
+          "height": 2480,
+          "web": [
+            960,
+            1753
+          ]
+        },
+        {
+          "src": "assets/portfolio/flyer/022.jpg",
+          "type": "Map",
+          "caption": "ODA Map — Siem Reap",
+          "legacyId": "flyer-022",
+          "width": 1753,
+          "height": 1240,
+          "web": [
+            960,
+            1753
+          ]
+        }
+      ],
+      "note": "flyer-002 / flyer-004 were swapped in legacy data: 004 is JICA, 002 is Kin no Inaho rice packaging."
     },
     {
-      "id": "flyer-003",
-      "title": "JICA",
-      "client": "JICA",
-      "type": "Poster",
-      "category": "flyer",
-      "originalProjectUrl": "https://hrkdesign.myportfolio.com/flyer",
-      "image": "assets/portfolio/flyer/003.jpg",
-      "year": "unknown"
+      "id": "shangri-la",
+      "title": "Shangri-La",
+      "client": "Shangri-La Group",
+      "status": "published",
+      "visible": true,
+      "featured": true,
+      "order": 20,
+      "year": null,
+      "regions": [],
+      "types": [
+        "Logo",
+        "Menu"
+      ],
+      "summary": null,
+      "cover": 0,
+      "assets": [
+        {
+          "src": "assets/portfolio/menu/009.png",
+          "type": "Menu",
+          "caption": null,
+          "legacyId": "menu-009",
+          "width": 1604,
+          "height": 1181,
+          "web": [
+            960,
+            1604
+          ]
+        },
+        {
+          "src": "assets/portfolio/logotype/009.png",
+          "type": "Logo",
+          "caption": "Shangri-La Group",
+          "legacyId": "logotype-009",
+          "width": 1190,
+          "height": 1150,
+          "web": [
+            960,
+            1190
+          ]
+        },
+        {
+          "src": "assets/portfolio/logotype/010.png",
+          "type": "Logo",
+          "caption": "Noodle bar / ramen bar / ramen sub-brands",
+          "legacyId": "logotype-010",
+          "width": 895,
+          "height": 1250,
+          "web": [
+            895
+          ]
+        },
+        {
+          "src": "assets/portfolio/menu/007.png",
+          "type": "Menu",
+          "caption": null,
+          "legacyId": "menu-007",
+          "width": 770,
+          "height": 1222,
+          "web": [
+            770
+          ]
+        },
+        {
+          "src": "assets/portfolio/menu/008.png",
+          "type": "Menu",
+          "caption": null,
+          "legacyId": "menu-008",
+          "width": 804,
+          "height": 1223,
+          "web": [
+            804
+          ]
+        },
+        {
+          "src": "assets/portfolio/menu/010.png",
+          "type": "Menu",
+          "caption": null,
+          "legacyId": "menu-010",
+          "width": 1594,
+          "height": 1182,
+          "web": [
+            960,
+            1594
+          ]
+        },
+        {
+          "src": "assets/portfolio/menu/011.jpg",
+          "type": "Menu",
+          "caption": null,
+          "legacyId": "menu-011",
+          "width": 1191,
+          "height": 842,
+          "web": [
+            960,
+            1191
+          ]
+        },
+        {
+          "src": "assets/portfolio/menu/012.jpg",
+          "type": "Menu",
+          "caption": null,
+          "legacyId": "menu-012",
+          "width": 1191,
+          "height": 842,
+          "web": [
+            960,
+            1191
+          ]
+        }
+      ],
+      "note": "menu-007..012 were 'unknown' in legacy data. menu-012 carries the 'Japanese Ramen Shangri-La' mark shown in logotype-010; 007-011 share item codes/prices and art direction with it."
     },
     {
-      "id": "flyer-004",
-      "title": "Daishin Trading / Kin no Inaho",
-      "client": "Daishin Trading / Kin no Inaho",
-      "type": "Package",
-      "category": "flyer",
-      "originalProjectUrl": "https://hrkdesign.myportfolio.com/flyer",
-      "image": "assets/portfolio/flyer/004.jpg",
-      "year": "unknown"
-    },
-    {
-      "id": "flyer-005",
-      "title": "JICA",
-      "client": "JICA",
-      "type": "Brochure",
-      "category": "flyer",
-      "originalProjectUrl": "https://hrkdesign.myportfolio.com/flyer",
-      "image": "assets/portfolio/flyer/005.png",
-      "year": "unknown"
-    },
-    {
-      "id": "flyer-006",
-      "title": "JICA",
-      "client": "JICA",
-      "type": "Poster",
-      "category": "flyer",
-      "originalProjectUrl": "https://hrkdesign.myportfolio.com/flyer",
-      "image": "assets/portfolio/flyer/006.png",
-      "year": "unknown"
-    },
-    {
-      "id": "flyer-007",
-      "title": "JICA",
-      "client": "JICA",
-      "type": "Poster",
-      "category": "flyer",
-      "originalProjectUrl": "https://hrkdesign.myportfolio.com/flyer",
-      "image": "assets/portfolio/flyer/007.png",
-      "year": "unknown"
-    },
-    {
-      "id": "flyer-008",
-      "title": "JICA",
-      "client": "JICA",
-      "type": "Poster",
-      "category": "flyer",
-      "originalProjectUrl": "https://hrkdesign.myportfolio.com/flyer",
-      "image": "assets/portfolio/flyer/008.png",
-      "year": "unknown"
-    },
-    {
-      "id": "flyer-009",
-      "title": "H22/D22 Hotel & Dining",
-      "client": "H22/D22 Hotel & Dining",
-      "type": "Flyer",
-      "category": "flyer",
-      "originalProjectUrl": "https://hrkdesign.myportfolio.com/flyer",
-      "image": "assets/portfolio/flyer/009.jpg",
-      "year": "unknown"
-    },
-    {
-      "id": "flyer-010",
-      "title": "TAMASA",
-      "client": "TAMASA",
-      "type": "Flyer",
-      "category": "flyer",
-      "originalProjectUrl": "https://hrkdesign.myportfolio.com/flyer",
-      "image": "assets/portfolio/flyer/010.jpg",
-      "year": "unknown"
-    },
-    {
-      "id": "flyer-011",
-      "title": "Karaoke SURVI Bar",
-      "client": "Karaoke SURVI Bar",
-      "type": "Flyer",
-      "category": "flyer",
-      "originalProjectUrl": "https://hrkdesign.myportfolio.com/flyer",
-      "image": "assets/portfolio/flyer/011.jpg",
-      "year": "unknown"
-    },
-    {
-      "id": "flyer-012",
-      "title": "AEON MALL Sen Sok City",
-      "client": "AEON MALL Sen Sok City",
-      "type": "Flyer",
-      "category": "flyer",
-      "originalProjectUrl": "https://hrkdesign.myportfolio.com/flyer",
-      "image": "assets/portfolio/flyer/012.jpg",
-      "year": "unknown"
-    },
-    {
-      "id": "flyer-013",
-      "title": "Amazing Cambodia",
-      "client": "Amazing Cambodia",
-      "type": "Flyer",
-      "category": "flyer",
-      "originalProjectUrl": "https://hrkdesign.myportfolio.com/flyer",
-      "image": "assets/portfolio/flyer/013.jpg",
-      "year": "unknown"
-    },
-    {
-      "id": "flyer-014",
-      "title": "Sui-Joh",
-      "client": "Sui-Joh",
-      "type": "Flyer",
-      "category": "flyer",
-      "originalProjectUrl": "https://hrkdesign.myportfolio.com/flyer",
-      "image": "assets/portfolio/flyer/014.jpg",
-      "year": "unknown"
-    },
-    {
-      "id": "flyer-015",
-      "title": "Daishin Trading / Kin no Inaho",
-      "client": "Daishin Trading / Kin no Inaho",
-      "type": "Package",
-      "category": "flyer",
-      "originalProjectUrl": "https://hrkdesign.myportfolio.com/flyer",
-      "image": "assets/portfolio/flyer/015.png",
-      "year": "unknown"
-    },
-    {
-      "id": "flyer-016",
-      "title": "Daishin Trading / Kin no Inaho",
-      "client": "Daishin Trading / Kin no Inaho",
-      "type": "Package",
-      "category": "flyer",
-      "originalProjectUrl": "https://hrkdesign.myportfolio.com/flyer",
-      "image": "assets/portfolio/flyer/016.png",
-      "year": "unknown"
-    },
-    {
-      "id": "flyer-017",
-      "title": "TagCast",
-      "client": "TagCast",
-      "type": "Flyer",
-      "category": "flyer",
-      "originalProjectUrl": "https://hrkdesign.myportfolio.com/flyer",
-      "image": "assets/portfolio/flyer/017.jpg",
-      "year": "unknown"
-    },
-    {
-      "id": "flyer-018",
-      "title": "Agri Tourism Festival",
-      "client": "Agri Tourism Festival",
-      "type": "Flyer",
-      "category": "flyer",
-      "originalProjectUrl": "https://hrkdesign.myportfolio.com/flyer",
-      "image": "assets/portfolio/flyer/018.jpg",
-      "year": "unknown"
-    },
-    {
-      "id": "flyer-019",
-      "title": "AEON MALL Sen Sok City",
-      "client": "AEON MALL Sen Sok City",
-      "type": "Flyer",
-      "category": "flyer",
-      "originalProjectUrl": "https://hrkdesign.myportfolio.com/flyer",
-      "image": "assets/portfolio/flyer/019.jpg",
-      "year": "unknown"
-    },
-    {
-      "id": "flyer-020",
-      "title": "Fun Square / AEON",
-      "client": "Fun Square / AEON",
-      "type": "Flyer",
-      "category": "flyer",
-      "originalProjectUrl": "https://hrkdesign.myportfolio.com/flyer",
-      "image": "assets/portfolio/flyer/020.jpg",
-      "year": "unknown"
-    },
-    {
-      "id": "flyer-021",
-      "title": "JICA",
-      "client": "JICA",
-      "type": "Map",
-      "category": "flyer",
-      "originalProjectUrl": "https://hrkdesign.myportfolio.com/flyer",
-      "image": "assets/portfolio/flyer/021.jpg",
-      "year": "unknown"
-    },
-    {
-      "id": "flyer-022",
-      "title": "JICA",
-      "client": "JICA",
-      "type": "Map",
-      "category": "flyer",
-      "originalProjectUrl": "https://hrkdesign.myportfolio.com/flyer",
-      "image": "assets/portfolio/flyer/022.jpg",
-      "year": "unknown"
-    },
-    {
-      "id": "flyer-023",
-      "title": "ASJ Architects Studio Japan",
-      "client": "ASJ Architects Studio Japan",
-      "type": "Flyer",
-      "category": "flyer",
-      "originalProjectUrl": "https://hrkdesign.myportfolio.com/flyer",
-      "image": "assets/portfolio/flyer/023.jpg",
-      "year": "unknown"
-    },
-    {
-      "id": "menu-001",
+      "id": "hikaru",
       "title": "HIKARU",
-      "client": "HIKARU",
-      "type": "Menu",
-      "category": "menu",
-      "originalProjectUrl": "https://hrkdesign.myportfolio.com/menu",
-      "image": "assets/portfolio/menu/001.png",
-      "year": "unknown"
+      "client": "HIKARU Japanese Beef Cuisine",
+      "status": "published",
+      "visible": true,
+      "featured": true,
+      "order": 30,
+      "year": null,
+      "regions": [],
+      "types": [
+        "Menu"
+      ],
+      "summary": null,
+      "cover": 0,
+      "assets": [
+        {
+          "src": "assets/portfolio/menu/001.png",
+          "type": "Menu",
+          "caption": "Cover",
+          "legacyId": "menu-001",
+          "width": 833,
+          "height": 1203,
+          "web": [
+            833
+          ]
+        },
+        {
+          "src": "assets/portfolio/menu/002.png",
+          "type": "Menu",
+          "caption": null,
+          "legacyId": "menu-002",
+          "width": 845,
+          "height": 1200,
+          "web": [
+            845
+          ]
+        },
+        {
+          "src": "assets/portfolio/menu/003.png",
+          "type": "Menu",
+          "caption": null,
+          "legacyId": "menu-003",
+          "width": 840,
+          "height": 1212,
+          "web": [
+            840
+          ]
+        },
+        {
+          "src": "assets/portfolio/menu/004.png",
+          "type": "Menu",
+          "caption": null,
+          "legacyId": "menu-004",
+          "width": 846,
+          "height": 1206,
+          "web": [
+            846
+          ]
+        }
+      ],
+      "note": "menu-002..004 were 'unknown' in legacy data; same menu system as menu-001 (HIKARU)."
     },
     {
-      "id": "menu-002",
-      "title": "Menu Work 002",
-      "client": "unknown",
-      "type": "Menu",
-      "category": "menu",
-      "originalProjectUrl": "https://hrkdesign.myportfolio.com/menu",
-      "image": "assets/portfolio/menu/002.png",
-      "year": "unknown"
+      "id": "kin-no-inaho",
+      "title": "Kin no Inaho",
+      "client": "Daishin Trading",
+      "status": "published",
+      "visible": true,
+      "featured": true,
+      "order": 40,
+      "year": null,
+      "regions": [
+        "Cambodia"
+      ],
+      "types": [
+        "Packaging"
+      ],
+      "summary": null,
+      "cover": 0,
+      "assets": [
+        {
+          "src": "assets/portfolio/flyer/015.png",
+          "type": "Packaging",
+          "caption": "Front",
+          "legacyId": "flyer-015",
+          "width": 673,
+          "height": 1001,
+          "web": [
+            673
+          ]
+        },
+        {
+          "src": "assets/portfolio/flyer/016.png",
+          "type": "Packaging",
+          "caption": "Back",
+          "legacyId": "flyer-016",
+          "width": 674,
+          "height": 1005,
+          "web": [
+            674
+          ]
+        },
+        {
+          "src": "assets/portfolio/flyer/002.jpg",
+          "type": "Packaging",
+          "caption": "Japanese Premium Rice 5kg",
+          "legacyId": "flyer-002",
+          "width": 885,
+          "height": 885,
+          "web": [
+            885
+          ]
+        }
+      ],
+      "note": "Distributor printed on pack: DAISHIN TRADING (CAMBODIA) CO., LTD."
     },
     {
-      "id": "menu-003",
-      "title": "Menu Work 003",
-      "client": "unknown",
-      "type": "Menu",
-      "category": "menu",
-      "originalProjectUrl": "https://hrkdesign.myportfolio.com/menu",
-      "image": "assets/portfolio/menu/003.png",
-      "year": "unknown"
-    },
-    {
-      "id": "menu-004",
-      "title": "Menu Work 004",
-      "client": "unknown",
-      "type": "Menu",
-      "category": "menu",
-      "originalProjectUrl": "https://hrkdesign.myportfolio.com/menu",
-      "image": "assets/portfolio/menu/004.png",
-      "year": "unknown"
-    },
-    {
-      "id": "menu-005",
+      "id": "sakana-lab",
       "title": "SAKANA LAB",
       "client": "SAKANA LAB",
-      "type": "Menu",
-      "category": "menu",
-      "originalProjectUrl": "https://hrkdesign.myportfolio.com/menu",
-      "image": "assets/portfolio/menu/005.png",
-      "year": "unknown"
+      "status": "published",
+      "visible": true,
+      "featured": false,
+      "order": 50,
+      "year": null,
+      "regions": [],
+      "types": [
+        "Menu"
+      ],
+      "summary": null,
+      "cover": 0,
+      "assets": [
+        {
+          "src": "assets/portfolio/menu/005.png",
+          "type": "Menu",
+          "caption": null,
+          "legacyId": "menu-005",
+          "width": 1772,
+          "height": 1247,
+          "web": [
+            960,
+            1772
+          ]
+        },
+        {
+          "src": "assets/portfolio/menu/006.png",
+          "type": "Menu",
+          "caption": null,
+          "legacyId": "menu-006",
+          "width": 1767,
+          "height": 1244,
+          "web": [
+            960,
+            1767
+          ]
+        }
+      ]
     },
     {
-      "id": "menu-006",
-      "title": "SAKANA LAB",
-      "client": "SAKANA LAB",
-      "type": "Menu",
-      "category": "menu",
-      "originalProjectUrl": "https://hrkdesign.myportfolio.com/menu",
-      "image": "assets/portfolio/menu/006.png",
-      "year": "unknown"
-    },
-    {
-      "id": "menu-007",
-      "title": "Menu Work 007",
-      "client": "unknown",
-      "type": "Menu",
-      "category": "menu",
-      "originalProjectUrl": "https://hrkdesign.myportfolio.com/menu",
-      "image": "assets/portfolio/menu/007.png",
-      "year": "unknown"
-    },
-    {
-      "id": "menu-008",
-      "title": "Menu Work 008",
-      "client": "unknown",
-      "type": "Menu",
-      "category": "menu",
-      "originalProjectUrl": "https://hrkdesign.myportfolio.com/menu",
-      "image": "assets/portfolio/menu/008.png",
-      "year": "unknown"
-    },
-    {
-      "id": "menu-009",
-      "title": "Menu Work 009",
-      "client": "unknown",
-      "type": "Menu",
-      "category": "menu",
-      "originalProjectUrl": "https://hrkdesign.myportfolio.com/menu",
-      "image": "assets/portfolio/menu/009.png",
-      "year": "unknown"
-    },
-    {
-      "id": "menu-010",
-      "title": "Menu Work 010",
-      "client": "unknown",
-      "type": "Menu",
-      "category": "menu",
-      "originalProjectUrl": "https://hrkdesign.myportfolio.com/menu",
-      "image": "assets/portfolio/menu/010.png",
-      "year": "unknown"
-    },
-    {
-      "id": "menu-011",
-      "title": "Menu Work 011",
-      "client": "unknown",
-      "type": "Menu",
-      "category": "menu",
-      "originalProjectUrl": "https://hrkdesign.myportfolio.com/menu",
-      "image": "assets/portfolio/menu/011.jpg",
-      "year": "unknown"
-    },
-    {
-      "id": "menu-012",
-      "title": "Menu Work 012",
-      "client": "unknown",
-      "type": "Menu",
-      "category": "menu",
-      "originalProjectUrl": "https://hrkdesign.myportfolio.com/menu",
-      "image": "assets/portfolio/menu/012.jpg",
-      "year": "unknown"
-    },
-    {
-      "id": "menu-013",
+      "id": "menya-gento",
       "title": "MENYA GENTO",
       "client": "MENYA GENTO",
-      "type": "Menu",
-      "category": "menu",
-      "originalProjectUrl": "https://hrkdesign.myportfolio.com/menu",
-      "image": "assets/portfolio/menu/013.png",
-      "year": "unknown"
+      "status": "published",
+      "visible": true,
+      "featured": false,
+      "order": 60,
+      "year": null,
+      "regions": [],
+      "types": [
+        "Menu"
+      ],
+      "summary": null,
+      "cover": 1,
+      "assets": [
+        {
+          "src": "assets/portfolio/menu/014.png",
+          "type": "Menu",
+          "caption": "Cover",
+          "legacyId": "menu-014",
+          "width": 759,
+          "height": 739,
+          "web": [
+            759
+          ]
+        },
+        {
+          "src": "assets/portfolio/menu/013.png",
+          "type": "Menu",
+          "caption": null,
+          "legacyId": "menu-013",
+          "width": 829,
+          "height": 1186,
+          "web": [
+            829
+          ]
+        }
+      ]
     },
     {
-      "id": "menu-014",
-      "title": "MENYA GENTO",
-      "client": "MENYA GENTO",
-      "type": "Menu",
-      "category": "menu",
-      "originalProjectUrl": "https://hrkdesign.myportfolio.com/menu",
-      "image": "assets/portfolio/menu/014.png",
-      "year": "unknown"
+      "id": "shin-ya",
+      "title": "SHIN-YA",
+      "client": "SHIN-YA",
+      "status": "published",
+      "visible": true,
+      "featured": false,
+      "order": 70,
+      "year": null,
+      "regions": [],
+      "types": [
+        "Logo",
+        "Menu"
+      ],
+      "summary": null,
+      "cover": 0,
+      "assets": [
+        {
+          "src": "assets/portfolio/menu/021.png",
+          "type": "Menu",
+          "caption": "Cover",
+          "legacyId": "menu-021",
+          "width": 803,
+          "height": 744,
+          "web": [
+            803
+          ]
+        },
+        {
+          "src": "assets/portfolio/logotype/021.png",
+          "type": "Logo",
+          "caption": null,
+          "legacyId": "logotype-021",
+          "width": 1143,
+          "height": 1006,
+          "web": [
+            960,
+            1143
+          ]
+        },
+        {
+          "src": "assets/portfolio/menu/022.png",
+          "type": "Menu",
+          "caption": null,
+          "legacyId": "menu-022",
+          "width": 1591,
+          "height": 1023,
+          "web": [
+            960,
+            1591
+          ]
+        }
+      ]
     },
     {
-      "id": "menu-015",
-      "title": "Menu Work 015",
-      "client": "unknown",
-      "type": "Menu",
-      "category": "menu",
-      "originalProjectUrl": "https://hrkdesign.myportfolio.com/menu",
-      "image": "assets/portfolio/menu/015.png",
-      "year": "unknown"
+      "id": "aeon-mall-sen-sok-city",
+      "title": "AEON MALL Sen Sok City",
+      "client": "AEON MALL Sen Sok City",
+      "status": "published",
+      "visible": true,
+      "featured": false,
+      "order": 80,
+      "year": "2018",
+      "regions": [
+        "Cambodia"
+      ],
+      "types": [
+        "Promotion",
+        "Floor Guide"
+      ],
+      "summary": null,
+      "cover": 0,
+      "assets": [
+        {
+          "src": "assets/portfolio/flyer/012.jpg",
+          "type": "Promotion",
+          "caption": "New mall opening",
+          "legacyId": "flyer-012",
+          "width": 3840,
+          "height": 2160,
+          "web": [
+            960,
+            1920
+          ]
+        },
+        {
+          "src": "assets/portfolio/flyer/019.jpg",
+          "type": "Floor Guide",
+          "caption": null,
+          "legacyId": "flyer-019",
+          "width": 874,
+          "height": 1240,
+          "web": [
+            874
+          ]
+        }
+      ],
+      "note": "Year from opening date printed on artwork (30 May 2018)."
     },
     {
-      "id": "menu-016",
+      "id": "ajisen-ramen",
       "title": "AJISEN RAMEN",
       "client": "AJISEN RAMEN",
-      "type": "Menu",
-      "category": "menu",
-      "originalProjectUrl": "https://hrkdesign.myportfolio.com/menu",
-      "image": "assets/portfolio/menu/016.png",
-      "year": "unknown"
+      "status": "published",
+      "visible": true,
+      "featured": false,
+      "order": 90,
+      "year": null,
+      "regions": [],
+      "types": [
+        "Menu"
+      ],
+      "summary": null,
+      "cover": 0,
+      "assets": [
+        {
+          "src": "assets/portfolio/menu/015.png",
+          "type": "Menu",
+          "caption": "Grand menu cover",
+          "legacyId": "menu-015",
+          "width": 893,
+          "height": 1276,
+          "web": [
+            893
+          ]
+        },
+        {
+          "src": "assets/portfolio/menu/016.png",
+          "type": "Menu",
+          "caption": null,
+          "legacyId": "menu-016",
+          "width": 858,
+          "height": 1236,
+          "web": [
+            858
+          ]
+        }
+      ],
+      "note": "menu-015 was 'unknown' in legacy data; cover reads 'AJISEN GRAND MENU'."
     },
     {
-      "id": "menu-017",
+      "id": "ninja",
       "title": "Ninja",
       "client": "Ninja",
-      "type": "Menu",
-      "category": "menu",
-      "originalProjectUrl": "https://hrkdesign.myportfolio.com/menu",
-      "image": "assets/portfolio/menu/017.png",
-      "year": "unknown"
+      "status": "published",
+      "visible": true,
+      "featured": false,
+      "order": 100,
+      "year": null,
+      "regions": [],
+      "types": [
+        "Menu"
+      ],
+      "summary": null,
+      "cover": 0,
+      "assets": [
+        {
+          "src": "assets/portfolio/menu/017.png",
+          "type": "Menu",
+          "caption": null,
+          "legacyId": "menu-017",
+          "width": 962,
+          "height": 1067,
+          "web": [
+            960,
+            962
+          ]
+        },
+        {
+          "src": "assets/portfolio/menu/018.png",
+          "type": "Menu",
+          "caption": null,
+          "legacyId": "menu-018",
+          "width": 962,
+          "height": 1070,
+          "web": [
+            960,
+            962
+          ]
+        }
+      ]
     },
     {
-      "id": "menu-018",
-      "title": "Ninja",
-      "client": "Ninja",
-      "type": "Menu",
-      "category": "menu",
-      "originalProjectUrl": "https://hrkdesign.myportfolio.com/menu",
-      "image": "assets/portfolio/menu/018.png",
-      "year": "unknown"
+      "id": "amazing-cambodia",
+      "title": "Amazing Cambodia",
+      "client": "Amazing Cambodia",
+      "status": "published",
+      "visible": true,
+      "featured": false,
+      "order": 110,
+      "year": null,
+      "regions": [
+        "Cambodia"
+      ],
+      "types": [
+        "Signage",
+        "Brochure"
+      ],
+      "summary": null,
+      "cover": 0,
+      "assets": [
+        {
+          "src": "assets/portfolio/flyer/001.jpg",
+          "type": "Signage",
+          "caption": "Store hoarding",
+          "legacyId": "flyer-001",
+          "width": 1920,
+          "height": 1076,
+          "web": [
+            960,
+            1920
+          ]
+        },
+        {
+          "src": "assets/portfolio/flyer/013.jpg",
+          "type": "Brochure",
+          "caption": null,
+          "legacyId": "flyer-013",
+          "width": 1753,
+          "height": 1240,
+          "web": [
+            960,
+            1753
+          ]
+        }
+      ]
     },
     {
-      "id": "menu-019",
-      "title": "Shake's Cafe",
-      "client": "Shake's Cafe",
-      "type": "Menu",
-      "category": "menu",
-      "originalProjectUrl": "https://hrkdesign.myportfolio.com/menu",
-      "image": "assets/portfolio/menu/019.png",
-      "year": "unknown"
-    },
-    {
-      "id": "menu-020",
-      "title": "Shake's Cafe",
-      "client": "Shake's Cafe",
-      "type": "Menu",
-      "category": "menu",
-      "originalProjectUrl": "https://hrkdesign.myportfolio.com/menu",
-      "image": "assets/portfolio/menu/020.png",
-      "year": "unknown"
-    },
-    {
-      "id": "menu-021",
-      "title": "SHIN-YA",
-      "client": "SHIN-YA",
-      "type": "Menu",
-      "category": "menu",
-      "originalProjectUrl": "https://hrkdesign.myportfolio.com/menu",
-      "image": "assets/portfolio/menu/021.png",
-      "year": "unknown"
-    },
-    {
-      "id": "menu-022",
-      "title": "SHIN-YA",
-      "client": "SHIN-YA",
-      "type": "Menu",
-      "category": "menu",
-      "originalProjectUrl": "https://hrkdesign.myportfolio.com/menu",
-      "image": "assets/portfolio/menu/022.png",
-      "year": "unknown"
-    },
-    {
-      "id": "menu-023",
-      "title": "RYOMA",
-      "client": "RYOMA",
-      "type": "Menu",
-      "category": "menu",
-      "originalProjectUrl": "https://hrkdesign.myportfolio.com/menu",
-      "image": "assets/portfolio/menu/023.png",
-      "year": "unknown"
-    },
-    {
-      "id": "logotype-001",
-      "title": "FooLaB Group",
-      "client": "FooLaB Group",
-      "type": "Logo",
-      "category": "logotype",
-      "originalProjectUrl": "https://hrkdesign.myportfolio.com/logotype",
-      "image": "assets/portfolio/logotype/001.png",
-      "year": "unknown"
-    },
-    {
-      "id": "logotype-002",
-      "title": "UG Marketing Republic",
-      "client": "UG Marketing Republic",
-      "type": "Logo",
-      "category": "logotype",
-      "originalProjectUrl": "https://hrkdesign.myportfolio.com/logotype",
-      "image": "assets/portfolio/logotype/002.png",
-      "year": "unknown"
-    },
-    {
-      "id": "logotype-003",
-      "title": "UG Marketing Republic",
-      "client": "UG Marketing Republic",
-      "type": "Logo",
-      "category": "logotype",
-      "originalProjectUrl": "https://hrkdesign.myportfolio.com/logotype",
-      "image": "assets/portfolio/logotype/003.png",
-      "year": "unknown"
-    },
-    {
-      "id": "logotype-004",
-      "title": "CamiYui by PROSOL",
-      "client": "CamiYui by PROSOL",
-      "type": "Logo",
-      "category": "logotype",
-      "originalProjectUrl": "https://hrkdesign.myportfolio.com/logotype",
-      "image": "assets/portfolio/logotype/004.png",
-      "year": "unknown"
-    },
-    {
-      "id": "logotype-005",
-      "title": "The JAPAN SHOP",
-      "client": "The JAPAN SHOP",
-      "type": "Logo",
-      "category": "logotype",
-      "originalProjectUrl": "https://hrkdesign.myportfolio.com/logotype",
-      "image": "assets/portfolio/logotype/005.png",
-      "year": "unknown"
-    },
-    {
-      "id": "logotype-006",
-      "title": "The Bluehearts",
-      "client": "The Bluehearts",
-      "type": "Logo",
-      "category": "logotype",
-      "originalProjectUrl": "https://hrkdesign.myportfolio.com/logotype",
-      "image": "assets/portfolio/logotype/006.png",
-      "year": "unknown"
-    },
-    {
-      "id": "logotype-007",
-      "title": "Sakura Buffet",
-      "client": "Sakura Buffet",
-      "type": "Logo",
-      "category": "logotype",
-      "originalProjectUrl": "https://hrkdesign.myportfolio.com/logotype",
-      "image": "assets/portfolio/logotype/007.png",
-      "year": "unknown"
-    },
-    {
-      "id": "logotype-008",
-      "title": "Chadajima Coffee Roasters",
-      "client": "Chadajima Coffee Roasters",
-      "type": "Logo",
-      "category": "logotype",
-      "originalProjectUrl": "https://hrkdesign.myportfolio.com/logotype",
-      "image": "assets/portfolio/logotype/008.png",
-      "year": "unknown"
-    },
-    {
-      "id": "logotype-009",
-      "title": "Shangri-La",
-      "client": "Shangri-La",
-      "type": "Logo",
-      "category": "logotype",
-      "originalProjectUrl": "https://hrkdesign.myportfolio.com/logotype",
-      "image": "assets/portfolio/logotype/009.png",
-      "year": "unknown"
-    },
-    {
-      "id": "logotype-010",
-      "title": "Shangri-La",
-      "client": "Shangri-La",
-      "type": "Logo",
-      "category": "logotype",
-      "originalProjectUrl": "https://hrkdesign.myportfolio.com/logotype",
-      "image": "assets/portfolio/logotype/010.png",
-      "year": "unknown"
-    },
-    {
-      "id": "logotype-011",
-      "title": "Motoyoshi",
-      "client": "Motoyoshi",
-      "type": "Logo",
-      "category": "logotype",
-      "originalProjectUrl": "https://hrkdesign.myportfolio.com/logotype",
-      "image": "assets/portfolio/logotype/011.png",
-      "year": "unknown"
-    },
-    {
-      "id": "logotype-012",
-      "title": "solist",
-      "client": "solist",
-      "type": "Logo",
-      "category": "logotype",
-      "originalProjectUrl": "https://hrkdesign.myportfolio.com/logotype",
-      "image": "assets/portfolio/logotype/012.png",
-      "year": "unknown"
-    },
-    {
-      "id": "logotype-013",
-      "title": "Ueda Cafe Bean",
-      "client": "Ueda Cafe Bean",
-      "type": "Logo",
-      "category": "logotype",
-      "originalProjectUrl": "https://hrkdesign.myportfolio.com/logotype",
-      "image": "assets/portfolio/logotype/013.png",
-      "year": "unknown"
-    },
-    {
-      "id": "logotype-014",
-      "title": "Yum Yum Mookata Beb Thai",
-      "client": "Yum Yum Mookata Beb Thai",
-      "type": "Logo",
-      "category": "logotype",
-      "originalProjectUrl": "https://hrkdesign.myportfolio.com/logotype",
-      "image": "assets/portfolio/logotype/014.png",
-      "year": "unknown"
-    },
-    {
-      "id": "logotype-015",
-      "title": "Nissei Cambodia",
-      "client": "Nissei Cambodia",
-      "type": "Logo",
-      "category": "logotype",
-      "originalProjectUrl": "https://hrkdesign.myportfolio.com/logotype",
-      "image": "assets/portfolio/logotype/015.png",
-      "year": "unknown"
-    },
-    {
-      "id": "logotype-016",
-      "title": "Cafe & Bar CONY",
-      "client": "Cafe & Bar CONY",
-      "type": "Logo",
-      "category": "logotype",
-      "originalProjectUrl": "https://hrkdesign.myportfolio.com/logotype",
-      "image": "assets/portfolio/logotype/016.png",
-      "year": "unknown"
-    },
-    {
-      "id": "logotype-017",
-      "title": "Sakura Foods",
-      "client": "Sakura Foods",
-      "type": "Logo",
-      "category": "logotype",
-      "originalProjectUrl": "https://hrkdesign.myportfolio.com/logotype",
-      "image": "assets/portfolio/logotype/017.png",
-      "year": "unknown"
-    },
-    {
-      "id": "logotype-018",
-      "title": "hotori memento",
-      "client": "hotori memento",
-      "type": "Logo",
-      "category": "logotype",
-      "originalProjectUrl": "https://hrkdesign.myportfolio.com/logotype",
-      "image": "assets/portfolio/logotype/018.png",
-      "year": "unknown"
-    },
-    {
-      "id": "logotype-019",
-      "title": "hotori memento",
-      "client": "hotori memento",
-      "type": "Logo",
-      "category": "logotype",
-      "originalProjectUrl": "https://hrkdesign.myportfolio.com/logotype",
-      "image": "assets/portfolio/logotype/019.png",
-      "year": "unknown"
-    },
-    {
-      "id": "logotype-020",
-      "title": "Roast'n'Roll",
-      "client": "Roast'n'Roll",
-      "type": "Logo",
-      "category": "logotype",
-      "originalProjectUrl": "https://hrkdesign.myportfolio.com/logotype",
-      "image": "assets/portfolio/logotype/020.png",
-      "year": "unknown"
-    },
-    {
-      "id": "logotype-021",
-      "title": "SHIN-YA",
-      "client": "SHIN-YA",
-      "type": "Logo",
-      "category": "logotype",
-      "originalProjectUrl": "https://hrkdesign.myportfolio.com/logotype",
-      "image": "assets/portfolio/logotype/021.png",
-      "year": "unknown"
-    },
-    {
-      "id": "logotype-022",
-      "title": "Give & Grow",
-      "client": "Give & Grow",
-      "type": "Logo",
-      "category": "logotype",
-      "originalProjectUrl": "https://hrkdesign.myportfolio.com/logotype",
-      "image": "assets/portfolio/logotype/022.png",
-      "year": "unknown"
-    },
-    {
-      "id": "logotype-023",
-      "title": "BALL Resort & Restaurant",
-      "client": "BALL Resort & Restaurant",
-      "type": "Logo",
-      "category": "logotype",
-      "originalProjectUrl": "https://hrkdesign.myportfolio.com/logotype",
-      "image": "assets/portfolio/logotype/023.png",
-      "year": "unknown"
-    },
-    {
-      "id": "logotype-024",
-      "title": "KUSA-MEN",
-      "client": "KUSA-MEN",
-      "type": "Logo",
-      "category": "logotype",
-      "originalProjectUrl": "https://hrkdesign.myportfolio.com/logotype",
-      "image": "assets/portfolio/logotype/024.png",
-      "year": "unknown"
-    },
-    {
-      "id": "card-001",
-      "title": "UG Marketing Republic",
-      "client": "UG Marketing Republic",
-      "type": "Card",
-      "category": "card",
-      "originalProjectUrl": "https://hrkdesign.myportfolio.com/card",
-      "image": "assets/portfolio/card/001.png",
-      "year": "unknown"
-    },
-    {
-      "id": "card-002",
-      "title": "CamiYui",
-      "client": "CamiYui",
-      "type": "Card",
-      "category": "card",
-      "originalProjectUrl": "https://hrkdesign.myportfolio.com/card",
-      "image": "assets/portfolio/card/002.png",
-      "year": "unknown"
-    },
-    {
-      "id": "card-003",
-      "title": "solist",
-      "client": "solist",
-      "type": "Card",
-      "category": "card",
-      "originalProjectUrl": "https://hrkdesign.myportfolio.com/card",
-      "image": "assets/portfolio/card/003.png",
-      "year": "unknown"
-    },
-    {
-      "id": "card-004",
-      "title": "solist",
-      "client": "solist",
-      "type": "Card",
-      "category": "card",
-      "originalProjectUrl": "https://hrkdesign.myportfolio.com/card",
-      "image": "assets/portfolio/card/004.png",
-      "year": "unknown"
-    },
-    {
-      "id": "card-005",
-      "title": "CLUB L",
-      "client": "CLUB L",
-      "type": "Card",
-      "category": "card",
-      "originalProjectUrl": "https://hrkdesign.myportfolio.com/card",
-      "image": "assets/portfolio/card/005.png",
-      "year": "unknown"
-    },
-    {
-      "id": "card-006",
-      "title": "aloha",
-      "client": "aloha",
-      "type": "Card",
-      "category": "card",
-      "originalProjectUrl": "https://hrkdesign.myportfolio.com/card",
-      "image": "assets/portfolio/card/006.png",
-      "year": "unknown"
-    },
-    {
-      "id": "card-007",
-      "title": "Antanue Spiritual Resort & Spa",
-      "client": "Antanue Spiritual Resort & Spa",
-      "type": "Card",
-      "category": "card",
-      "originalProjectUrl": "https://hrkdesign.myportfolio.com/card",
-      "image": "assets/portfolio/card/007.png",
-      "year": "unknown"
-    },
-    {
-      "id": "book-001",
-      "title": "PPCBank / Cambodia Business Partners",
-      "client": "PPCBank / Cambodia Business Partners",
-      "type": "Editorial",
-      "category": "book",
-      "originalProjectUrl": "https://hrkdesign.myportfolio.com/etc",
-      "image": "assets/portfolio/book/001.png",
-      "year": "unknown"
-    },
-    {
-      "id": "book-002",
+      "id": "cambodia-business-partners",
       "title": "Cambodia Business Partners",
       "client": "Cambodia Business Partners",
-      "type": "Editorial",
-      "category": "book",
-      "originalProjectUrl": "https://hrkdesign.myportfolio.com/etc",
-      "image": "assets/portfolio/book/002.png",
-      "year": "unknown"
+      "status": "published",
+      "visible": true,
+      "featured": false,
+      "order": 120,
+      "year": null,
+      "regions": [
+        "Cambodia"
+      ],
+      "types": [
+        "Editorial"
+      ],
+      "summary": null,
+      "cover": 0,
+      "assets": [
+        {
+          "src": "assets/portfolio/book/001.png",
+          "type": "Editorial",
+          "caption": "Issue 11 — cover",
+          "legacyId": "book-001",
+          "width": 1571,
+          "height": 1099,
+          "web": [
+            960,
+            1571
+          ]
+        },
+        {
+          "src": "assets/portfolio/book/002.png",
+          "type": "Editorial",
+          "caption": "Spread",
+          "legacyId": "book-002",
+          "width": 1545,
+          "height": 1091,
+          "web": [
+            960,
+            1545
+          ]
+        }
+      ],
+      "note": "book-001 was attributed to 'PPCBank / ...' — PPCBank is only the back-cover advertiser."
     },
     {
-      "id": "book-003",
-      "title": "Woman Life Newspaper",
+      "id": "solist",
+      "title": "solist",
+      "client": "solist for hair",
+      "status": "published",
+      "visible": true,
+      "featured": false,
+      "order": 130,
+      "year": null,
+      "regions": [
+        "Cambodia"
+      ],
+      "types": [
+        "Logo",
+        "Card"
+      ],
+      "summary": null,
+      "cover": 0,
+      "assets": [
+        {
+          "src": "assets/portfolio/logotype/012.png",
+          "type": "Logo",
+          "caption": null,
+          "legacyId": "logotype-012",
+          "width": 1075,
+          "height": 1098,
+          "web": [
+            960,
+            1075
+          ]
+        },
+        {
+          "src": "assets/portfolio/card/003.png",
+          "type": "Card",
+          "caption": "Price list",
+          "legacyId": "card-003",
+          "width": 1569,
+          "height": 1084,
+          "web": [
+            960,
+            1569
+          ]
+        },
+        {
+          "src": "assets/portfolio/card/004.png",
+          "type": "Card",
+          "caption": null,
+          "legacyId": "card-004",
+          "width": 1325,
+          "height": 994,
+          "web": [
+            960,
+            1325
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ug-marketing-republic",
+      "title": "UG Marketing Republic",
+      "client": "UG Marketing Republic",
+      "status": "published",
+      "visible": true,
+      "featured": false,
+      "order": 140,
+      "year": null,
+      "regions": [],
+      "types": [
+        "Logo",
+        "Card"
+      ],
+      "summary": null,
+      "cover": 0,
+      "assets": [
+        {
+          "src": "assets/portfolio/logotype/002.png",
+          "type": "Logo",
+          "caption": null,
+          "legacyId": "logotype-002",
+          "width": 1272,
+          "height": 1267,
+          "web": [
+            960,
+            1272
+          ]
+        },
+        {
+          "src": "assets/portfolio/logotype/003.png",
+          "type": "Logo",
+          "caption": null,
+          "legacyId": "logotype-003",
+          "width": 1260,
+          "height": 1261,
+          "web": [
+            960,
+            1260
+          ]
+        },
+        {
+          "src": "assets/portfolio/card/001.png",
+          "type": "Card",
+          "caption": null,
+          "legacyId": "card-001",
+          "width": 1600,
+          "height": 970,
+          "web": [
+            960,
+            1600
+          ]
+        }
+      ]
+    },
+    {
+      "id": "camiyui",
+      "title": "CamiYui",
+      "client": "CamiYui by PROSOL",
+      "status": "published",
+      "visible": true,
+      "featured": false,
+      "order": 150,
+      "year": null,
+      "regions": [],
+      "types": [
+        "Logo",
+        "Card"
+      ],
+      "summary": null,
+      "cover": 0,
+      "assets": [
+        {
+          "src": "assets/portfolio/logotype/004.png",
+          "type": "Logo",
+          "caption": null,
+          "legacyId": "logotype-004",
+          "width": 1777,
+          "height": 1246,
+          "web": [
+            960,
+            1777
+          ]
+        },
+        {
+          "src": "assets/portfolio/card/002.png",
+          "type": "Card",
+          "caption": null,
+          "legacyId": "card-002",
+          "width": 1590,
+          "height": 834,
+          "web": [
+            960,
+            1590
+          ]
+        }
+      ]
+    },
+    {
+      "id": "h22-d22",
+      "title": "H22 / D22",
+      "client": "H22 Hotel & D22 Dining",
+      "status": "published",
+      "visible": true,
+      "featured": false,
+      "order": 160,
+      "year": null,
+      "regions": [
+        "Cambodia"
+      ],
+      "types": [
+        "Flyer"
+      ],
+      "summary": null,
+      "cover": 0,
+      "assets": [
+        {
+          "src": "assets/portfolio/flyer/009.jpg",
+          "type": "Flyer",
+          "caption": null,
+          "legacyId": "flyer-009",
+          "width": 1098,
+          "height": 779,
+          "web": [
+            960,
+            1098
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fun-square",
+      "title": "Fun Square",
+      "client": "Fun Square",
+      "status": "published",
+      "visible": true,
+      "featured": false,
+      "order": 170,
+      "year": null,
+      "regions": [
+        "Cambodia"
+      ],
+      "types": [
+        "Promotion"
+      ],
+      "summary": null,
+      "cover": 0,
+      "assets": [
+        {
+          "src": "assets/portfolio/flyer/020.jpg",
+          "type": "Promotion",
+          "caption": null,
+          "legacyId": "flyer-020",
+          "width": 876,
+          "height": 1240,
+          "web": [
+            876
+          ]
+        }
+      ],
+      "note": "Located in AEON MALL Sen Sok City, kept separate from the mall project (own brand)."
+    },
+    {
+      "id": "agri-tourism-festival",
+      "title": "Agri Tourism Festival",
+      "client": "Agri Tourism Festival",
+      "status": "published",
+      "visible": true,
+      "featured": false,
+      "order": 180,
+      "year": "2017",
+      "regions": [
+        "Cambodia"
+      ],
+      "types": [
+        "Poster"
+      ],
+      "summary": null,
+      "cover": 0,
+      "assets": [
+        {
+          "src": "assets/portfolio/flyer/018.jpg",
+          "type": "Poster",
+          "caption": null,
+          "legacyId": "flyer-018",
+          "width": 1240,
+          "height": 1753,
+          "web": [
+            960,
+            1240
+          ]
+        }
+      ],
+      "note": "Year from event dates printed on poster (Jan 2017)."
+    },
+    {
+      "id": "sui-joh",
+      "title": "Sui-Joh",
+      "client": "Sui-Joh",
+      "status": "published",
+      "visible": true,
+      "featured": false,
+      "order": 190,
+      "year": null,
+      "regions": [
+        "Cambodia"
+      ],
+      "types": [
+        "Brochure"
+      ],
+      "summary": null,
+      "cover": 0,
+      "assets": [
+        {
+          "src": "assets/portfolio/flyer/014.jpg",
+          "type": "Brochure",
+          "caption": null,
+          "legacyId": "flyer-014",
+          "width": 1753,
+          "height": 1240,
+          "web": [
+            960,
+            1753
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tamasa",
+      "title": "TAMASA",
+      "client": "TAMASA",
+      "status": "published",
+      "visible": true,
+      "featured": false,
+      "order": 200,
+      "year": null,
+      "regions": [
+        "Cambodia"
+      ],
+      "types": [
+        "Flyer"
+      ],
+      "summary": null,
+      "cover": 0,
+      "assets": [
+        {
+          "src": "assets/portfolio/flyer/010.jpg",
+          "type": "Flyer",
+          "caption": null,
+          "legacyId": "flyer-010",
+          "width": 1200,
+          "height": 1581,
+          "web": [
+            960,
+            1200
+          ]
+        }
+      ]
+    },
+    {
+      "id": "asj",
+      "title": "ASJ",
+      "client": "ASJ Architects Studio Japan",
+      "status": "published",
+      "visible": true,
+      "featured": false,
+      "order": 210,
+      "year": null,
+      "regions": [
+        "Japan"
+      ],
+      "types": [
+        "Poster"
+      ],
+      "summary": null,
+      "cover": 0,
+      "assets": [
+        {
+          "src": "assets/portfolio/flyer/023.jpg",
+          "type": "Poster",
+          "caption": null,
+          "legacyId": "flyer-023",
+          "width": 1612,
+          "height": 2255,
+          "web": [
+            960,
+            1612
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cinema-365-days",
+      "title": "Cinema 365 days II",
       "client": "Woman Life Newspaper",
-      "type": "Book",
-      "category": "book",
-      "originalProjectUrl": "https://hrkdesign.myportfolio.com/etc",
-      "image": "assets/portfolio/book/003.png",
-      "year": "unknown"
+      "status": "published",
+      "visible": true,
+      "featured": false,
+      "order": 220,
+      "year": null,
+      "regions": [
+        "Japan"
+      ],
+      "types": [
+        "Book"
+      ],
+      "summary": null,
+      "cover": 0,
+      "assets": [
+        {
+          "src": "assets/portfolio/book/003.png",
+          "type": "Book",
+          "caption": "Cover",
+          "legacyId": "book-003",
+          "width": 1557,
+          "height": 1032,
+          "web": [
+            960,
+            1557
+          ]
+        }
+      ],
+      "note": "Publisher printed on cover: ウーマンライフ新聞社."
     },
     {
-      "id": "book-004",
-      "title": "Book Work 004",
-      "client": "unknown",
-      "type": "Editorial",
-      "category": "book",
-      "originalProjectUrl": "https://hrkdesign.myportfolio.com/etc",
-      "image": "assets/portfolio/book/004.png",
-      "year": "unknown"
+      "id": "motoyoshi",
+      "title": "MOTOYOSHI",
+      "client": "MOTOYOSHI Japanese Restaurant",
+      "status": "published",
+      "visible": true,
+      "featured": false,
+      "order": 230,
+      "year": null,
+      "regions": [],
+      "types": [
+        "Logo"
+      ],
+      "summary": null,
+      "cover": 0,
+      "assets": [
+        {
+          "src": "assets/portfolio/logotype/011.png",
+          "type": "Logo",
+          "caption": null,
+          "legacyId": "logotype-011",
+          "width": 1744,
+          "height": 1220,
+          "web": [
+            960,
+            1744
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chadajima",
+      "title": "Chadajima Coffee Roasters",
+      "client": "Chadajima Coffee Roasters",
+      "status": "published",
+      "visible": true,
+      "featured": false,
+      "order": 240,
+      "year": null,
+      "regions": [],
+      "types": [
+        "Logo"
+      ],
+      "summary": null,
+      "cover": 0,
+      "assets": [
+        {
+          "src": "assets/portfolio/logotype/008.png",
+          "type": "Logo",
+          "caption": null,
+          "legacyId": "logotype-008",
+          "width": 1756,
+          "height": 1234,
+          "web": [
+            960,
+            1756
+          ]
+        }
+      ]
+    },
+    {
+      "id": "yum-yum-mookata",
+      "title": "Yum Yum Mookata Beb Thai",
+      "client": "Yum Yum Mookata Beb Thai",
+      "status": "published",
+      "visible": true,
+      "featured": false,
+      "order": 250,
+      "year": null,
+      "regions": [],
+      "types": [
+        "Logo"
+      ],
+      "summary": null,
+      "cover": 0,
+      "assets": [
+        {
+          "src": "assets/portfolio/logotype/014.png",
+          "type": "Logo",
+          "caption": null,
+          "legacyId": "logotype-014",
+          "width": 1757,
+          "height": 1232,
+          "web": [
+            960,
+            1757
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ball-resort",
+      "title": "BALL Resort & Restaurant",
+      "client": "BALL Resort & Restaurant",
+      "status": "published",
+      "visible": true,
+      "featured": false,
+      "order": 260,
+      "year": null,
+      "regions": [],
+      "types": [
+        "Logo"
+      ],
+      "summary": null,
+      "cover": 0,
+      "assets": [
+        {
+          "src": "assets/portfolio/logotype/023.png",
+          "type": "Logo",
+          "caption": null,
+          "legacyId": "logotype-023",
+          "width": 1755,
+          "height": 1214,
+          "web": [
+            960,
+            1755
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sakura-buffet",
+      "title": "Sakura Buffet",
+      "client": "Sakura Buffet",
+      "status": "published",
+      "visible": true,
+      "featured": false,
+      "order": 270,
+      "year": null,
+      "regions": [],
+      "types": [
+        "Logo"
+      ],
+      "summary": null,
+      "cover": 0,
+      "assets": [
+        {
+          "src": "assets/portfolio/logotype/007.png",
+          "type": "Logo",
+          "caption": null,
+          "legacyId": "logotype-007",
+          "width": 1251,
+          "height": 1249,
+          "web": [
+            960,
+            1251
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kusa-men",
+      "title": "KUSA-MEN",
+      "client": "KUSA-MEN",
+      "status": "published",
+      "visible": true,
+      "featured": false,
+      "order": 280,
+      "year": null,
+      "regions": [],
+      "types": [
+        "Logo"
+      ],
+      "summary": null,
+      "cover": 0,
+      "assets": [
+        {
+          "src": "assets/portfolio/logotype/024.png",
+          "type": "Logo",
+          "caption": null,
+          "legacyId": "logotype-024",
+          "width": 994,
+          "height": 991,
+          "web": [
+            960,
+            994
+          ]
+        }
+      ]
+    },
+    {
+      "id": "shakes-cafe",
+      "title": "Shake's Cafe",
+      "client": "Shake's Cafe",
+      "status": "archived",
+      "visible": false,
+      "featured": false,
+      "order": 900,
+      "year": null,
+      "regions": [],
+      "types": [
+        "Menu"
+      ],
+      "summary": null,
+      "cover": 0,
+      "assets": [
+        {
+          "src": "assets/portfolio/menu/019.png",
+          "type": "Menu",
+          "caption": null,
+          "legacyId": "menu-019",
+          "width": 635,
+          "height": 1202,
+          "web": [
+            635
+          ]
+        },
+        {
+          "src": "assets/portfolio/menu/020.png",
+          "type": "Menu",
+          "caption": null,
+          "legacyId": "menu-020",
+          "width": 632,
+          "height": 1205,
+          "web": [
+            632
+          ]
+        }
+      ],
+      "note": "Brand name kept from legacy data; not printed legibly on artwork."
+    },
+    {
+      "id": "ryoma",
+      "title": "RYOMA",
+      "client": "RYOMA",
+      "status": "archived",
+      "visible": false,
+      "featured": false,
+      "order": 900,
+      "year": null,
+      "regions": [],
+      "types": [
+        "Menu"
+      ],
+      "summary": null,
+      "cover": 0,
+      "assets": [
+        {
+          "src": "assets/portfolio/menu/023.png",
+          "type": "Menu",
+          "caption": null,
+          "legacyId": "menu-023",
+          "width": 1543,
+          "height": 1091,
+          "web": [
+            960,
+            1543
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tagcast",
+      "title": "TagCast",
+      "client": "TagCast",
+      "status": "archived",
+      "visible": false,
+      "featured": false,
+      "order": 900,
+      "year": null,
+      "regions": [],
+      "types": [
+        "Flyer"
+      ],
+      "summary": null,
+      "cover": 0,
+      "assets": [
+        {
+          "src": "assets/portfolio/flyer/017.jpg",
+          "type": "Flyer",
+          "caption": null,
+          "legacyId": "flyer-017",
+          "width": 1240,
+          "height": 1753,
+          "web": [
+            960,
+            1240
+          ]
+        }
+      ]
+    },
+    {
+      "id": "karaoke-survi-bar",
+      "title": "Karaoke SURVI Bar",
+      "client": "Karaoke SURVI Bar",
+      "status": "archived",
+      "visible": false,
+      "featured": false,
+      "order": 900,
+      "year": null,
+      "regions": [],
+      "types": [
+        "Flyer"
+      ],
+      "summary": null,
+      "cover": 0,
+      "assets": [
+        {
+          "src": "assets/portfolio/flyer/011.jpg",
+          "type": "Flyer",
+          "caption": null,
+          "legacyId": "flyer-011",
+          "width": 876,
+          "height": 1240,
+          "web": [
+            876
+          ]
+        }
+      ]
+    },
+    {
+      "id": "foolab-group",
+      "title": "FooLaB Group",
+      "client": "FooLaB Group",
+      "status": "archived",
+      "visible": false,
+      "featured": false,
+      "order": 900,
+      "year": null,
+      "regions": [],
+      "types": [
+        "Logo"
+      ],
+      "summary": null,
+      "cover": 0,
+      "assets": [
+        {
+          "src": "assets/portfolio/logotype/001.png",
+          "type": "Logo",
+          "caption": null,
+          "legacyId": "logotype-001",
+          "width": 1755,
+          "height": 1239,
+          "web": [
+            960,
+            1755
+          ]
+        }
+      ]
+    },
+    {
+      "id": "the-japan-shop",
+      "title": "The JAPAN SHOP",
+      "client": "The JAPAN SHOP",
+      "status": "archived",
+      "visible": false,
+      "featured": false,
+      "order": 900,
+      "year": null,
+      "regions": [],
+      "types": [
+        "Logo"
+      ],
+      "summary": null,
+      "cover": 0,
+      "assets": [
+        {
+          "src": "assets/portfolio/logotype/005.png",
+          "type": "Logo",
+          "caption": null,
+          "legacyId": "logotype-005",
+          "width": 1758,
+          "height": 1189,
+          "web": [
+            960,
+            1758
+          ]
+        }
+      ]
+    },
+    {
+      "id": "the-bluehearts",
+      "title": "The Bluehearts",
+      "client": "The Bluehearts",
+      "status": "archived",
+      "visible": false,
+      "featured": false,
+      "order": 900,
+      "year": null,
+      "regions": [],
+      "types": [
+        "Logo"
+      ],
+      "summary": null,
+      "cover": 0,
+      "assets": [
+        {
+          "src": "assets/portfolio/logotype/006.png",
+          "type": "Logo",
+          "caption": null,
+          "legacyId": "logotype-006",
+          "width": 1008,
+          "height": 989,
+          "web": [
+            960,
+            1008
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ueda-cafe-bean",
+      "title": "Ueda Cafe Bean",
+      "client": "Ueda Cafe Bean",
+      "status": "archived",
+      "visible": false,
+      "featured": false,
+      "order": 900,
+      "year": null,
+      "regions": [],
+      "types": [
+        "Logo"
+      ],
+      "summary": null,
+      "cover": 0,
+      "assets": [
+        {
+          "src": "assets/portfolio/logotype/013.png",
+          "type": "Logo",
+          "caption": null,
+          "legacyId": "logotype-013",
+          "width": 1200,
+          "height": 1237,
+          "web": [
+            960,
+            1200
+          ]
+        }
+      ]
+    },
+    {
+      "id": "nissei-cambodia",
+      "title": "Nissei Cambodia",
+      "client": "Nissei Cambodia",
+      "status": "archived",
+      "visible": false,
+      "featured": false,
+      "order": 900,
+      "year": null,
+      "regions": [
+        "Cambodia"
+      ],
+      "types": [
+        "Logo"
+      ],
+      "summary": null,
+      "cover": 0,
+      "assets": [
+        {
+          "src": "assets/portfolio/logotype/015.png",
+          "type": "Logo",
+          "caption": null,
+          "legacyId": "logotype-015",
+          "width": 1124,
+          "height": 1131,
+          "web": [
+            960,
+            1124
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cafe-bar-cony",
+      "title": "Cafe & Bar CONY",
+      "client": "Cafe & Bar CONY",
+      "status": "archived",
+      "visible": false,
+      "featured": false,
+      "order": 900,
+      "year": null,
+      "regions": [],
+      "types": [
+        "Logo"
+      ],
+      "summary": null,
+      "cover": 0,
+      "assets": [
+        {
+          "src": "assets/portfolio/logotype/016.png",
+          "type": "Logo",
+          "caption": null,
+          "legacyId": "logotype-016",
+          "width": 889,
+          "height": 886,
+          "web": [
+            889
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sakura-foods",
+      "title": "Sakura Foods",
+      "client": "Sakura Foods Co., Ltd.",
+      "status": "archived",
+      "visible": false,
+      "featured": false,
+      "order": 900,
+      "year": null,
+      "regions": [],
+      "types": [
+        "Logo"
+      ],
+      "summary": null,
+      "cover": 0,
+      "assets": [
+        {
+          "src": "assets/portfolio/logotype/017.png",
+          "type": "Logo",
+          "caption": null,
+          "legacyId": "logotype-017",
+          "width": 1753,
+          "height": 1215,
+          "web": [
+            960,
+            1753
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hotori-memento",
+      "title": "hotori memento",
+      "client": "hotori memento",
+      "status": "archived",
+      "visible": false,
+      "featured": false,
+      "order": 900,
+      "year": null,
+      "regions": [],
+      "types": [
+        "Logo"
+      ],
+      "summary": null,
+      "cover": 0,
+      "assets": [
+        {
+          "src": "assets/portfolio/logotype/018.png",
+          "type": "Logo",
+          "caption": null,
+          "legacyId": "logotype-018",
+          "width": 844,
+          "height": 850,
+          "web": [
+            844
+          ]
+        },
+        {
+          "src": "assets/portfolio/logotype/019.png",
+          "type": "Logo",
+          "caption": null,
+          "legacyId": "logotype-019",
+          "width": 1114,
+          "height": 935,
+          "web": [
+            960,
+            1114
+          ]
+        }
+      ]
+    },
+    {
+      "id": "roast-n-roll",
+      "title": "Roast'n'Roll",
+      "client": "Roast'n'Roll",
+      "status": "archived",
+      "visible": false,
+      "featured": false,
+      "order": 900,
+      "year": null,
+      "regions": [],
+      "types": [
+        "Logo"
+      ],
+      "summary": null,
+      "cover": 0,
+      "assets": [
+        {
+          "src": "assets/portfolio/logotype/020.png",
+          "type": "Logo",
+          "caption": null,
+          "legacyId": "logotype-020",
+          "width": 1734,
+          "height": 1224,
+          "web": [
+            960,
+            1734
+          ]
+        }
+      ],
+      "note": "Artboard header reads 'CHADAJIMA COFFEE ROASTERS LOGOTYPE' but the mark is Roast'n'Roll; relation UNKNOWN, not merged."
+    },
+    {
+      "id": "give-and-grow",
+      "title": "Give & Grow",
+      "client": "Give & Grow",
+      "status": "archived",
+      "visible": false,
+      "featured": false,
+      "order": 900,
+      "year": null,
+      "regions": [],
+      "types": [
+        "Logo"
+      ],
+      "summary": null,
+      "cover": 0,
+      "assets": [
+        {
+          "src": "assets/portfolio/logotype/022.png",
+          "type": "Logo",
+          "caption": null,
+          "legacyId": "logotype-022",
+          "width": 833,
+          "height": 843,
+          "web": [
+            833
+          ]
+        }
+      ]
+    },
+    {
+      "id": "club-l",
+      "title": "CLUB L",
+      "client": "CLUB L",
+      "status": "archived",
+      "visible": false,
+      "featured": false,
+      "order": 900,
+      "year": null,
+      "regions": [
+        "Cambodia"
+      ],
+      "types": [
+        "Card"
+      ],
+      "summary": null,
+      "cover": 0,
+      "assets": [
+        {
+          "src": "assets/portfolio/card/005.png",
+          "type": "Card",
+          "caption": null,
+          "legacyId": "card-005",
+          "width": 1352,
+          "height": 957,
+          "web": [
+            960,
+            1352
+          ]
+        }
+      ]
+    },
+    {
+      "id": "aloha",
+      "title": "aloha",
+      "client": "aloha",
+      "status": "archived",
+      "visible": false,
+      "featured": false,
+      "order": 900,
+      "year": null,
+      "regions": [
+        "Cambodia"
+      ],
+      "types": [
+        "Card"
+      ],
+      "summary": null,
+      "cover": 0,
+      "assets": [
+        {
+          "src": "assets/portfolio/card/006.png",
+          "type": "Card",
+          "caption": null,
+          "legacyId": "card-006",
+          "width": 1550,
+          "height": 1075,
+          "web": [
+            960,
+            1550
+          ]
+        }
+      ]
+    },
+    {
+      "id": "antanue",
+      "title": "Antanue Spiritual Resort & Spa",
+      "client": "Antanue Spiritual Resort & Spa",
+      "status": "archived",
+      "visible": false,
+      "featured": false,
+      "order": 900,
+      "year": null,
+      "regions": [
+        "Cambodia"
+      ],
+      "types": [
+        "Card"
+      ],
+      "summary": null,
+      "cover": 0,
+      "assets": [
+        {
+          "src": "assets/portfolio/card/007.png",
+          "type": "Card",
+          "caption": null,
+          "legacyId": "card-007",
+          "width": 1407,
+          "height": 968,
+          "web": [
+            960,
+            1407
+          ]
+        }
+      ]
+    },
+    {
+      "id": "editorial-unknown",
+      "title": "Editorial spread",
+      "client": null,
+      "status": "archived",
+      "visible": false,
+      "featured": false,
+      "order": 900,
+      "year": null,
+      "regions": [],
+      "types": [
+        "Editorial"
+      ],
+      "summary": null,
+      "cover": 0,
+      "assets": [
+        {
+          "src": "assets/portfolio/book/004.png",
+          "type": "Editorial",
+          "caption": null,
+          "legacyId": "book-004",
+          "width": 1763,
+          "height": 1245,
+          "web": [
+            960,
+            1763
+          ]
+        }
+      ],
+      "note": "Japanese film-essay spread (Phantom Thread). Client/publication UNKNOWN — possibly related to Cinema 365 days, not confirmed."
+    },
+    {
+      "id": "ringer-hut",
+      "title": "Ringer Hut",
+      "client": "Ringer Hut",
+      "status": "assets_pending",
+      "visible": false,
+      "featured": true,
+      "order": 0,
+      "year": null,
+      "regions": [
+        "Cambodia",
+        "Thailand",
+        "Vietnam"
+      ],
+      "types": [
+        "Menu",
+        "Signage",
+        "Voucher",
+        "iStand",
+        "SNS",
+        "Monitor",
+        "Store Graphics"
+      ],
+      "summary": null,
+      "cover": 0,
+      "assets": [],
+      "groups": [
+        "Grand Menu",
+        "Voucher",
+        "iStand",
+        "SNS",
+        "Monitor",
+        "Vegetables",
+        "Menu",
+        "Signage",
+        "Store Graphics"
+      ],
+      "note": "Will lead the work list once assets are added: set order to 1, visible true, status published."
+    },
+    {
+      "id": "ootoya",
+      "title": "Ootoya",
+      "client": "Ootoya",
+      "status": "assets_pending",
+      "visible": false,
+      "featured": false,
+      "order": 50,
+      "year": null,
+      "regions": [],
+      "types": [
+        "Menu",
+        "Promotion"
+      ],
+      "summary": null,
+      "cover": 0,
+      "assets": []
+    },
+    {
+      "id": "cima",
+      "title": "CIMA",
+      "client": "CIMA",
+      "status": "assets_pending",
+      "visible": false,
+      "featured": false,
+      "order": 50,
+      "year": null,
+      "regions": [],
+      "types": [
+        "Flyer",
+        "Promotion"
+      ],
+      "summary": null,
+      "cover": 0,
+      "assets": []
+    },
+    {
+      "id": "volante",
+      "title": "Volante",
+      "client": "Volante",
+      "status": "assets_pending",
+      "visible": false,
+      "featured": false,
+      "order": 50,
+      "year": null,
+      "regions": [],
+      "types": [
+        "Flyer",
+        "Advertising"
+      ],
+      "summary": null,
+      "cover": 0,
+      "assets": []
+    },
+    {
+      "id": "cow-sticker",
+      "title": "Cow Sticker",
+      "client": "Cow Sticker",
+      "status": "assets_pending",
+      "visible": false,
+      "featured": false,
+      "order": 50,
+      "year": null,
+      "regions": [],
+      "types": [
+        "Sticker",
+        "Signage"
+      ],
+      "summary": null,
+      "cover": 0,
+      "assets": []
+    },
+    {
+      "id": "food-package",
+      "title": "Food Package",
+      "client": "Food Package",
+      "status": "assets_pending",
+      "visible": false,
+      "featured": false,
+      "order": 50,
+      "year": null,
+      "regions": [],
+      "types": [
+        "Packaging"
+      ],
+      "summary": null,
+      "cover": 0,
+      "assets": []
+    },
+    {
+      "id": "ecology-package",
+      "title": "Ecology Package",
+      "client": "Ecology Package",
+      "status": "assets_pending",
+      "visible": false,
+      "featured": false,
+      "order": 50,
+      "year": null,
+      "regions": [],
+      "types": [
+        "Packaging"
+      ],
+      "summary": null,
+      "cover": 0,
+      "assets": []
     }
   ]
 }
