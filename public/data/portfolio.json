@@ -2053,46 +2053,209 @@
       "id": "ringer-hut",
       "title": "Ringer Hut",
       "client": "Ringer Hut",
-      "status": "assets_pending",
-      "visible": false,
+      "status": "published",
+      "visible": true,
       "featured": true,
-      "order": 0,
-      "year": null,
+      "order": 1,
+      "year": 2026,
       "regions": [
-        "Cambodia",
-        "Thailand",
-        "Vietnam"
+        "Cambodia"
       ],
       "types": [
         "Menu",
-        "Signage",
-        "Voucher",
-        "iStand",
-        "SNS",
-        "Monitor",
-        "Store Graphics"
+        "Promotion"
       ],
       "categories": [
         "food",
         "menu",
-        "signage",
-        "digital"
+        "print"
       ],
       "summary": null,
       "cover": 0,
-      "assets": [],
+      "assets": [
+        {
+          "src": "assets/portfolio/ringer-hut/01-grand-menu-cover.jpg",
+          "type": "Menu",
+          "caption": "Grand Menu / Cover",
+          "width": 2000,
+          "height": 2813,
+          "web": [
+            960,
+            1920
+          ]
+        },
+        {
+          "src": "assets/portfolio/ringer-hut/02-grand-menu-page-2.jpg",
+          "type": "Menu",
+          "caption": "Grand Menu / Page 2",
+          "width": 2000,
+          "height": 2813,
+          "web": [
+            960,
+            1920
+          ]
+        },
+        {
+          "src": "assets/portfolio/ringer-hut/03-grand-menu-page-3.jpg",
+          "type": "Menu",
+          "caption": "Grand Menu / Page 3",
+          "width": 2000,
+          "height": 2813,
+          "web": [
+            960,
+            1920
+          ]
+        },
+        {
+          "src": "assets/portfolio/ringer-hut/04-grand-menu-page-4.jpg",
+          "type": "Menu",
+          "caption": "Grand Menu / Page 4",
+          "width": 2000,
+          "height": 2813,
+          "web": [
+            960,
+            1920
+          ]
+        },
+        {
+          "src": "assets/portfolio/ringer-hut/05-grand-menu-page-5.jpg",
+          "type": "Menu",
+          "caption": "Grand Menu / Page 5",
+          "width": 2000,
+          "height": 2813,
+          "web": [
+            960,
+            1920
+          ]
+        },
+        {
+          "src": "assets/portfolio/ringer-hut/06-grand-menu-page-6.jpg",
+          "type": "Menu",
+          "caption": "Grand Menu / Page 6",
+          "width": 2000,
+          "height": 2813,
+          "web": [
+            960,
+            1920
+          ]
+        },
+        {
+          "src": "assets/portfolio/ringer-hut/07-kids-menu.jpg",
+          "type": "Menu",
+          "caption": "Kids Menu",
+          "width": 1810,
+          "height": 2560,
+          "web": [
+            960,
+            1810
+          ]
+        },
+        {
+          "src": "assets/portfolio/ringer-hut/08-pchum-ben-promotion.jpg",
+          "type": "Promotion",
+          "caption": "Pchum Ben Promotion",
+          "width": 1810,
+          "height": 2560,
+          "web": [
+            960,
+            1810
+          ]
+        },
+        {
+          "src": "assets/portfolio/ringer-hut/09-happy-hour.jpg",
+          "type": "Promotion",
+          "caption": "Happy Hour",
+          "width": 905,
+          "height": 1280,
+          "web": [
+            905
+          ]
+        },
+        {
+          "src": "assets/portfolio/ringer-hut/10-grand-reopening-promotion.jpg",
+          "type": "Promotion",
+          "caption": "Grand Reopening Promotion",
+          "width": 1810,
+          "height": 2560,
+          "web": [
+            960,
+            1810
+          ]
+        },
+        {
+          "src": "assets/portfolio/ringer-hut/11-value-lunch-menu.jpg",
+          "type": "Menu",
+          "caption": "Value Lunch Menu",
+          "width": 1472,
+          "height": 2560,
+          "web": [
+            960,
+            1472
+          ]
+        },
+        {
+          "src": "assets/portfolio/ringer-hut/12-champon-hot-pot-promotion.jpg",
+          "type": "Promotion",
+          "caption": "Champon / Hot Pot Promotion",
+          "width": 1852,
+          "height": 2560,
+          "web": [
+            960,
+            1852
+          ]
+        },
+        {
+          "src": "assets/portfolio/ringer-hut/13-loaded-beef-champon-promotion.jpg",
+          "type": "Promotion",
+          "caption": "Loaded Beef Champon Promotion",
+          "width": 1810,
+          "height": 2560,
+          "web": [
+            960,
+            1810
+          ]
+        },
+        {
+          "src": "assets/portfolio/ringer-hut/14-tonkatsu-promotion.jpg",
+          "type": "Promotion",
+          "caption": "Tonkatsu Promotion",
+          "width": 1810,
+          "height": 2560,
+          "web": [
+            960,
+            1810
+          ]
+        },
+        {
+          "src": "assets/portfolio/ringer-hut/15-hot-or-chilled-champon-promotion.jpg",
+          "type": "Promotion",
+          "caption": "Hot or Chilled Champon Promotion",
+          "width": 1810,
+          "height": 2560,
+          "web": [
+            960,
+            1810
+          ]
+        },
+        {
+          "src": "assets/portfolio/ringer-hut/16-champon-promotion.jpg",
+          "type": "Promotion",
+          "caption": "Champon Promotion",
+          "width": 960,
+          "height": 2560,
+          "web": [
+            960
+          ]
+        }
+      ],
       "groups": [
         "Grand Menu",
-        "Voucher",
-        "iStand",
-        "SNS",
-        "Monitor",
-        "Vegetables",
-        "Menu",
-        "Signage",
-        "Store Graphics"
+        "Campaign / Promotion",
+        "Kids Menu",
+        "Seasonal Promotion",
+        "Product Promotion"
       ],
-      "note": "Will lead the work list once assets are added: set order to 1, visible true, status published."
+      "note": "Curated from Desktop/RH: six consecutive Grand Menu pages and ten menu/promotion artworks. Composite spreads, PDF duplicates and alternate campaign formats excluded. Original artworks retained without cropping."
     },
     {
       "id": "ootoya",
