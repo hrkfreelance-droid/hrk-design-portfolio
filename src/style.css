@@ -1,6 +1,6 @@
 /* hrk_design — index system
    Black / white / grey. One accent (red) used only as a position marker.
-   One square = one item. A hairline spine carries the page's metadata. */
+   A hairline spine carries the page's metadata. */
 
 :root {
   --bg: #ffffff;
@@ -155,27 +155,6 @@ dt {
   letter-spacing: 0.06em;
   text-transform: uppercase;
   font-variant-numeric: tabular-nums;
-}
-
-/* -------------------------------------------------------------- marks */
-
-.marks {
-  display: inline-flex;
-  flex-wrap: wrap;
-  gap: 3px;
-  vertical-align: middle;
-}
-
-.marks i {
-  width: 7px;
-  height: 7px;
-  border: 1px solid var(--faint);
-  transition: background-color 160ms ease, border-color 160ms ease;
-}
-
-.marks i.on {
-  background: var(--accent);
-  border-color: var(--accent);
 }
 
 /* -------------------------------------------------------------- shell */
@@ -374,16 +353,6 @@ dt {
   color: var(--fg);
 }
 
-.legend {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-top: 24px;
-  font: 400 11px/1 var(--mono);
-  letter-spacing: 0.06em;
-  color: var(--muted);
-}
-
 .index-main {
   grid-column: 1 / -1;
   padding-top: clamp(56px, 10vh, 96px);
@@ -397,11 +366,8 @@ dt {
   position: relative;
   display: grid;
   grid-template-columns: 3.5ch minmax(0, 1fr) auto;
-  grid-template-areas:
-    "no label count"
-    ". marks marks";
+  grid-template-areas: "no label count";
   column-gap: 14px;
-  row-gap: 10px;
   align-items: baseline;
   padding: 18px 0 16px;
   border-bottom: 1px solid var(--line);
@@ -419,10 +385,6 @@ dt {
   letter-spacing: 0.06em;
   text-transform: uppercase;
   transition: transform 260ms var(--ease);
-}
-
-.index-row .marks {
-  grid-area: marks;
 }
 
 .index-row .count {
@@ -463,11 +425,6 @@ dt {
     transform: translateX(6px);
   }
 
-  .index-row:hover .marks i {
-    background: var(--fg);
-    border-color: var(--fg);
-  }
-
   .index-all .index-row:hover .label {
     color: var(--fg);
   }
@@ -491,13 +448,9 @@ dt {
   }
 
   .index-row {
-    grid-template-columns: 5ch minmax(0, 1fr) minmax(0, 13em) 4ch;
-    grid-template-areas: "no label marks count";
+    grid-template-columns: 5ch minmax(0, 1fr) 4ch;
+    grid-template-areas: "no label count";
     padding: 22px 0 20px;
-  }
-
-  .index-row .marks {
-    justify-content: flex-start;
   }
 
   .index-row .count {
