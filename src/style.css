@@ -130,6 +130,10 @@ ul {
   outline: none;
 }
 
+.muted {
+  color: var(--muted);
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
@@ -145,8 +149,6 @@ ul {
 .count,
 .files,
 .type,
-.region,
-.stats,
 dt {
   font-family: var(--mono);
   font-size: 11px;
@@ -308,97 +310,80 @@ dt {
 
 /* -------------------------------------------------------------- index */
 
+/* Two blocks on one grid: a short statement top-left, and the category list
+   stepping down and to the right from where it ends. */
 .index {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
   column-gap: clamp(16px, 2.2vw, 32px);
+  align-content: start;
   min-height: calc(100vh - var(--header) - 62px);
-  padding-bottom: clamp(48px, 10vh, 120px);
+  padding-top: clamp(56px, 12vh, 136px);
+  padding-bottom: clamp(64px, 12vh, 140px);
 }
 
 .index-aside {
   grid-column: 1 / -1;
-  padding-top: clamp(56px, 12vh, 128px);
 }
 
 .index-aside h1 {
-  margin-bottom: 20px;
+  margin-bottom: 18px;
   color: var(--muted);
 }
 
 .index-lede {
-  max-width: 22em;
   font-size: 15px;
   line-height: 1.55;
 }
 
-.stats {
-  display: grid;
-  grid-template-columns: repeat(3, max-content);
-  gap: 4px 28px;
-  margin-top: 28px;
-}
-
-.stats div {
-  display: grid;
-  gap: 2px;
-}
-
-.stats dt {
-  color: var(--muted);
-}
-
-.stats dd {
-  font-size: 13px;
-  color: var(--fg);
-}
-
 .index-main {
   grid-column: 1 / -1;
-  padding-top: clamp(56px, 10vh, 96px);
+  margin-top: clamp(56px, 9vh, 96px);
 }
 
 .index-list {
   border-top: 1px solid var(--fg);
+  padding-top: 10px;
 }
 
 .index-row {
   position: relative;
   display: grid;
-  grid-template-columns: 3.5ch minmax(0, 1fr) auto;
-  grid-template-areas: "no label count";
-  column-gap: 14px;
+  grid-template-columns: 4ch minmax(0, 1fr);
+  column-gap: 16px;
   align-items: baseline;
-  padding: 18px 0 16px;
-  border-bottom: 1px solid var(--line);
+  padding: 11px 0;
 }
 
 .index-row .no {
-  grid-area: no;
   color: var(--muted);
 }
 
 .index-row .label {
-  grid-area: label;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 400;
+  line-height: 1.35;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   transition: transform 260ms var(--ease);
 }
 
+/* The count rides on the label, like a footnote figure. */
 .index-row .count {
-  grid-area: count;
+  margin-left: 8px;
+  vertical-align: 0.55em;
+  font-size: 10px;
+  letter-spacing: 0.04em;
   color: var(--muted);
 }
 
 .index-all {
-  margin-top: 40px;
+  margin-top: 18px;
+  padding-top: 10px;
   border-top: 1px solid var(--line);
 }
 
 .index-all .label {
-  font-weight: 400;
   color: var(--muted);
 }
 
@@ -406,10 +391,11 @@ dt {
 .prow::before {
   content: "";
   position: absolute;
-  top: 26px;
+  top: 50%;
   left: -18px;
-  width: 7px;
-  height: 7px;
+  width: 6px;
+  height: 6px;
+  margin-top: -3px;
   background: var(--accent);
   opacity: 0;
   transition: opacity 160ms ease;
@@ -436,35 +422,30 @@ dt {
 }
 
 @media (min-width: 900px) {
-  /* The list is deliberately set lower and further right than the aside. */
+  .index {
+    padding-top: clamp(80px, 16vh, 168px);
+  }
+
   .index-aside {
-    grid-column: 1 / 4;
-    padding-top: clamp(64px, 14vh, 160px);
+    grid-column: 1 / 5;
   }
 
   .index-main {
-    grid-column: 5 / 13;
-    padding-top: clamp(150px, 28vh, 320px);
+    grid-column: 5 / 11;
+    margin-top: clamp(64px, 12vh, 128px);
   }
 
   .index-row {
-    grid-template-columns: 5ch minmax(0, 1fr) 4ch;
-    grid-template-areas: "no label count";
-    padding: 22px 0 20px;
-  }
-
-  .index-row .count {
-    text-align: right;
+    grid-template-columns: 5ch minmax(0, 1fr);
+    padding: 12px 0;
   }
 
   .index-row::before {
-    top: 50%;
-    margin-top: -3.5px;
     left: -24px;
   }
 
   .index-row .label {
-    font-size: 16px;
+    font-size: 17px;
   }
 }
 
@@ -479,7 +460,7 @@ dt {
   display: flex;
   flex-wrap: wrap;
   gap: 6px 10px;
-  margin-bottom: 28px;
+  margin-bottom: 24px;
   color: var(--muted);
 }
 
@@ -503,6 +484,7 @@ dt {
 
 .category .page-head h1 {
   font-size: clamp(20px, 2vw, 26px);
+  font-weight: 400;
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
@@ -517,9 +499,8 @@ dt {
   display: flex;
   flex-wrap: wrap;
   gap: 4px 0;
-  margin-top: 36px;
-  border-top: 1px solid var(--line);
-  padding-top: 12px;
+  margin-top: 28px;
+  margin-left: -1px;
 }
 
 .switch a {
@@ -527,11 +508,14 @@ dt {
   padding: 6px 14px 10px 0;
   font: 400 11px/1 var(--mono);
   letter-spacing: 0.06em;
-  color: var(--muted);
+  color: var(--faint);
   transition: color 160ms ease;
 }
 
-.switch a:hover,
+.switch a:hover {
+  color: var(--muted);
+}
+
 .switch a[aria-current="page"] {
   color: var(--fg);
 }
@@ -559,12 +543,9 @@ dt {
   grid-column: 1 / -1;
 }
 
-.plist-head {
-  display: none;
-}
-
 .plist {
   border-top: 1px solid var(--fg);
+  padding-top: 8px;
 }
 
 .prow {
@@ -573,12 +554,11 @@ dt {
   grid-template-columns: 4.5ch minmax(0, 1fr) auto;
   grid-template-areas:
     "no name files"
-    ". type type"
-    ". region region";
+    ". type type";
   column-gap: 12px;
+  row-gap: 2px;
   align-items: baseline;
-  padding: 16px 0 14px;
-  border-bottom: 1px solid var(--line);
+  padding: 12px 0;
 }
 
 .prow .no {
@@ -588,25 +568,15 @@ dt {
 
 .prow .name {
   grid-area: name;
-  font-size: 16px;
-  font-weight: 500;
+  font-size: 17px;
+  font-weight: 400;
   line-height: 1.35;
   overflow-wrap: anywhere;
 }
 
 .prow .type {
   grid-area: type;
-  margin-top: 4px;
   color: var(--muted);
-}
-
-.prow .region {
-  grid-area: region;
-  color: var(--muted);
-}
-
-.prow .region:empty {
-  display: none;
 }
 
 .prow .files {
@@ -614,13 +584,10 @@ dt {
   color: var(--muted);
 }
 
-.prow::before {
-  top: 23px;
-  left: -16px;
-}
-
 .plist-foot {
-  margin-top: 16px;
+  margin-top: 18px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
   font: 400 11px/1.5 var(--mono);
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -636,61 +603,26 @@ dt {
     grid-column: 1 / 9;
   }
 
-  .plist-head,
   .prow {
-    grid-template-columns: 6ch minmax(0, 2.2fr) minmax(0, 1.5fr) minmax(0, 1fr) 4ch;
-    grid-template-areas: "no name type region files";
+    grid-template-columns: 6ch minmax(0, 1fr) minmax(0, 15em) 3ch;
+    grid-template-areas: "no name type files";
     column-gap: 16px;
+    padding: 11px 0;
   }
 
-  .plist-head {
-    display: grid;
-    padding-bottom: 10px;
-    font: 400 10.5px/1 var(--mono);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--muted);
+  .prow::before {
+    left: -24px;
   }
 
-  .plist-head span:last-child,
   .prow .files {
     text-align: right;
   }
 
-  .prow {
-    padding: 15px 0 13px;
-  }
-
-  .prow .type {
-    margin-top: 0;
-  }
-
-  .prow .region:empty {
-    display: block;
-  }
-
-  .no-region .plist-head,
-  .no-region .prow {
-    grid-template-columns: 6ch minmax(0, 2.2fr) minmax(0, 1.5fr) 4ch;
-    grid-template-areas: "no name type files";
-  }
-
-  .no-region .plist-head span:nth-child(4),
-  .no-region .prow .region {
-    display: none;
-  }
-
-  .prow::before {
-    top: 50%;
-    margin-top: -3.5px;
-    left: -22px;
-  }
-
   @media (hover: hover) {
     .prow .name {
+      justify-self: start;
       background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat;
       transition: background-size 260ms var(--ease);
-      justify-self: start;
     }
 
     .prow:hover .name {
@@ -698,13 +630,13 @@ dt {
     }
   }
 
-  /* Fixed preview slot: quiet, small, only while a row is hovered / focused. */
+  /* Fixed preview slot: small, only while a row is hovered / focused. */
   .preview {
     display: block;
     grid-column: 10 / 13;
     position: sticky;
-    top: calc(var(--header) + 32px);
-    margin-top: 28px;
+    top: calc(var(--header) + 40px);
+    margin-top: 9px;
     opacity: 0;
     transform: translateY(6px);
     transition: opacity 220ms ease, transform 300ms var(--ease);
@@ -724,21 +656,10 @@ dt {
 
   .preview-frame img {
     position: absolute;
-    inset: 14px;
-    width: calc(100% - 28px);
-    height: calc(100% - 28px);
+    inset: 16px;
+    width: calc(100% - 32px);
+    height: calc(100% - 32px);
     object-fit: contain;
-  }
-
-  .preview-meta {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 8px 12px;
-    margin-top: 12px;
-    font: 400 11px/1.4 var(--mono);
-    letter-spacing: 0.06em;
-    color: var(--muted);
   }
 }
 
@@ -757,10 +678,8 @@ dt {
 .meta {
   display: flex;
   flex-wrap: wrap;
-  gap: 18px clamp(24px, 4vw, 56px);
+  gap: 16px clamp(28px, 4vw, 56px);
   margin-top: 28px;
-  padding-top: 14px;
-  border-top: 1px solid var(--line);
 }
 
 .meta dt {
@@ -769,9 +688,6 @@ dt {
 }
 
 .meta dd {
-  display: flex;
-  align-items: center;
-  gap: 10px;
   font-size: 14px;
   line-height: 1.45;
 }
@@ -934,7 +850,7 @@ dt {
 
 @media (min-width: 760px) {
   .facts {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 24px;
   }
 }
@@ -989,23 +905,13 @@ dt {
 }
 
 .viewer-title {
-  display: flex;
-  gap: 14px;
   min-width: 0;
-  font: 400 11px/1.4 var(--mono);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
-
-.viewer-title span:first-child {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-}
-
-.viewer-title span:last-child {
-  color: var(--muted);
-  white-space: nowrap;
+  font: 400 11px/1.4 var(--mono);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
 .viewer-tools {
@@ -1051,23 +957,10 @@ dt {
 }
 
 .viewer-index {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 6px 14px;
-  min-width: 0;
-  font: 400 11px/1.4 var(--mono);
-  letter-spacing: 0.04em;
+  font: 400 11px/1 var(--mono);
+  letter-spacing: 0.08em;
   color: var(--muted);
-  text-align: center;
-}
-
-.viewer-cap {
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  max-width: 60vw;
+  font-variant-numeric: tabular-nums;
 }
 
 .viewer-stage {

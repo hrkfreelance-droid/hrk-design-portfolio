@@ -5,12 +5,12 @@
 // The artwork is never cropped at rest: it is fitted whole inside the stage.
 
 import { viewerSources } from "./data.js";
-import { esc, pad } from "./pages.js";
+import { pad } from "./pages.js";
 
 const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 let el; // root element
-let stage, image, titleEl, countEl, captionEl;
+let stage, image, titleEl, countEl;
 let state = null; // { project, index, opener }
 let view = { s: 1, tx: 0, ty: 0 }; // zoom relative to the fitted size + translation
 let fit = { left: 0, top: 0, w: 0, h: 0, scale: 1 };
@@ -30,7 +30,7 @@ function build() {
   el.setAttribute("aria-label", "Artwork viewer");
   el.innerHTML = `
     <div class="viewer-bar">
-      <p class="viewer-title"><span data-v-title></span><span data-v-count></span></p>
+      <p class="viewer-title" data-v-title></p>
       <div class="viewer-tools">
         <button type="button" data-v-out aria-label="Zoom out">−</button>
         <button type="button" data-v-in aria-label="Zoom in">+</button>
@@ -42,7 +42,7 @@ function build() {
     </div>
     <div class="viewer-foot">
       <button type="button" class="viewer-step" data-v-prev aria-label="Previous file">←</button>
-      <p class="viewer-index"><span class="viewer-cap" data-v-caption></span></p>
+      <p class="viewer-index" data-v-count aria-live="polite"></p>
       <button type="button" class="viewer-step" data-v-next aria-label="Next file">→</button>
     </div>`;
   document.body.appendChild(el);
@@ -51,7 +51,6 @@ function build() {
   image = el.querySelector("[data-v-img]");
   titleEl = el.querySelector("[data-v-title]");
   countEl = el.querySelector("[data-v-count]");
-  captionEl = el.querySelector("[data-v-caption]");
 
   el.querySelector("[data-v-close]").addEventListener("click", close);
   el.querySelector("[data-v-prev]").addEventListener("click", () => step(-1));
@@ -128,8 +127,7 @@ function show(index) {
   const asset = project.assets[state.index];
 
   titleEl.textContent = `${pad(project.number, 3)} ${project.title}`;
-  countEl.textContent = `${pad(state.index + 1)}/${pad(total)}`;
-  captionEl.innerHTML = esc([asset.type, asset.caption].filter(Boolean).join(" — "));
+  countEl.textContent = `${pad(state.index + 1)} / ${pad(total)}`;
   el.querySelector("[data-v-prev]").disabled = total < 2;
   el.querySelector("[data-v-next]").disabled = total < 2;
 

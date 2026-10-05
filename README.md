@@ -9,13 +9,14 @@ Structure — three levels, then a viewer:
 
 | Route | Shows |
 | --- | --- |
-| `#/` | Index: categories only, one square per project. No artwork. |
-| `#/category/<id>` (`all` = every project) | Project list: No. / project / type / region / files, small hover preview. |
+| `#/` | Index: categories with project counts. No artwork. |
+| `#/category/<id>` (`all` = every project) | Project list: No. / project / type / files, small hover preview. |
 | `#/project/<id>` | Small header, artwork set editorially (wide / offset / pair / staggered / narrow). |
 | click an artwork | Full-screen viewer: zoom, pan, pinch, double-tap, swipe, ← → Esc + − 0. |
 
-Visual language: one square = one item (projects, files); the only colour is a red square that marks
-the current position; the left spine carries each page's metadata.
+Visual language: numbers are the navigation (categories 01–08, projects 001–), counts are plain
+figures; the only colour is a small red square marking the current position; a thin left spine
+carries the current location path.
 
 ## Development
 

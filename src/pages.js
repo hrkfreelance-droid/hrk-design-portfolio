@@ -26,32 +26,25 @@ function img(asset, { alt, sizes, eager = false }) {
 /* ---------------------------------------------------------------- index */
 
 export function renderIndex() {
-  const total = fileCount(projects);
   const rows = categories
     .map(
       (c) => `
       <li>
         <a class="index-row" href="#/category/${c.id}">
           <span class="no">${pad(c.number)}</span>
-          <span class="label">${esc(c.label)}</span>
-          <span class="count">${pad(c.projects.length)}</span>
+          <span class="label">${esc(c.label)}<span class="count"><span class="sr-only">, </span>${pad(c.projects.length)}<span class="sr-only"> projects</span></span></span>
         </a>
       </li>`
     )
     .join("");
 
   return {
-    spine: `hrk_design — Index — ${pad(categories.length)} categories / ${pad(projects.length)} projects / ${pad(total)} files`,
+    spine: "Index",
     html: `
     <section class="index">
       <div class="index-aside">
         <h1 id="page-title" class="micro" tabindex="-1">Index</h1>
-        <p class="index-lede">Selected graphic design,<br />organised by category.</p>
-        <dl class="stats">
-          <div><dt>Categories</dt><dd>${pad(categories.length)}</dd></div>
-          <div><dt>Projects</dt><dd>${pad(projects.length)}</dd></div>
-          <div><dt>Files</dt><dd>${pad(total)}</dd></div>
-        </dl>
+        <p class="index-lede">Graphic design<br /><span class="muted">Phnom Penh, Cambodia</span></p>
       </div>
 
       <nav class="index-main" aria-label="Categories">
@@ -60,8 +53,7 @@ export function renderIndex() {
           <li class="index-all">
             <a class="index-row" href="#/category/all">
               <span class="no">00</span>
-              <span class="label">All projects</span>
-              <span class="count">${pad(projects.length)}</span>
+              <span class="label">All projects<span class="count"><span class="sr-only">, </span>${pad(projects.length)}<span class="sr-only"> projects</span></span></span>
             </a>
           </li>
         </ol>
@@ -102,7 +94,6 @@ export function renderCategory(id) {
           <span class="no">${pad(p.number, 3)}</span>
           <span class="name">${esc(p.title)}</span>
           <span class="type">${esc(typeLine(p))}</span>
-          <span class="region">${esc((p.regions || []).join(" / "))}</span>
           <span class="files">${pad(p.assets.length)}</span>
         </a>
       </li>`
@@ -110,27 +101,22 @@ export function renderCategory(id) {
     .join("");
 
   return {
-    spine: `Index / ${pad(category.number)} ${category.label} — ${pad(list.length)} projects`,
+    spine: `Index / ${pad(category.number)} ${category.label}`,
     html: `
     <section class="category">
       <header class="page-head">
         <p class="crumbs"><a href="#/">Index</a><span>/</span><span>${pad(category.number)}</span></p>
         <h1 id="page-title" tabindex="-1">${esc(category.label)}</h1>
-        <p class="head-note">${esc(category.description || "")}</p>
         ${categorySwitch(category.id)}
       </header>
 
       <div class="category-body">
-        <div class="plist-wrap${list.some((p) => p.regions?.length) ? "" : " no-region"}">
-          <div class="plist-head" aria-hidden="true">
-            <span>No.</span><span>Project</span><span>Type</span><span>Region</span><span>Files</span>
-          </div>
+        <div class="plist-wrap">
           <ol class="plist">${rows}</ol>
-          <p class="plist-foot">${pad(list.length)} projects — ${pad(fileCount(list))} files</p>
+          <p class="plist-foot">${pad(list.length)} projects / ${pad(fileCount(list))} files</p>
         </div>
         <aside class="preview" aria-hidden="true" data-preview>
           <div class="preview-frame" data-preview-frame></div>
-          <p class="preview-meta" data-preview-meta></p>
         </aside>
       </div>
     </section>`,
@@ -143,7 +129,6 @@ export function mountCategory(root) {
   if (!panel) return;
   const frame = panel.querySelector("[data-preview-frame]");
   let image = null;
-  const meta = panel.querySelector("[data-preview-meta]");
   let current = null;
 
   const show = (row) => {
@@ -163,7 +148,6 @@ export function mountCategory(root) {
     image.sizes = "320px";
     image.src = src;
     if (image.complete && image.naturalWidth) panel.classList.add("is-on");
-    meta.innerHTML = `<span>${pad(project.number, 3)}</span><span>${esc(project.title)}</span><span>${pad(project.assets.length)} files</span>`;
   };
   const hide = () => {
     current = null;
@@ -259,17 +243,16 @@ export function renderProject(id, from) {
     .join("");
 
   return {
-    spine: `${pad(context.number)} ${context.label} / ${pad(project.number, 3)} ${project.title} — ${pad(total)} files`,
+    spine: `${pad(context.number)} ${context.label} / ${pad(project.number, 3)}`,
     html: `
     <article class="project">
       <header class="page-head project-head">
         <p class="crumbs">
           <a href="#/">Index</a><span>/</span>
-          <a href="#/category/${context.id}">${pad(context.number)} ${esc(context.label)}</a><span>/</span>
-          <span>${pad(project.number, 3)}</span>
+          <a href="#/category/${context.id}">${pad(context.number)} ${esc(context.label)}</a>
         </p>
         <h1 id="page-title" tabindex="-1"><span class="no">${pad(project.number, 3)}</span>${esc(project.title)}</h1>
-        <dl class="meta">${meta}<div><dt>Files</dt><dd>${pad(total)}</dd></div></dl>
+        ${meta ? `<dl class="meta">${meta}</dl>` : ""}
       </header>
 
       <div class="gallery">${gallery}</div>
@@ -294,7 +277,7 @@ export function renderProject(id, from) {
 export function renderAbout() {
   const list = (items) => `<ul>${items.map((item) => `<li>${item}</li>`).join("")}</ul>`;
   return {
-    spine: "About — hrk_design / Hiroki Toyoshima",
+    spine: "About",
     html: `
     <section class="plain">
       <header class="page-head">
@@ -308,7 +291,6 @@ export function renderAbout() {
       <dl class="facts">
         <div><dt>Working across</dt><dd>${list(["Branding", "Print", "Menu", "Signage", "Packaging", "Digital / Web"])}</dd></div>
         <div><dt>Regions</dt><dd>${list(["Cambodia", "Thailand", "Vietnam", "Japan"])}</dd></div>
-        <div><dt>Based in</dt><dd>Phnom Penh, Cambodia</dd></div>
         <div><dt>Contact</dt><dd><a class="text-link" href="#/contact">Telegram / @${TELEGRAM}</a></dd></div>
       </dl>
     </section>`,
@@ -319,7 +301,7 @@ export function renderAbout() {
 
 export function renderContact() {
   return {
-    spine: "Contact — Telegram / @" + TELEGRAM,
+    spine: "Contact",
     html: `
     <section class="plain">
       <header class="page-head">
@@ -343,7 +325,7 @@ export function mountContact(root) {
 
 export function renderNotFound() {
   return {
-    spine: "404 — Not found",
+    spine: "404",
     html: `
     <section class="plain">
       <header class="page-head">

@@ -4,6 +4,7 @@
 2026 portfolio on `feature/portfolio-2026-refresh`, ready for review/merge to `main`.
 
 ## State (structure redesign)
+- Final AD pass: square counters removed site-wide; index = statement + stepped category list with footnote counts; category list without region/header columns; viewer shows numbers only.
 - 3-level IA: Index (categories, no images) → Category (project list + hover preview) → Project (artwork) → Viewer (zoom/pinch).
 - 9 categories defined, 8 shown (Digital hidden until published work exists). Projects carry `categories`.
 - Viewer: src/viewer.js — no dependencies; loads original file when zoom exceeds the WebP resolution.
