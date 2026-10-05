@@ -117,6 +117,12 @@ function mountProject(id) {
   });
 }
 
+// The skip link must not go through the hash router.
+document.querySelector(".skip-link")?.addEventListener("click", (event) => {
+  event.preventDefault();
+  app.focus();
+});
+
 // Links that carry a list context (category → project, pager).
 document.addEventListener("click", (event) => {
   const link = event.target.closest("a[data-from]");

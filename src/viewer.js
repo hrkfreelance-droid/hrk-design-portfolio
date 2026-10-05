@@ -87,8 +87,12 @@ export function openViewer(project, index, opener) {
   el.hidden = false;
   document.documentElement.classList.add("viewer-open");
   if (!pushedHistory) {
-    history.pushState({ hrkViewer: true }, "");
-    pushedHistory = true;
+    try {
+      history.pushState({ hrkViewer: true }, "");
+      pushedHistory = true;
+    } catch {
+      /* history unavailable (sandboxed frame): Esc / Close still work */
+    }
   }
   show(index);
   el.querySelector("[data-v-close]").focus({ preventScroll: true });

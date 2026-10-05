@@ -24,6 +24,20 @@
   color-scheme: light;
 }
 
+/* System dark applies only when no explicit theme is set (the site normally sets one). */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #111111;
+    --fg: #ebebe8;
+    --muted: #9b9b97;
+    --faint: #55554f;
+    --line: #2a2a28;
+    --plate: #1a1a19;
+    --accent: #f0533c;
+    color-scheme: dark;
+  }
+}
+
 :root[data-theme="dark"] {
   --bg: #111111;
   --fg: #ebebe8;
