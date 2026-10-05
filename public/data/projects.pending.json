@@ -1,0 +1,106 @@
+{
+  "note": "Private planning data for incoming portfolio work. These records are intentionally not rendered until assets are added and status is changed.",
+  "projects": [
+    {
+      "id": "ringer-hut",
+      "title": "Ringer Hut",
+      "status": "assets_pending",
+      "visible": false,
+      "regions": [
+        "Cambodia",
+        "Thailand",
+        "Vietnam"
+      ],
+      "deliverables": [
+        "Menu",
+        "Signage",
+        "Voucher",
+        "SNS",
+        "Store Graphics"
+      ],
+      "assets": []
+    },
+    {
+      "id": "ootoya",
+      "title": "Ootoya",
+      "status": "assets_pending",
+      "visible": false,
+      "regions": [
+        "unknown"
+      ],
+      "deliverables": [
+        "Menu",
+        "Promotion"
+      ],
+      "assets": []
+    },
+    {
+      "id": "cima",
+      "title": "CIMA",
+      "status": "assets_pending",
+      "visible": false,
+      "regions": [
+        "unknown"
+      ],
+      "deliverables": [
+        "Flyer",
+        "Promotion"
+      ],
+      "assets": []
+    },
+    {
+      "id": "volante",
+      "title": "Volante",
+      "status": "assets_pending",
+      "visible": false,
+      "regions": [
+        "unknown"
+      ],
+      "deliverables": [
+        "Flyer",
+        "Advertising"
+      ],
+      "assets": []
+    },
+    {
+      "id": "cow-sticker",
+      "title": "Cow Sticker",
+      "status": "assets_pending",
+      "visible": false,
+      "regions": [
+        "unknown"
+      ],
+      "deliverables": [
+        "Sticker",
+        "Signage"
+      ],
+      "assets": []
+    },
+    {
+      "id": "food-package",
+      "title": "Food Package",
+      "status": "assets_pending",
+      "visible": false,
+      "regions": [
+        "unknown"
+      ],
+      "deliverables": [
+        "Packaging"
+      ],
+      "assets": []
+    },
+    {
+      "id": "ecology-package",
+      "title": "Ecology Package",
+      "status": "assets_pending",
+      "visible": false,
+      "regions": [
+        "unknown"
+      ],
+      "deliverables": [
+        "Packaging"
+      ],
+      "assets": []
+    }
+  ]
+}
