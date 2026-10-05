@@ -714,12 +714,17 @@ dt {
   width: 100%;
   padding: 0;
   border: 0;
+  overflow: visible;
   background: none;
   cursor: zoom-in;
 }
 
+/* Artwork must always be shown in full. Never crop portfolio images. */
 .art-open img {
   width: 100%;
+  height: auto;
+  object-fit: contain;
+  object-position: center;
 }
 
 .art figcaption {
