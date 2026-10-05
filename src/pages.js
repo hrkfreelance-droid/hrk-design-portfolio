@@ -15,12 +15,6 @@ export const pad = (n, size = 2) => String(n).padStart(size, "0");
 const typeLine = (project) => project.types.join(" / ");
 const fileCount = (list) => list.reduce((sum, project) => sum + project.assets.length, 0);
 
-// One square = one item. The site's counting device.
-export function marks(count, active = -1) {
-  const items = Array.from({ length: count }, (_, i) => `<i${i === active ? ' class="on"' : ""}></i>`).join("");
-  return `<span class="marks" aria-hidden="true">${items}</span>`;
-}
-
 function img(asset, { alt, sizes, eager = false }) {
   const { src, srcset } = imageAttrs(asset);
   const dims = asset.width && asset.height ? ` width="${asset.width}" height="${asset.height}"` : "";
@@ -40,7 +34,6 @@ export function renderIndex() {
         <a class="index-row" href="#/category/${c.id}">
           <span class="no">${pad(c.number)}</span>
           <span class="label">${esc(c.label)}</span>
-          ${marks(c.projects.length)}
           <span class="count">${pad(c.projects.length)}</span>
         </a>
       </li>`
@@ -59,7 +52,6 @@ export function renderIndex() {
           <div><dt>Projects</dt><dd>${pad(projects.length)}</dd></div>
           <div><dt>Files</dt><dd>${pad(total)}</dd></div>
         </dl>
-        <p class="legend">${marks(1)}<span>= 1 project</span></p>
       </div>
 
       <nav class="index-main" aria-label="Categories">
@@ -69,7 +61,6 @@ export function renderIndex() {
             <a class="index-row" href="#/category/all">
               <span class="no">00</span>
               <span class="label">All projects</span>
-              <span class="marks" aria-hidden="true"></span>
               <span class="count">${pad(projects.length)}</span>
             </a>
           </li>
@@ -172,10 +163,7 @@ export function mountCategory(root) {
     image.sizes = "320px";
     image.src = src;
     if (image.complete && image.naturalWidth) panel.classList.add("is-on");
-    meta.innerHTML = `<span>${pad(project.number, 3)}</span><span>${esc(project.title)}</span>${marks(
-      project.assets.length,
-      project.cover ?? 0
-    )}`;
+    meta.innerHTML = `<span>${pad(project.number, 3)}</span><span>${esc(project.title)}</span><span>${pad(project.assets.length)} files</span>`;
   };
   const hide = () => {
     current = null;
@@ -281,7 +269,7 @@ export function renderProject(id, from) {
           <span>${pad(project.number, 3)}</span>
         </p>
         <h1 id="page-title" tabindex="-1"><span class="no">${pad(project.number, 3)}</span>${esc(project.title)}</h1>
-        <dl class="meta">${meta}<div><dt>Files</dt><dd>${pad(total)} ${marks(total)}</dd></div></dl>
+        <dl class="meta">${meta}<div><dt>Files</dt><dd>${pad(total)}</dd></div></dl>
       </header>
 
       <div class="gallery">${gallery}</div>
