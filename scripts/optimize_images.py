@@ -10,22 +10,27 @@ WebP copies next to the public root:
 and records `width`, `height` and the generated `web` widths back into the
 asset entry, so the site can reserve layout space (no CLS) and serve srcset.
 
-Originals are never modified. Resizing / re-encoding only — no crop, no colour
-correction (embedded ICC profiles are carried over).
+Originals are never modified. Resizing / re-encoding only — no crop or visual
+adjustments. CMYK originals with embedded profiles are colorimetrically
+converted to sRGB before web derivatives are made; RGB originals retain their
+existing pixel values and valid RGB profiles.
 
 Usage:  pip install pillow && python3 scripts/optimize_images.py
 """
 
 import json
 from pathlib import Path
+import io
 
-from PIL import Image
+from PIL import Image, ImageCms
 
 ROOT = Path(__file__).resolve().parent.parent
 PUBLIC = ROOT / "public"
 DATA = PUBLIC / "data" / "portfolio.json"
 WIDTHS = (960, 1920)
 QUALITY = 84
+SRGB_PROFILE = ImageCms.createProfile("sRGB")
+SRGB_ICC = ImageCms.ImageCmsProfile(SRGB_PROFILE).tobytes()
 
 
 def web_path(src: str, width: int) -> Path:
@@ -41,7 +46,29 @@ def process(asset: dict) -> None:
 
     with Image.open(source) as im:
         icc = im.info.get("icc_profile")
-        im = im.convert("RGBA") if im.mode in ("P", "LA", "RGBA") else im.convert("RGB")
+        if im.mode == "CMYK" and icc:
+            source_profile = ImageCms.ImageCmsProfile(io.BytesIO(icc))
+            im = ImageCms.profileToProfile(
+                im,
+                source_profile,
+                SRGB_PROFILE,
+                renderingIntent=ImageCms.Intent.PERCEPTUAL,
+                outputMode="RGB",
+            )
+            icc = SRGB_ICC
+        elif im.mode in ("P", "LA", "RGBA"):
+            im = im.convert("RGBA")
+        else:
+            im = im.convert("RGB")
+            if icc:
+                try:
+                    profile = ImageCms.ImageCmsProfile(io.BytesIO(icc))
+                    color_space = profile.profile.xcolor_space.strip()
+                except (OSError, ValueError, ImageCms.PyCMSError):
+                    color_space = ""
+                # Never attach a non-RGB source profile to an RGB derivative.
+                if color_space != "RGB":
+                    icc = None
         if im.mode == "RGBA" and im.getchannel("A").getextrema()[0] == 255:
             im = im.convert("RGB")
         width, height = im.size
@@ -55,7 +82,16 @@ def process(asset: dict) -> None:
             w = min(target, width)
             out = web_path(asset["src"], w)
             out.parent.mkdir(parents=True, exist_ok=True)
-            if not out.exists() or out.stat().st_mtime < source.stat().st_mtime:
+            existing_profile = _embedded_icc_name(out) if out.exists() else None
+            output_profile = _profile_name(icc) if icc else None
+            if (
+                not out.exists()
+                or out.stat().st_mtime < source.stat().st_mtime
+                or (
+                    asset.get("forceColorProfileRefresh")
+                    and existing_profile != output_profile
+                )
+            ):
                 h = round(height * w / width)
                 resized = im if w == width else im.resize((w, h), Image.LANCZOS)
                 kwargs = {"quality": QUALITY, "method": 6}
@@ -64,6 +100,23 @@ def process(asset: dict) -> None:
                 resized.save(out, "WEBP", **kwargs)
             made.append(w)
         asset["web"] = made
+        asset.pop("forceColorProfileRefresh", None)
+
+
+def _profile_name(icc: bytes) -> str:
+    try:
+        return ImageCms.getProfileName(ImageCms.ImageCmsProfile(io.BytesIO(icc))).strip()
+    except (OSError, ValueError, ImageCms.PyCMSError):
+        return ""
+
+
+def _embedded_icc_name(path: Path) -> str:
+    try:
+        with Image.open(path) as im:
+            icc = im.info.get("icc_profile")
+        return _profile_name(icc) if icc else ""
+    except OSError:
+        return ""
 
 
 def main() -> None:
