@@ -10,6 +10,8 @@ const data = JSON.parse(readFileSync(join(pub, "data/portfolio.json"), "utf8"));
 
 const errors = [];
 const ids = new Set();
+const categoryIds = new Set((data.categories || []).map((c) => c.id));
+if (!categoryIds.size) errors.push("no categories defined");
 const STATUSES = new Set(["published", "archived", "assets_pending"]);
 
 for (const p of data.projects) {
@@ -21,6 +23,8 @@ for (const p of data.projects) {
   if (!STATUSES.has(p.status)) errors.push(`${where}: unknown status "${p.status}"`);
   if (typeof p.order !== "number") errors.push(`${where}: order must be a number`);
   if (!Array.isArray(p.assets)) errors.push(`${where}: assets must be an array`);
+  if (!Array.isArray(p.categories) || !p.categories.length) errors.push(`${where}: needs at least one category`);
+  for (const c of p.categories || []) if (!categoryIds.has(c)) errors.push(`${where}: unknown category "${c}"`);
   if (p.visible && p.status !== "published") errors.push(`${where}: visible but status is "${p.status}"`);
   if (p.visible && !p.assets?.length) errors.push(`${where}: visible but has no assets`);
   if ((p.regions || []).includes("unknown")) errors.push(`${where}: use [] instead of "unknown" region`);

@@ -1,6 +1,53 @@
 {
-  "version": 2,
-  "note": "Project-based portfolio data. Only projects with visible=true, status=published and at least one asset are rendered, sorted by `order` (ascending). Legacy per-image data: data/portfolio.legacy.json.",
+  "version": 3,
+  "note": "Project-based portfolio data. A project is one record (many assets) and can appear in several categories. Only projects with visible=true, status=published and at least one asset are rendered, sorted by `order`. Categories without published projects are hidden. Legacy per-image data: data/portfolio.legacy.json.",
+  "categories": [
+    {
+      "id": "food",
+      "label": "Food / Restaurant",
+      "description": "Restaurants, food brands and hospitality."
+    },
+    {
+      "id": "menu",
+      "label": "Menu",
+      "description": "Menu books, boards and table menus."
+    },
+    {
+      "id": "branding",
+      "label": "Branding",
+      "description": "Logotypes, marks and stationery."
+    },
+    {
+      "id": "packaging",
+      "label": "Packaging",
+      "description": "Product packaging."
+    },
+    {
+      "id": "print",
+      "label": "Print / Promotion",
+      "description": "Posters, flyers, brochures and campaigns."
+    },
+    {
+      "id": "editorial",
+      "label": "Editorial",
+      "description": "Books, magazines and long-form print."
+    },
+    {
+      "id": "signage",
+      "label": "Signage / Wayfinding",
+      "description": "Store graphics, hoardings and floor guides."
+    },
+    {
+      "id": "information",
+      "label": "Information Design",
+      "description": "Maps, timelines and infographics."
+    },
+    {
+      "id": "digital",
+      "label": "Digital",
+      "description": "Screens, SNS and web."
+    }
+  ],
   "projects": [
     {
       "id": "jica",
@@ -18,6 +65,11 @@
         "Brochure",
         "Infographic",
         "Map"
+      ],
+      "categories": [
+        "print",
+        "editorial",
+        "information"
       ],
       "summary": null,
       "cover": 0,
@@ -135,6 +187,11 @@
         "Logo",
         "Menu"
       ],
+      "categories": [
+        "food",
+        "menu",
+        "branding"
+      ],
       "summary": null,
       "cover": 0,
       "assets": [
@@ -247,6 +304,10 @@
       "types": [
         "Menu"
       ],
+      "categories": [
+        "food",
+        "menu"
+      ],
       "summary": null,
       "cover": 0,
       "assets": [
@@ -312,6 +373,10 @@
       "types": [
         "Packaging"
       ],
+      "categories": [
+        "food",
+        "packaging"
+      ],
       "summary": null,
       "cover": 0,
       "assets": [
@@ -364,6 +429,10 @@
       "types": [
         "Menu"
       ],
+      "categories": [
+        "food",
+        "menu"
+      ],
       "summary": null,
       "cover": 0,
       "assets": [
@@ -406,6 +475,10 @@
       "types": [
         "Menu"
       ],
+      "categories": [
+        "food",
+        "menu"
+      ],
       "summary": null,
       "cover": 1,
       "assets": [
@@ -446,6 +519,11 @@
       "types": [
         "Logo",
         "Menu"
+      ],
+      "categories": [
+        "food",
+        "menu",
+        "branding"
       ],
       "summary": null,
       "cover": 0,
@@ -503,6 +581,11 @@
         "Promotion",
         "Floor Guide"
       ],
+      "categories": [
+        "print",
+        "signage",
+        "information"
+      ],
       "summary": null,
       "cover": 0,
       "assets": [
@@ -545,6 +628,10 @@
       "types": [
         "Menu"
       ],
+      "categories": [
+        "food",
+        "menu"
+      ],
       "summary": null,
       "cover": 0,
       "assets": [
@@ -585,6 +672,10 @@
       "regions": [],
       "types": [
         "Menu"
+      ],
+      "categories": [
+        "food",
+        "menu"
       ],
       "summary": null,
       "cover": 0,
@@ -631,6 +722,10 @@
         "Signage",
         "Brochure"
       ],
+      "categories": [
+        "signage",
+        "print"
+      ],
       "summary": null,
       "cover": 0,
       "assets": [
@@ -674,6 +769,9 @@
       ],
       "types": [
         "Editorial"
+      ],
+      "categories": [
+        "editorial"
       ],
       "summary": null,
       "cover": 0,
@@ -720,6 +818,9 @@
       "types": [
         "Logo",
         "Card"
+      ],
+      "categories": [
+        "branding"
       ],
       "summary": null,
       "cover": 0,
@@ -776,6 +877,9 @@
         "Logo",
         "Card"
       ],
+      "categories": [
+        "branding"
+      ],
       "summary": null,
       "cover": 0,
       "assets": [
@@ -831,6 +935,9 @@
         "Logo",
         "Card"
       ],
+      "categories": [
+        "branding"
+      ],
       "summary": null,
       "cover": 0,
       "assets": [
@@ -875,6 +982,10 @@
       "types": [
         "Flyer"
       ],
+      "categories": [
+        "food",
+        "print"
+      ],
       "summary": null,
       "cover": 0,
       "assets": [
@@ -907,6 +1018,9 @@
       "types": [
         "Promotion"
       ],
+      "categories": [
+        "print"
+      ],
       "summary": null,
       "cover": 0,
       "assets": [
@@ -938,6 +1052,9 @@
       ],
       "types": [
         "Poster"
+      ],
+      "categories": [
+        "print"
       ],
       "summary": null,
       "cover": 0,
@@ -972,6 +1089,9 @@
       "types": [
         "Brochure"
       ],
+      "categories": [
+        "print"
+      ],
       "summary": null,
       "cover": 0,
       "assets": [
@@ -1003,6 +1123,9 @@
       ],
       "types": [
         "Flyer"
+      ],
+      "categories": [
+        "print"
       ],
       "summary": null,
       "cover": 0,
@@ -1036,6 +1159,9 @@
       "types": [
         "Poster"
       ],
+      "categories": [
+        "print"
+      ],
       "summary": null,
       "cover": 0,
       "assets": [
@@ -1068,6 +1194,9 @@
       "types": [
         "Book"
       ],
+      "categories": [
+        "editorial"
+      ],
       "summary": null,
       "cover": 0,
       "assets": [
@@ -1099,6 +1228,10 @@
       "types": [
         "Logo"
       ],
+      "categories": [
+        "food",
+        "branding"
+      ],
       "summary": null,
       "cover": 0,
       "assets": [
@@ -1128,6 +1261,10 @@
       "regions": [],
       "types": [
         "Logo"
+      ],
+      "categories": [
+        "food",
+        "branding"
       ],
       "summary": null,
       "cover": 0,
@@ -1159,6 +1296,10 @@
       "types": [
         "Logo"
       ],
+      "categories": [
+        "food",
+        "branding"
+      ],
       "summary": null,
       "cover": 0,
       "assets": [
@@ -1188,6 +1329,10 @@
       "regions": [],
       "types": [
         "Logo"
+      ],
+      "categories": [
+        "food",
+        "branding"
       ],
       "summary": null,
       "cover": 0,
@@ -1219,6 +1364,10 @@
       "types": [
         "Logo"
       ],
+      "categories": [
+        "food",
+        "branding"
+      ],
       "summary": null,
       "cover": 0,
       "assets": [
@@ -1249,6 +1398,10 @@
       "types": [
         "Logo"
       ],
+      "categories": [
+        "food",
+        "branding"
+      ],
       "summary": null,
       "cover": 0,
       "assets": [
@@ -1278,6 +1431,10 @@
       "regions": [],
       "types": [
         "Menu"
+      ],
+      "categories": [
+        "food",
+        "menu"
       ],
       "summary": null,
       "cover": 0,
@@ -1320,6 +1477,10 @@
       "types": [
         "Menu"
       ],
+      "categories": [
+        "food",
+        "menu"
+      ],
       "summary": null,
       "cover": 0,
       "assets": [
@@ -1349,6 +1510,9 @@
       "regions": [],
       "types": [
         "Flyer"
+      ],
+      "categories": [
+        "print"
       ],
       "summary": null,
       "cover": 0,
@@ -1380,6 +1544,9 @@
       "types": [
         "Flyer"
       ],
+      "categories": [
+        "print"
+      ],
       "summary": null,
       "cover": 0,
       "assets": [
@@ -1408,6 +1575,9 @@
       "regions": [],
       "types": [
         "Logo"
+      ],
+      "categories": [
+        "branding"
       ],
       "summary": null,
       "cover": 0,
@@ -1439,6 +1609,9 @@
       "types": [
         "Logo"
       ],
+      "categories": [
+        "branding"
+      ],
       "summary": null,
       "cover": 0,
       "assets": [
@@ -1469,6 +1642,9 @@
       "types": [
         "Logo"
       ],
+      "categories": [
+        "branding"
+      ],
       "summary": null,
       "cover": 0,
       "assets": [
@@ -1498,6 +1674,10 @@
       "regions": [],
       "types": [
         "Logo"
+      ],
+      "categories": [
+        "food",
+        "branding"
       ],
       "summary": null,
       "cover": 0,
@@ -1531,6 +1711,9 @@
       "types": [
         "Logo"
       ],
+      "categories": [
+        "branding"
+      ],
       "summary": null,
       "cover": 0,
       "assets": [
@@ -1561,6 +1744,10 @@
       "types": [
         "Logo"
       ],
+      "categories": [
+        "food",
+        "branding"
+      ],
       "summary": null,
       "cover": 0,
       "assets": [
@@ -1589,6 +1776,10 @@
       "regions": [],
       "types": [
         "Logo"
+      ],
+      "categories": [
+        "food",
+        "branding"
       ],
       "summary": null,
       "cover": 0,
@@ -1619,6 +1810,9 @@
       "regions": [],
       "types": [
         "Logo"
+      ],
+      "categories": [
+        "branding"
       ],
       "summary": null,
       "cover": 0,
@@ -1661,6 +1855,10 @@
       "types": [
         "Logo"
       ],
+      "categories": [
+        "food",
+        "branding"
+      ],
       "summary": null,
       "cover": 0,
       "assets": [
@@ -1692,6 +1890,9 @@
       "types": [
         "Logo"
       ],
+      "categories": [
+        "branding"
+      ],
       "summary": null,
       "cover": 0,
       "assets": [
@@ -1722,6 +1923,9 @@
       ],
       "types": [
         "Card"
+      ],
+      "categories": [
+        "branding"
       ],
       "summary": null,
       "cover": 0,
@@ -1755,6 +1959,10 @@
       "types": [
         "Card"
       ],
+      "categories": [
+        "food",
+        "branding"
+      ],
       "summary": null,
       "cover": 0,
       "assets": [
@@ -1787,6 +1995,9 @@
       "types": [
         "Card"
       ],
+      "categories": [
+        "branding"
+      ],
       "summary": null,
       "cover": 0,
       "assets": [
@@ -1816,6 +2027,9 @@
       "regions": [],
       "types": [
         "Editorial"
+      ],
+      "categories": [
+        "editorial"
       ],
       "summary": null,
       "cover": 0,
@@ -1858,6 +2072,12 @@
         "Monitor",
         "Store Graphics"
       ],
+      "categories": [
+        "food",
+        "menu",
+        "signage",
+        "digital"
+      ],
       "summary": null,
       "cover": 0,
       "assets": [],
@@ -1888,6 +2108,10 @@
         "Menu",
         "Promotion"
       ],
+      "categories": [
+        "food",
+        "menu"
+      ],
       "summary": null,
       "cover": 0,
       "assets": []
@@ -1905,6 +2129,9 @@
       "types": [
         "Flyer",
         "Promotion"
+      ],
+      "categories": [
+        "print"
       ],
       "summary": null,
       "cover": 0,
@@ -1924,6 +2151,9 @@
         "Flyer",
         "Advertising"
       ],
+      "categories": [
+        "print"
+      ],
       "summary": null,
       "cover": 0,
       "assets": []
@@ -1942,6 +2172,9 @@
         "Sticker",
         "Signage"
       ],
+      "categories": [
+        "signage"
+      ],
       "summary": null,
       "cover": 0,
       "assets": []
@@ -1959,6 +2192,9 @@
       "types": [
         "Packaging"
       ],
+      "categories": [
+        "packaging"
+      ],
       "summary": null,
       "cover": 0,
       "assets": []
@@ -1975,6 +2211,9 @@
       "regions": [],
       "types": [
         "Packaging"
+      ],
+      "categories": [
+        "packaging"
       ],
       "summary": null,
       "cover": 0,

@@ -3,13 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>hrk_design — Hiroki Toyoshima</title>
-  <meta name="description" content="Selected work by Hiroki Toyoshima / hrk_design — graphic designer in Phnom Penh. Brand, print, menu, signage, packaging and digital." />
-  <meta property="og:title" content="hrk_design — Hiroki Toyoshima" />
-  <meta property="og:description" content="Selected work by Hiroki Toyoshima, graphic designer in Phnom Penh." />
+  <title>hrk_design — Index</title>
+  <meta name="description" content="hrk_design — an index of graphic design work: food and restaurant, menu, branding, packaging, print, editorial, signage and information design. Phnom Penh." />
+  <meta property="og:title" content="hrk_design — Index" />
+  <meta property="og:description" content="An index of graphic design work, organised by category." />
   <meta property="og:type" content="website" />
-  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
-  <meta name="theme-color" content="#111111" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#ffffff" />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <script>
     try { if (localStorage.getItem("hrk-theme") === "dark") document.documentElement.dataset.theme = "dark"; } catch (e) {}
@@ -19,24 +18,22 @@
   <a class="skip-link" href="#main">Skip to content</a>
 
   <header class="site-header">
-    <div class="site-header-inner">
-      <a class="logo" href="#/">hrk_design</a>
-      <nav class="nav" aria-label="Primary">
-        <a href="#/" data-nav="work">work</a>
-        <a href="#/about" data-nav="about">about</a>
-        <a href="#/contact" data-nav="contact">contact</a>
-      </nav>
-      <button class="theme-toggle" type="button" data-theme-toggle>dark</button>
-    </div>
+    <a class="logo" href="#/">hrk_design</a>
+    <nav class="nav" aria-label="Primary">
+      <a href="#/" data-nav="index">Index</a>
+      <a href="#/about" data-nav="about">About</a>
+      <a href="#/contact" data-nav="contact">Contact</a>
+    </nav>
+    <button class="theme-toggle" type="button" data-theme-toggle>dark</button>
   </header>
+
+  <aside class="spine" aria-hidden="true"><span data-spine></span></aside>
 
   <main id="main" class="main" data-app tabindex="-1"></main>
 
   <footer class="site-footer">
-    <div class="site-footer-inner">
-      <span>© <span data-year></span> hrk_design</span>
-      <a href="https://t.me/hiroki_pp" target="_blank" rel="noopener">Telegram / @hiroki_pp</a>
-    </div>
+    <span>© <span data-year></span> hrk_design</span>
+    <a href="https://t.me/hiroki_pp" target="_blank" rel="noopener">Telegram / @hiroki_pp</a>
   </footer>
 
   <script type="module" src="/src/main.js"></script>

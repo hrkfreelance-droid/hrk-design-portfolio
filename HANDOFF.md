@@ -3,7 +3,13 @@
 ## Current Goal
 2026 portfolio on `feature/portfolio-2026-refresh`, ready for review/merge to `main`.
 
-## State
+## State (structure redesign)
+- 3-level IA: Index (categories, no images) → Category (project list + hover preview) → Project (artwork) → Viewer (zoom/pinch).
+- 9 categories defined, 8 shown (Digital hidden until published work exists). Projects carry `categories`.
+- Viewer: src/viewer.js — no dependencies; loads original file when zoom exceeds the WebP resolution.
+- Preview deploy: Cloudflare/AppDeploy credentials not available in this environment → private claude.ai Artifact preview.
+
+## State (data)
 - Project-based data (`public/data/portfolio.json`, version 2): 53 projects — 28 published, 18 archived (kept, hidden), 7 assets_pending.
 - All 81 legacy images reviewed by eye; every image is assigned to exactly one project.
 - WebP derivatives in `public/assets/web/` (960 px + full/1920 px). Originals untouched in `public/assets/portfolio/`.
