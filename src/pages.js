@@ -32,7 +32,7 @@ export function renderIndex() {
       <li>
         <a class="index-row" href="#/category/${c.id}">
           <span class="no">${pad(c.number)}</span>
-          <span class="label">${esc(c.label)}<span class="count"><span class="sr-only">, </span>${pad(c.projects.length)}<span class="sr-only"> projects</span></span></span>
+          <span class="label">${esc(c.label)}<span class="count"><span class="sr-only">, </span>${pad(c.projects.length)}<span class="sr-only">${c.projects.length === 1 ? " project" : " projects"}</span></span></span>
         </a>
       </li>`
     )
