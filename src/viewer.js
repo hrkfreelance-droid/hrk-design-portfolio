@@ -5,12 +5,12 @@
 // The artwork is never cropped at rest: it is fitted whole inside the stage.
 
 import { viewerSources } from "./data.js";
-import { esc, pad, marks } from "./pages.js";
+import { esc, pad } from "./pages.js";
 
 const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 let el; // root element
-let stage, image, titleEl, countEl, marksEl, captionEl;
+let stage, image, titleEl, countEl, captionEl;
 let state = null; // { project, index, opener }
 let view = { s: 1, tx: 0, ty: 0 }; // zoom relative to the fitted size + translation
 let fit = { left: 0, top: 0, w: 0, h: 0, scale: 1 };
@@ -42,7 +42,7 @@ function build() {
     </div>
     <div class="viewer-foot">
       <button type="button" class="viewer-step" data-v-prev aria-label="Previous file">←</button>
-      <p class="viewer-index"><span data-v-marks></span><span class="viewer-cap" data-v-caption></span></p>
+      <p class="viewer-index"><span class="viewer-cap" data-v-caption></span></p>
       <button type="button" class="viewer-step" data-v-next aria-label="Next file">→</button>
     </div>`;
   document.body.appendChild(el);
@@ -51,7 +51,6 @@ function build() {
   image = el.querySelector("[data-v-img]");
   titleEl = el.querySelector("[data-v-title]");
   countEl = el.querySelector("[data-v-count]");
-  marksEl = el.querySelector("[data-v-marks]");
   captionEl = el.querySelector("[data-v-caption]");
 
   el.querySelector("[data-v-close]").addEventListener("click", close);
@@ -130,7 +129,6 @@ function show(index) {
 
   titleEl.textContent = `${pad(project.number, 3)} ${project.title}`;
   countEl.textContent = `${pad(state.index + 1)}/${pad(total)}`;
-  marksEl.innerHTML = marks(total, state.index);
   captionEl.innerHTML = esc([asset.type, asset.caption].filter(Boolean).join(" — "));
   el.querySelector("[data-v-prev]").disabled = total < 2;
   el.querySelector("[data-v-next]").disabled = total < 2;
