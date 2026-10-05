@@ -1,127 +1,176 @@
-import { works, categories, getWork, nextWork } from "./data.js";
+import { projects, getProject, nextProject } from "./data.js";
 import { renderQR } from "./qr.js";
-import { shuffle } from "./shuffle.js";
 
-function splitChunks(text) {
-  return text
-    .split(" ")
-    .map((word) => `<span class="chunk">${word}&nbsp;</span>`)
+function esc(value) {
+  return String(value ?? "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;");
+}
+
+function number(index) {
+  return String(index + 1).padStart(3, "0");
+}
+
+function projectLabel(project) {
+  return project.client !== "unknown" ? project.client : project.title;
+}
+
+function projectType(project) {
+  return project.types.length ? project.types.join(" / ") : "Design";
+}
+
+export function renderArchive() {
+  const cards = projects
+    .map(
+      (project, index) => `
+        <article class="project-card reveal" data-project-id="${esc(project.id)}" style="--i:${index % 4}">
+          <figure>
+            <div class="project-thumb">
+              <img
+                src="${import.meta.env.BASE_URL}${project.images[0].src}"
+                alt="${esc(projectLabel(project))}"
+                loading="lazy"
+              />
+            </div>
+            <figcaption class="project-caption">
+              <div class="project-caption-primary">
+                <span class="project-index">${number(index)}</span>
+                <span class="project-name">${esc(projectLabel(project))}</span>
+              </div>
+              <div class="project-caption-secondary">
+                <span>${esc(projectType(project))}</span>
+                <span>${project.images.length} FILE${project.images.length === 1 ? "" : "S"}</span>
+              </div>
+            </figcaption>
+          </figure>
+        </article>
+      `
+    )
     .join("");
-}
 
-function sizeClass(index) {
-  const pattern = ["size-lg", "size-md", "size-sm", "size-md", "size-sm", "size-lg"];
-  return pattern[index % pattern.length];
-}
-
-export function renderHero() {
   return `
-    <section class="hero" data-hero>
-      <div class="hero-kicker">Hiroki<br>Toyoshima</div>
-      <h1 class="hero-title">${splitChunks("hrk_design")}</h1>
-      <div class="hero-meta">
-        <span>graphic / digital / web</span>
-        <span>phnom penh</span>
+    <section class="archive-page">
+      <div class="archive-intro">
+        <div>
+          <p class="micro-label">PORTFOLIO / 2026</p>
+          <h1>Hiroki Toyoshima</h1>
+        </div>
+        <div class="archive-intro-meta">
+          <p>Graphic Designer / Phnom Penh</p>
+          <p>Brand / Print / Menu / Signage / Digital</p>
+        </div>
       </div>
-      <a class="hero-scroll-cue" href="#/work">view work →</a>
+
+      <div class="section-index">
+        <span>SELECTED WORK</span>
+        <span>${projects.length} PROJECTS</span>
+      </div>
+
+      <div class="project-grid">
+        ${cards}
+      </div>
     </section>
   `;
 }
 
-function categoryNav(active) {
-  // The logo sits first and does the job "ALL" used to do: every work, unfiltered.
-  return `
-    <nav class="filters" aria-label="Category">
-      <a class="filters-logo" href="#/work" aria-current="${active === "work" ? "page" : "false"}">hrk_design</a>
-      ${categories
-        .map(
-          (c) =>
-            `<a href="#/${c}" aria-current="${active === c ? "page" : "false"}">${c.toUpperCase()}</a>`
-        )
-        .join("")}
-    </nav>
-  `;
-}
+export function renderProject(id) {
+  const project = getProject(id);
+  if (!project) {
+    return `
+      <section class="simple-page">
+        <p class="micro-label">404 / PROJECT</p>
+        <h1>Not found.</h1>
+        <a class="text-link" href="#/">Back to work →</a>
+      </section>
+    `;
+  }
 
-function workGrid(list) {
-  const items = list
+  const next = nextProject(id);
+  const images = project.images
     .map(
-      (w, i) => `
-      <div class="work-item reveal ${sizeClass(i)}" data-work-id="${w.id}" data-cursor-hover style="--i:${i % 6}">
-        <figure>
-          <div class="work-frame">
-            <img src="${import.meta.env.BASE_URL}${w.image}" alt="${w.client !== "unknown" ? w.client + " — " + w.type : w.type}" loading="lazy" width="1200" height="900" />
-          </div>
-          <figcaption class="work-caption">
-            <span class="client">${w.client === "unknown" ? "unknown" : w.client}</span>
-            <span>/</span>
-            <span>${w.type}</span>
+      (image, index) => `
+        <figure class="detail-image">
+          <img
+            src="${import.meta.env.BASE_URL}${image.src}"
+            alt="${esc(projectLabel(project))} — ${esc(image.type || "Design")}"
+            loading="${index === 0 ? "eager" : "lazy"}"
+          />
+          <figcaption>
+            <span>FIG ${String(index + 1).padStart(2, "0")}</span>
+            <span>${esc(image.type || "Design")}</span>
           </figcaption>
         </figure>
-      </div>`
+      `
     )
     .join("");
 
-  return `<div class="work-grid" data-work-grid>${items}</div>`;
-}
-
-// category: "work" for all, or one of the category slugs
-export function renderCategory(category) {
-  const list = category === "work" ? works : works.filter((w) => w.category === category);
-  const shuffled = shuffle(list);
   return `
-    <div class="category-page">
-      ${categoryNav(category)}
-      ${workGrid(shuffled)}
-    </div>
-  `;
-}
+    <article class="detail-page">
+      <header class="detail-header">
+        <a class="back-link" href="#/">← WORK</a>
 
-export function renderProject(id) {
-  const work = getWork(id);
-  if (!work) return `<div class="page-simple"><h1>not found</h1></div>`;
-  const next = nextWork(id);
+        <div class="detail-title-row">
+          <h1>${esc(projectLabel(project))}</h1>
+          <span class="detail-count">${project.images.length} FILE${project.images.length === 1 ? "" : "S"}</span>
+        </div>
 
-  return `
-    <div class="project-header">
-      <dl class="project-meta">
-        <div><dt>Client</dt><dd>${work.client === "unknown" ? "unknown" : work.client}</dd></div>
-        <div><dt>Type</dt><dd>${work.type}</dd></div>
-        <div><dt>Category</dt><dd>${work.category}</dd></div>
-        <div><dt>Year</dt><dd>${work.year}</dd></div>
-      </dl>
-    </div>
-    <div class="project-images">
-      <img src="${import.meta.env.BASE_URL}${work.image}" alt="${work.client} — ${work.type}" loading="lazy" />
-    </div>
-    <a class="next-project" href="#/project/${next.id}">
-      <span><small>Next Project</small>${next.client === "unknown" ? next.type : next.client}</span>
-      <span>→</span>
-    </a>
+        <dl class="detail-meta">
+          <div>
+            <dt>CLIENT</dt>
+            <dd>${project.client === "unknown" ? "—" : esc(project.client)}</dd>
+          </div>
+          <div>
+            <dt>TYPE</dt>
+            <dd>${esc(projectType(project))}</dd>
+          </div>
+          <div>
+            <dt>CATEGORY</dt>
+            <dd>${esc(project.categories.join(" / ") || "—")}</dd>
+          </div>
+          <div>
+            <dt>YEAR</dt>
+            <dd>${esc(project.years.join(" / ") || "—")}</dd>
+          </div>
+        </dl>
+      </header>
+
+      <div class="detail-gallery">
+        ${images}
+      </div>
+
+      <a class="next-project" href="#/project/${esc(next.id)}">
+        <span class="micro-label">NEXT PROJECT</span>
+        <span>${esc(projectLabel(next))}</span>
+        <span>→</span>
+      </a>
+    </article>
   `;
 }
 
 export function renderAbout() {
   return `
-    <section class="page-simple">
-      <h1>about</h1>
-      <p>hrk_design is the graphic and digital design practice of Hiroki Toyoshima, based in Phnom Penh — working across flyers, menus, logotype, branding and web.</p>
-    </section>
-    <section class="page-simple">
-      <h1 style="text-transform:none">CIJD</h1>
-      <p>CIJD Co., Ltd. is a Japanese IT and service company working across digital, design, web, and practical business support. We connect ideas, technology and execution with a flexible, hands-on approach.</p>
-      <p><a class="inline-link" href="https://www.facebook.com/cijdco" target="_blank" rel="noopener">facebook.com/cijdco</a></p>
+    <section class="simple-page">
+      <p class="micro-label">ABOUT / HRK_DESIGN</p>
+      <h1>Hiroki Toyoshima</h1>
+      <div class="simple-copy">
+        <p>Graphic designer based in Phnom Penh, working across branding, print, menus, signage, digital design and practical production.</p>
+        <p>Available for selected design projects.</p>
+      </div>
     </section>
   `;
 }
 
 export function renderContact() {
   return `
-    <section class="contact-page">
-      <h1>contact</h1>
-      <a class="contact-link" href="https://t.me/hiroki_pp" target="_blank" rel="noopener">Telegram — @hiroki_pp</a>
+    <section class="simple-page contact-page">
+      <p class="micro-label">CONTACT / DIRECT</p>
+      <h1>Contact</h1>
+      <div class="simple-copy">
+        <p><a class="text-link" href="https://t.me/hiroki_pp" target="_blank" rel="noopener">Telegram / @hiroki_pp →</a></p>
+      </div>
       <div class="qr-wrap" data-qr></div>
-      <div class="qr-caption">scan to open telegram</div>
     </section>
   `;
 }
