@@ -8,7 +8,7 @@
 - 3-level IA: Index (categories, no images) → Category (project list + hover preview) → Project (artwork) → Viewer (zoom/pinch).
 - 9 categories defined, 8 shown (Digital hidden until published work exists). Projects carry `categories`.
 - Viewer: src/viewer.js — no dependencies; loads original file when zoom exceeds the WebP resolution.
-- Preview deploy: Cloudflare/AppDeploy credentials not available in this environment → private claude.ai Artifact preview.
+- Preview deploy: Cloudflare via GitHub Actions (cloudflare-preview.yml) + live Playwright check. The Claude Code sandbox cannot reach api.cloudflare.com / *.workers.dev (proxy 403). No CF token → temporary account (claim within 60 min) until CLOUDFLARE_API_TOKEN/ACCOUNT_ID secrets are added.
 
 ## State (data)
 - Project-based data (`public/data/portfolio.json`, version 2): 53 projects — 28 published, 18 archived (kept, hidden), 7 assets_pending.

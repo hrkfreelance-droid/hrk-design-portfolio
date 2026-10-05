@@ -60,14 +60,26 @@ jobs:
             --compatibility-date 2026-10-01 2>&1 | tee deploy.log
 
       - name: Publish preview URL
+        id: url
         if: always()
         run: |
           URL=$(grep -oE 'https://[A-Za-z0-9._/-]+\.(pages\.dev|workers\.dev)[A-Za-z0-9._/-]*' deploy.log | tail -1 || true)
           echo "PREVIEW_URL=${URL:-not found}"
+          echo "url=$URL" >> "$GITHUB_OUTPUT"
           {
             echo "### Cloudflare preview"
             echo ""
             echo "Commit: \`$GITHUB_SHA\`"
             echo ""
             echo "URL: ${URL:-not found — see deploy log}"
+            echo ""
           } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Verify the live preview
+        if: steps.url.outputs.url != ''
+        env:
+          PREVIEW_URL: ${{ steps.url.outputs.url }}
+        run: |
+          npm i --no-save playwright@1
+          npx playwright install --with-deps chromium
+          node scripts/verify-preview.mjs

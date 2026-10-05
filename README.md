@@ -75,6 +75,17 @@ Originals are never modified; derivatives are resize + WebP only (no crop, no co
 - `data/portfolio.legacy.json` — original per-image data from the Adobe Portfolio import (kept for reference).
 - `data/projects.pending.legacy.json` — original pending list (merged into `portfolio.json`).
 
+## Preview (Cloudflare)
+
+`.github/workflows/cloudflare-preview.yml` deploys every push to `feature/portfolio-2026-refresh`
+as a preview (never main / production), then opens it in Chromium and checks every route and
+every viewer file (`scripts/verify-preview.mjs`). The URL is in the run's summary.
+
+- With repository secrets `CLOUDFLARE_API_TOKEN` + `CLOUDFLARE_ACCOUNT_ID`: branch preview on the
+  preview-only Pages project `hrk-design-portfolio-preview` (stable URL).
+- Without them: a temporary Cloudflare account (`wrangler deploy --temporary`). Each run gets a new
+  URL; claim it from the "Claim URL" in the deploy log within 60 minutes to keep it.
+
 ## Deployment
 
 GitHub Pages via `.github/workflows/deploy.yml` on push to `main`.
