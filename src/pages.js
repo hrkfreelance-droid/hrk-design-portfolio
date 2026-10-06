@@ -65,6 +65,7 @@ export function renderIndex(mode = "category") {
         <div class="switch index-switch" aria-label="Browse by">
           <a href="#/"${!clientMode ? ' aria-current="page"' : ""}>Category</a>
           <a href="#/clients"${clientMode ? ' aria-current="page"' : ""}>Client</a>
+          <a href="#/moodboard">ALL</a>
         </div>
         <ol class="index-list" aria-label="${clientMode ? "Clients" : "Categories"}">
           ${rows}
@@ -77,6 +78,265 @@ export function renderIndex(mode = "category") {
         </ol>
       </nav>
     </section>`,
+  };
+}
+
+/* ------------------------------------------------------------- moodboard */
+
+export function renderMoodboard() {
+  const byClient = new Map();
+  for (const project of projects) {
+    const key = typeof project.client === "string" && project.client.trim()
+      ? project.client.normalize("NFKC").trim().replace(/\s+/g, " ").toLocaleLowerCase("en")
+      : project.id;
+    if (!byClient.has(key)) byClient.set(key, []);
+    for (const [assetIndex, asset] of project.assets.entries()) {
+      byClient.get(key).push({ project, asset, assetIndex, clientKey: key });
+    }
+  }
+  const queues = [...byClient.values()];
+  for (const queue of queues) {
+    for (let i = queue.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [queue[i], queue[j]] = [queue[j], queue[i]];
+    }
+  }
+  const shuffled = [];
+  let lastClient = "";
+  while (queues.some((queue) => queue.length)) {
+    const available = queues.filter((queue) => queue.length && queue[0].clientKey !== lastClient);
+    const candidates = (available.length ? available : queues.filter((queue) => queue.length))
+      .sort((a, b) => b.length - a.length)
+      .slice(0, 3);
+    const queue = candidates[Math.floor(Math.random() * candidates.length)];
+    const item = queue.shift();
+    shuffled.push(item);
+    lastClient = item.clientKey;
+  }
+
+  const tiles = shuffled
+    .map(({ project, asset, assetIndex, clientKey }, index) => {
+      const ratio = asset.width && asset.height ? asset.width / asset.height : 0.8;
+      const size = ratio > 1.45 ? "wide" : ratio < 0.68 ? "tall" : "regular";
+      const label = [project.client, project.title, asset.caption].filter(Boolean).join(" — ");
+      const wide = size !== "tall" && Math.random() < 0.2;
+      const sameAsClient = project.client && project.title.normalize("NFKC").trim().toLocaleLowerCase("en") === project.client.normalize("NFKC").trim().toLocaleLowerCase("en");
+      const metaTitle = sameAsClient ? project.year || "" : [project.title, project.year].filter(Boolean).join(" · ");
+      return `<a class="mood-tile" href="#/project/${esc(project.id)}" data-project="${esc(project.id)}" data-client="${esc(clientKey)}" data-from="all" data-asset="${assetIndex}" data-size="${size}" data-wide="${wide}" aria-label="${esc(label)} — open project" title="${esc(label)}">
+        ${img(asset, { alt: label, sizes: "(min-width: 1440px) 420px, 48vw", eager: index < 8 })}
+        <span class="mood-tile-meta"><span class="mood-client">${esc(project.client || "")}</span><span class="mood-title">${esc(metaTitle)}</span></span>
+      </a>`;
+    })
+    .join("");
+
+  return {
+    spine: "Moodboard",
+    html: `
+    <section class="moodboard-page">
+      <header class="page-head moodboard-head">
+        <p class="crumbs"><a href="#/">Index</a><span>/</span><span>Moodboard</span></p>
+        <h1 id="page-title" tabindex="-1">ALL</h1>
+        <nav class="switch index-switch moodboard-switch" aria-label="Browse portfolio">
+          <a href="#/">Category</a>
+          <a href="#/clients">Client</a>
+          <a href="#/moodboard" aria-current="page">ALL</a>
+        </nav>
+      </header>
+      <div class="moodboard-grid" data-moodboard aria-label="All published portfolio artwork">${tiles}</div>
+    </section>`,
+  };
+}
+
+// Pack varied tile widths into the shortest contiguous columns. Image dimensions
+// are in the data, so the grid is stable before lazy images finish loading.
+export function mountMoodboard(root) {
+  const grid = root.querySelector("[data-moodboard]");
+  if (!grid) return;
+  const tiles = [...grid.querySelectorAll(".mood-tile")];
+  let lastSignature = "";
+  let frame = 0;
+  let autoFrame = 0;
+  let idleTimer = 0;
+  let startTimer = 0;
+  let lastTick = 0;
+  let scrollFraction = 0;
+  let manuallyPaused = false;
+  let hovering = false;
+  const canAutoScroll = window.matchMedia("(min-width: 900px) and (hover: hover) and (pointer: fine)").matches && !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  const stopAutoScroll = () => {
+    cancelAnimationFrame(autoFrame);
+    autoFrame = 0;
+    lastTick = 0;
+    scrollFraction = 0;
+  };
+  const tick = (now) => {
+    if (!canAutoScroll || manuallyPaused || hovering || document.hidden) {
+      stopAutoScroll();
+      return;
+    }
+    if (lastTick) {
+      const elapsed = Math.min(now - lastTick, 80);
+      const bottom = document.documentElement.scrollHeight - window.innerHeight;
+      if (window.scrollY < bottom - 1) {
+        scrollFraction += elapsed * 0.003;
+        if (scrollFraction >= 0.5) {
+          window.scrollBy(0, scrollFraction);
+          scrollFraction = 0;
+        }
+      }
+    }
+    lastTick = now;
+    autoFrame = requestAnimationFrame(tick);
+  };
+  const beginAfterPause = (delay = 1800) => {
+    clearTimeout(startTimer);
+    if (!canAutoScroll || manuallyPaused || hovering || document.hidden) return;
+    startTimer = window.setTimeout(() => {
+      lastTick = 0;
+      autoFrame = requestAnimationFrame(tick);
+    }, delay);
+  };
+  const markManual = () => {
+    if (!canAutoScroll) return;
+    manuallyPaused = true;
+    clearTimeout(startTimer);
+    clearTimeout(idleTimer);
+    stopAutoScroll();
+  };
+  const resumeAfterIdle = () => {
+    if (!canAutoScroll) return;
+    clearTimeout(idleTimer);
+    idleTimer = window.setTimeout(() => {
+      manuallyPaused = false;
+      beginAfterPause(1400);
+    }, 900);
+  };
+  const onWheel = () => {
+    markManual();
+    resumeAfterIdle();
+  };
+  const onPointerDown = () => markManual();
+  const onPointerUp = () => resumeAfterIdle();
+  const onKeyDown = (event) => {
+    if (["PageDown", "PageUp", "ArrowDown", "ArrowUp", "Home", "End", " "].includes(event.key)) {
+      markManual();
+      resumeAfterIdle();
+    }
+  };
+  const onVisibilityChange = () => {
+    if (document.hidden) stopAutoScroll();
+    else beginAfterPause();
+  };
+  const onEnter = (event) => {
+    if (!canAutoScroll) return;
+    const tile = event.target.closest?.(".mood-tile");
+    const related = event.relatedTarget instanceof Element ? event.relatedTarget.closest(".mood-tile") : null;
+    if (!tile || tile === related) return;
+    hovering = true;
+    clearTimeout(startTimer);
+    stopAutoScroll();
+    grid.classList.add("has-hover");
+  };
+  const onLeave = (event) => {
+    if (!canAutoScroll) return;
+    const tile = event.target.closest?.(".mood-tile");
+    const related = event.relatedTarget instanceof Element ? event.relatedTarget.closest(".mood-tile") : null;
+    if (!tile || tile === related) return;
+    hovering = Boolean(related);
+    if (!hovering) {
+      grid.classList.remove("has-hover");
+      beginAfterPause(1200);
+    }
+  };
+
+  grid.addEventListener("pointerover", onEnter);
+  grid.addEventListener("pointerout", onLeave);
+  grid.addEventListener("focusin", onEnter);
+  grid.addEventListener("focusout", onLeave);
+  window.addEventListener("wheel", onWheel, { passive: true });
+  window.addEventListener("pointerdown", onPointerDown, { passive: true });
+  window.addEventListener("pointerup", onPointerUp, { passive: true });
+  window.addEventListener("keydown", onKeyDown);
+  document.addEventListener("visibilitychange", onVisibilityChange);
+
+  const layout = () => {
+    cancelAnimationFrame(frame);
+    frame = requestAnimationFrame(() => {
+      const columns = getComputedStyle(grid).gridTemplateColumns.split(" ").filter(Boolean).length;
+      const width = grid.clientWidth;
+      const style = getComputedStyle(grid);
+      const columnGap = parseFloat(style.columnGap) || 0;
+      const rowGap = parseFloat(style.rowGap) || 0;
+      const unit = parseFloat(style.gridAutoRows) || 8;
+      const signature = `${columns}:${Math.round(width)}`;
+      if (signature === lastSignature) return;
+      lastSignature = signature;
+      const heights = Array(columns).fill(0);
+      const trackWidth = (width - columnGap * (columns - 1)) / columns;
+
+      for (const tile of tiles) {
+        let bestStart = 0;
+        let bestTop = Infinity;
+        let span = 1;
+        if (tile.dataset.wide === "true" && columns >= 3) {
+          let bestSpread = Infinity;
+          for (let start = 0; start < columns - 1; start++) {
+            const pair = heights.slice(start, start + 2);
+            const top = Math.max(...pair);
+            const spread = top - Math.min(...pair);
+            if (spread <= 2 && (top < bestTop || (top === bestTop && spread < bestSpread))) {
+              bestTop = top;
+              bestSpread = spread;
+              bestStart = start;
+              span = 2;
+            }
+          }
+        }
+        if (span === 1) {
+          bestTop = Infinity;
+          for (let start = 0; start < columns; start++) {
+            if (heights[start] < bestTop) {
+              bestTop = heights[start];
+              bestStart = start;
+            }
+          }
+        }
+
+        const tileWidth = trackWidth * span + columnGap * (span - 1);
+        const image = tile.querySelector("img");
+        const ratio = Number(image?.getAttribute("width")) / Number(image?.getAttribute("height")) || 0.8;
+        const imageHeight = tileWidth / ratio;
+        const metaHeight = 54;
+        const rows = Math.max(1, Math.ceil((imageHeight + metaHeight + rowGap) / (unit + rowGap)));
+        tile.style.gridColumn = `${bestStart + 1} / span ${span}`;
+        tile.style.gridRow = `${bestTop + 1} / span ${rows}`;
+        heights.fill(bestTop + rows, bestStart, bestStart + span);
+      }
+      grid.style.height = `${Math.max(...heights) * (unit + rowGap) - rowGap}px`;
+      grid.classList.add("is-ready");
+      beginAfterPause();
+    });
+  };
+
+  const observer = new ResizeObserver(layout);
+  observer.observe(grid);
+  layout();
+  return () => {
+    observer.disconnect();
+    cancelAnimationFrame(frame);
+    stopAutoScroll();
+    clearTimeout(idleTimer);
+    clearTimeout(startTimer);
+    grid.removeEventListener("pointerover", onEnter);
+    grid.removeEventListener("pointerout", onLeave);
+    grid.removeEventListener("focusin", onEnter);
+    grid.removeEventListener("focusout", onLeave);
+    window.removeEventListener("wheel", onWheel);
+    window.removeEventListener("pointerdown", onPointerDown);
+    window.removeEventListener("pointerup", onPointerUp);
+    window.removeEventListener("keydown", onKeyDown);
+    document.removeEventListener("visibilitychange", onVisibilityChange);
   };
 }
 

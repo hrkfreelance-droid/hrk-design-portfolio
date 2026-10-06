@@ -9,7 +9,9 @@ import {
   renderIndex,
   renderCategory,
   renderClient,
+  renderMoodboard,
   mountCategory,
+  mountMoodboard,
   renderProject,
   projectContext,
   renderAbout,
@@ -36,6 +38,7 @@ try {
 const scrollMemory = new Map();
 let currentKey = null;
 let firstRender = true;
+let cleanupPage = null;
 
 if ("scrollRestoration" in history) history.scrollRestoration = "manual";
 document.querySelector("[data-year]").textContent = new Date().getFullYear();
@@ -66,6 +69,8 @@ function setActiveNav(path) {
 
 function render() {
   closeViewerSilently();
+  cleanupPage?.();
+  cleanupPage = null;
   const { path, param } = parse();
   const key = `${path}/${param}`;
   if (currentKey) scrollMemory.set(currentKey, window.scrollY);
@@ -89,6 +94,9 @@ function render() {
     const client = getClient(param);
     page = renderClient(param);
     title = client ? `${client.name} — ${brand.pageTitle}` : `Not found — ${brand.pageTitle}`;
+  } else if (path === "moodboard") {
+    page = renderMoodboard();
+    title = `ALL — ${brand.pageTitle}`;
   } else if (path === "project") {
     const project = getProject(param);
     page = renderProject(param, context);
@@ -112,6 +120,7 @@ function render() {
   setActiveNav(path);
 
   if (path === "category" || path === "client") mountCategory(app);
+  if (path === "moodboard") cleanupPage = mountMoodboard(app);
   if (path === "contact") mountContact(app);
   if (path === "project") mountProject(param);
 

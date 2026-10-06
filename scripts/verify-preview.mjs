@@ -10,6 +10,7 @@ if (!/^https?:\/\//.test(BASE)) throw new Error("PREVIEW_URL missing");
 
 const data = JSON.parse(readFileSync(new URL("../public/data/portfolio.json", import.meta.url)));
 const pub = data.projects.filter((p) => p.visible && p.status === "published");
+const artworkCount = pub.reduce((count, project) => count + project.assets.length, 0);
 const cats = data.categories.filter((c) => pub.some((p) => p.categories.includes(c.id)));
 const clientGroups = new Map();
 for (const project of pub) {
@@ -21,7 +22,7 @@ for (const project of pub) {
 }
 const clientSlug = (value) => value.normalize("NFKD").replace(/[\u0300-\u036f]/g, "").toLocaleLowerCase("en").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 const clients = [...clientGroups.values()].map((client) => ({ ...client, id: clientSlug(client.name) || client.projects[0].id })).sort((a, b) => a.name.localeCompare(b.name, "en", { sensitivity: "base" }));
-const routes = ["#/", "#/clients", ...clients.map((client) => `#/client/${client.id}`), "#/about", "#/contact", "#/category/all", ...cats.map((c) => `#/category/${c.id}`), ...pub.map((p) => `#/project/${p.id}`)];
+const routes = ["#/", "#/clients", "#/moodboard", ...clients.map((client) => `#/client/${client.id}`), "#/about", "#/contact", "#/category/all", ...cats.map((c) => `#/category/${c.id}`), ...pub.map((p) => `#/project/${p.id}`)];
 
 const problems = [];
 const routeView = (route) => route.replace(/^#\/?/, "").split("/")[0] || "index";
@@ -29,7 +30,7 @@ const notes = [];
 const browser = await chromium.launch();
 
 for (const theme of ["light", "dark"]) {
-  for (const [width, height] of [[1440, 900], [390, 844]]) {
+  for (const [width, height] of [[1440, 900], [768, 1024], [390, 844]]) {
     const ctx = await browser.newContext({ viewport: { width, height } });
     await ctx.addInitScript((t, key) => localStorage.setItem(key, t), theme, `${EXPECTED_BRAND}-theme`);
     const page = await ctx.newPage();
@@ -129,6 +130,47 @@ for (const theme of ["light", "dark"]) {
             problems.push(`${tag} incorrect client row ${index + 1}: ${JSON.stringify(row)}`);
           }
         });
+      }
+      if (route === "#/moodboard") {
+        const board = await page.evaluate(() => ({
+          title: document.querySelector("#page-title")?.textContent.trim(),
+          active: document.querySelector('.moodboard-switch a[aria-current="page"]')?.textContent.trim(),
+          tiles: [...document.querySelectorAll(".mood-tile")].map((tile) => ({
+            href: tile.getAttribute("href"),
+            project: tile.dataset.project,
+            client: tile.dataset.client,
+            from: tile.dataset.from,
+            width: Number(tile.querySelector("img")?.getAttribute("width")),
+            height: Number(tile.querySelector("img")?.getAttribute("height")),
+            fit: getComputedStyle(tile.querySelector("img")).objectFit,
+          })),
+          clientHeaders: document.querySelectorAll(".moodboard-grid h2, .moodboard-grid h3, .moodboard-grid section").length,
+          ready: document.querySelector(".moodboard-grid")?.classList.contains("is-ready"),
+        }));
+        if (board.title !== "ALL" || board.active !== "ALL") problems.push(`${tag} moodboard does not use ALL as its active view`);
+        if (board.tiles.length !== artworkCount) problems.push(`${tag} moodboard has ${board.tiles.length} artworks, expected ${artworkCount}`);
+        if (board.clientHeaders) problems.push(`${tag} moodboard has client/category sections`);
+        if (!board.ready) problems.push(`${tag} moodboard layout did not initialize`);
+        if (board.tiles.some((tile) => !tile.href?.startsWith(`#/project/${tile.project}`) || tile.from !== "all" || !tile.width || !tile.height || tile.fit !== "contain")) {
+          problems.push(`${tag} moodboard has a missing project link or unscaled artwork`);
+        }
+        let repeat = 1;
+        for (let i = 1; i < board.tiles.length; i++) {
+          repeat = board.tiles[i].client && board.tiles[i].client === board.tiles[i - 1].client ? repeat + 1 : 1;
+          if (repeat > 1) problems.push(`${tag} moodboard repeats a client in adjacent artworks`);
+        }
+        if (width >= 900 && theme === "light") {
+          await page.waitForTimeout(2100);
+          const movement = await page.evaluate(() => window.scrollY);
+          if (movement < 1) problems.push(`${tag} moodboard did not start its delayed desktop scroll`);
+          await page.mouse.move(300, 300);
+          await page.locator(".mood-tile").first().hover();
+          const hover = await page.evaluate(() => ({
+            paused: document.querySelector(".moodboard-grid")?.classList.contains("has-hover"),
+            transform: getComputedStyle(document.querySelector(".mood-tile:hover")).transform,
+          }));
+          if (!hover.paused || hover.transform === "none") problems.push(`${tag} moodboard hover did not pause and lift the tile`);
+        }
       }
       if (route.startsWith("#/client/")) {
         const client = clients.find((item) => route === `#/client/${item.id}`);
