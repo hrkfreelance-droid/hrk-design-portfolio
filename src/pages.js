@@ -207,7 +207,7 @@ export function mountMoodboard(root) {
     lastTick = now;
     autoFrame = requestAnimationFrame(tick);
   };
-  const beginAfterPause = (delay = 1800) => {
+  const beginAfterPause = (delay = 1500) => {
     clearTimeout(startTimer);
     if (!canAutoScroll || manuallyPaused || hovering || previewLayer || document.hidden) return;
     startTimer = window.setTimeout(() => {
