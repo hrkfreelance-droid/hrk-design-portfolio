@@ -2261,8 +2261,8 @@
       "id": "ootoya",
       "title": "Ootoya",
       "client": "Ootoya",
-      "status": "assets_pending",
-      "visible": false,
+      "status": "published",
+      "visible": true,
       "featured": false,
       "order": 50,
       "year": null,
@@ -2273,39 +2273,75 @@
       ],
       "categories": [
         "food",
-        "menu"
+        "menu",
+        "print"
       ],
       "summary": null,
       "cover": 0,
-      "assets": []
+      "assets": [
+        {
+          "src": "assets/portfolio/ootoya/01-japanese-teishoku-menu.jpg",
+          "type": "Menu",
+          "caption": "Japanese Teishoku",
+          "width": 2000,
+          "height": 3000,
+          "web": [
+            960,
+            1920
+          ]
+        }
+      ]
     },
     {
       "id": "cima",
       "title": "CIMA",
       "client": "CIMA",
-      "status": "assets_pending",
-      "visible": false,
+      "status": "published",
+      "visible": true,
       "featured": false,
       "order": 50,
       "year": null,
       "regions": [],
       "types": [
-        "Flyer",
-        "Promotion"
+        "Brochure"
       ],
       "categories": [
-        "print"
+        "print",
+        "editorial"
       ],
       "summary": null,
       "cover": 0,
-      "assets": []
+      "assets": [
+        {
+          "src": "assets/portfolio/cima/01-cima-security-profile-front.jpg",
+          "type": "Brochure",
+          "caption": "CIMA Security",
+          "width": 2000,
+          "height": 1414,
+          "web": [
+            960,
+            1920
+          ]
+        },
+        {
+          "src": "assets/portfolio/cima/02-cima-corporate-philosophy.jpg",
+          "type": "Brochure",
+          "caption": "Corporate Philosophy",
+          "width": 2000,
+          "height": 1414,
+          "web": [
+            960,
+            1920
+          ]
+        }
+      ]
     },
     {
       "id": "volante",
       "title": "Volante",
       "client": "Volante",
-      "status": "assets_pending",
-      "visible": false,
+      "status": "published",
+      "visible": true,
       "featured": false,
       "order": 50,
       "year": null,
@@ -2319,7 +2355,30 @@
       ],
       "summary": null,
       "cover": 0,
-      "assets": []
+      "assets": [
+        {
+          "src": "assets/portfolio/volante/01-property-flyer-front.jpg",
+          "type": "Flyer",
+          "caption": "Flyer / Front",
+          "width": 2000,
+          "height": 2838,
+          "web": [
+            960,
+            1920
+          ]
+        },
+        {
+          "src": "assets/portfolio/volante/02-property-flyer-back.jpg",
+          "type": "Flyer",
+          "caption": "Flyer / Back",
+          "width": 2000,
+          "height": 2838,
+          "web": [
+            960,
+            1920
+          ]
+        }
+      ]
     },
     {
       "id": "cow-sticker",
@@ -2381,6 +2440,583 @@
       "summary": null,
       "cover": 0,
       "assets": []
+    },
+    {
+      "id": "matcha-times",
+      "title": "MATCHA TIMES",
+      "client": "MATCHA TIMES",
+      "order": 15,
+      "types": [
+        "Menu",
+        "Promotion",
+        "Flyer",
+        "Signage"
+      ],
+      "categories": [
+        "food",
+        "menu",
+        "print",
+        "signage"
+      ],
+      "status": "published",
+      "visible": true,
+      "featured": false,
+      "year": null,
+      "regions": [],
+      "summary": null,
+      "cover": 0,
+      "assets": [
+        {
+          "src": "assets/portfolio/matcha-times/01-signature-matcha-campaign.png",
+          "type": "Promotion",
+          "caption": "Matcha Campaign",
+          "width": 2000,
+          "height": 3000,
+          "web": [
+            960,
+            1920
+          ]
+        },
+        {
+          "src": "assets/portfolio/matcha-times/02-product-lineup.png",
+          "type": "Menu",
+          "caption": "Product Lineup",
+          "width": 2000,
+          "height": 2829,
+          "web": [
+            960,
+            1920
+          ]
+        },
+        {
+          "src": "assets/portfolio/matcha-times/03-matcha-menu.png",
+          "type": "Menu",
+          "caption": "Matcha Menu",
+          "width": 2000,
+          "height": 2829,
+          "web": [
+            960,
+            1920
+          ]
+        },
+        {
+          "src": "assets/portfolio/matcha-times/04-taiyaki-collaboration-poster.png",
+          "type": "Promotion",
+          "caption": "Taiyaki Promotion",
+          "width": 2000,
+          "height": 2832,
+          "web": [
+            960,
+            1920
+          ]
+        },
+        {
+          "src": "assets/portfolio/matcha-times/05-asakusa-flyer-front.png",
+          "type": "Flyer",
+          "caption": "Flyer / Front",
+          "width": 2000,
+          "height": 2838,
+          "web": [
+            960,
+            1920
+          ]
+        },
+        {
+          "src": "assets/portfolio/matcha-times/06-asakusa-flyer-back.png",
+          "type": "Flyer",
+          "caption": "Flyer / Back",
+          "width": 2000,
+          "height": 2838,
+          "web": [
+            960,
+            1920
+          ]
+        },
+        {
+          "src": "assets/portfolio/matcha-times/07-sakura-stand-promotion.png",
+          "type": "Promotion",
+          "caption": "Sakura Stand",
+          "width": 2000,
+          "height": 4223,
+          "web": [
+            960,
+            1920
+          ]
+        },
+        {
+          "src": "assets/portfolio/matcha-times/08-ceremonial-matcha-campaign.png",
+          "type": "Promotion",
+          "caption": "Ceremonial Matcha Campaign",
+          "width": 2000,
+          "height": 931,
+          "web": [
+            960,
+            1920
+          ]
+        },
+        {
+          "src": "assets/portfolio/matcha-times/09-cocktails-menu.png",
+          "type": "Menu",
+          "caption": "Cocktails Menu",
+          "width": 2000,
+          "height": 1415,
+          "web": [
+            960,
+            1920
+          ]
+        },
+        {
+          "src": "assets/portfolio/matcha-times/10-uji-matcha-latte-promotion.png",
+          "type": "Promotion",
+          "caption": "Uji Matcha Latte",
+          "width": 2000,
+          "height": 4348,
+          "web": [
+            960,
+            1920
+          ]
+        },
+        {
+          "src": "assets/portfolio/matcha-times/11-happy-hour.png",
+          "type": "Promotion",
+          "caption": "Happy Hour",
+          "width": 2000,
+          "height": 2500,
+          "web": [
+            960,
+            1920
+          ]
+        },
+        {
+          "src": "assets/portfolio/matcha-times/12-toyosu-store-sign.png",
+          "type": "Signage",
+          "caption": "Toyosu Store Sign",
+          "width": 2000,
+          "height": 5750,
+          "web": [
+            960,
+            1920
+          ]
+        }
+      ]
+    },
+    {
+      "id": "golden-chicken",
+      "title": "Golden Chicken",
+      "client": "Golden Chicken Karaage Japan",
+      "order": 45,
+      "types": [
+        "Logo"
+      ],
+      "categories": [
+        "food",
+        "branding"
+      ],
+      "status": "published",
+      "visible": true,
+      "featured": false,
+      "year": null,
+      "regions": [],
+      "summary": null,
+      "cover": 0,
+      "assets": [
+        {
+          "src": "assets/portfolio/golden-chicken/01-wordmark.png",
+          "type": "Logo",
+          "caption": "Wordmark",
+          "width": 2000,
+          "height": 2000,
+          "web": [
+            960,
+            1920
+          ]
+        },
+        {
+          "src": "assets/portfolio/golden-chicken/02-roundel.png",
+          "type": "Logo",
+          "caption": "Roundel",
+          "width": 2000,
+          "height": 2000,
+          "web": [
+            960,
+            1920
+          ]
+        }
+      ]
+    },
+    {
+      "id": "machida-shoten",
+      "title": "Machida Shoten",
+      "client": "Machida Shoten",
+      "order": 35,
+      "types": [
+        "Menu",
+        "Promotion",
+        "Voucher"
+      ],
+      "categories": [
+        "food",
+        "menu",
+        "print"
+      ],
+      "status": "published",
+      "visible": true,
+      "featured": false,
+      "year": null,
+      "regions": [],
+      "summary": null,
+      "cover": 0,
+      "assets": [
+        {
+          "src": "assets/portfolio/machida-shoten/01-garlic-monster-promotion.png",
+          "type": "Promotion",
+          "caption": "Garlic Monster",
+          "width": 2000,
+          "height": 2829,
+          "web": [
+            960,
+            1920
+          ]
+        },
+        {
+          "src": "assets/portfolio/machida-shoten/02-lunch-menu.png",
+          "type": "Menu",
+          "caption": "Lunch Menu",
+          "width": 2000,
+          "height": 3000,
+          "web": [
+            960,
+            1920
+          ]
+        },
+        {
+          "src": "assets/portfolio/machida-shoten/03-spicy-ramen-promotion.png",
+          "type": "Promotion",
+          "caption": "Spicy Ramen",
+          "width": 2000,
+          "height": 2829,
+          "web": [
+            960,
+            1920
+          ]
+        },
+        {
+          "src": "assets/portfolio/machida-shoten/04-voucher-back.png",
+          "type": "Voucher",
+          "caption": "Voucher / Back",
+          "width": 2000,
+          "height": 1209,
+          "web": [
+            960,
+            1920
+          ]
+        },
+        {
+          "src": "assets/portfolio/machida-shoten/05-voucher-front.png",
+          "type": "Voucher",
+          "caption": "Voucher / Front",
+          "width": 2000,
+          "height": 1209,
+          "web": [
+            960,
+            1920
+          ]
+        },
+        {
+          "src": "assets/portfolio/machida-shoten/06-soda-floats-promotion.png",
+          "type": "Promotion",
+          "caption": "Soda Floats",
+          "width": 2000,
+          "height": 2762,
+          "web": [
+            960,
+            1920
+          ]
+        },
+        {
+          "src": "assets/portfolio/machida-shoten/07-japanese-sweets-promotion.png",
+          "type": "Promotion",
+          "caption": "Japanese Sweet Treats",
+          "width": 2000,
+          "height": 2762,
+          "web": [
+            960,
+            1920
+          ]
+        },
+        {
+          "src": "assets/portfolio/machida-shoten/08-all-ramen-promotion.png",
+          "type": "Promotion",
+          "caption": "All Ramen / 20% Off",
+          "width": 2000,
+          "height": 954,
+          "web": [
+            960,
+            1920
+          ]
+        },
+        {
+          "src": "assets/portfolio/machida-shoten/09-phnom-penh-promotion.png",
+          "type": "Promotion",
+          "caption": "World's No. 1 Japanese Ramen",
+          "width": 2000,
+          "height": 954,
+          "web": [
+            960,
+            1920
+          ]
+        }
+      ]
+    },
+    {
+      "id": "origin-hunter-omakase",
+      "title": "Origin Hunter Omakase",
+      "client": "Origin Hunter Omakase",
+      "order": 25,
+      "types": [
+        "Editorial",
+        "Book",
+        "Menu"
+      ],
+      "categories": [
+        "food",
+        "editorial",
+        "menu"
+      ],
+      "status": "published",
+      "visible": true,
+      "featured": false,
+      "year": null,
+      "regions": [],
+      "summary": null,
+      "cover": 0,
+      "assets": [
+        {
+          "src": "assets/portfolio/origin-hunter-omakase/01-tuna-editorial-image.png",
+          "type": "Editorial",
+          "caption": "Tuna",
+          "width": 2000,
+          "height": 2829,
+          "web": [
+            960,
+            1920
+          ]
+        },
+        {
+          "src": "assets/portfolio/origin-hunter-omakase/02-origin-of-tuna.png",
+          "type": "Editorial",
+          "caption": "Origin of Tuna",
+          "width": 2000,
+          "height": 2829,
+          "web": [
+            960,
+            1920
+          ]
+        },
+        {
+          "src": "assets/portfolio/origin-hunter-omakase/03-wild-tuna.png",
+          "type": "Editorial",
+          "caption": "Wild Tuna",
+          "width": 2000,
+          "height": 2829,
+          "web": [
+            960,
+            1920
+          ]
+        },
+        {
+          "src": "assets/portfolio/origin-hunter-omakase/04-origin-of-uni.png",
+          "type": "Editorial",
+          "caption": "Origin of Uni",
+          "width": 2000,
+          "height": 2829,
+          "web": [
+            960,
+            1920
+          ]
+        },
+        {
+          "src": "assets/portfolio/origin-hunter-omakase/05-sea-urchin.png",
+          "type": "Editorial",
+          "caption": "Sea Urchin",
+          "width": 2000,
+          "height": 2829,
+          "web": [
+            960,
+            1920
+          ]
+        },
+        {
+          "src": "assets/portfolio/origin-hunter-omakase/06-origin-of-crab.png",
+          "type": "Editorial",
+          "caption": "Origin of Crab",
+          "width": 2000,
+          "height": 2829,
+          "web": [
+            960,
+            1920
+          ]
+        },
+        {
+          "src": "assets/portfolio/origin-hunter-omakase/07-horsehair-crab.png",
+          "type": "Editorial",
+          "caption": "Horsehair Crab",
+          "width": 2000,
+          "height": 2829,
+          "web": [
+            960,
+            1920
+          ]
+        },
+        {
+          "src": "assets/portfolio/origin-hunter-omakase/08-japanese-seafood-illustration.png",
+          "type": "Editorial",
+          "caption": "Seafood Illustration",
+          "width": 2000,
+          "height": 2829,
+          "web": [
+            960,
+            1920
+          ]
+        },
+        {
+          "src": "assets/portfolio/origin-hunter-omakase/09-omakase-menu.png",
+          "type": "Menu",
+          "caption": "Omakase Menu",
+          "width": 2000,
+          "height": 2829,
+          "web": [
+            960,
+            1920
+          ]
+        }
+      ]
+    },
+    {
+      "id": "jfb-presents",
+      "title": "JFB Presents",
+      "client": "JFB Presents",
+      "order": 55,
+      "types": [
+        "Menu"
+      ],
+      "categories": [
+        "food",
+        "menu",
+        "print"
+      ],
+      "status": "published",
+      "visible": true,
+      "featured": false,
+      "year": null,
+      "regions": [],
+      "summary": null,
+      "cover": 0,
+      "assets": [
+        {
+          "src": "assets/portfolio/jfb-presents/01-drink-menu.png",
+          "type": "Menu",
+          "caption": "Drink Menu",
+          "width": 2000,
+          "height": 2829,
+          "web": [
+            960,
+            1920
+          ]
+        },
+        {
+          "src": "assets/portfolio/jfb-presents/02-origin-sake-selection.png",
+          "type": "Menu",
+          "caption": "Origin Sake Selection",
+          "width": 2000,
+          "height": 2829,
+          "web": [
+            960,
+            1920
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hakkaisan",
+      "title": "Hakkaisan",
+      "client": "Hakkaisan",
+      "order": 60,
+      "types": [
+        "Menu",
+        "Promotion"
+      ],
+      "categories": [
+        "food",
+        "menu",
+        "print"
+      ],
+      "status": "published",
+      "visible": true,
+      "featured": false,
+      "year": null,
+      "regions": [],
+      "summary": null,
+      "cover": 0,
+      "assets": [
+        {
+          "src": "assets/portfolio/hakkaisan/01-hakkaisan-menu-promotion.png",
+          "type": "Promotion",
+          "caption": "Hakkaisan",
+          "width": 2000,
+          "height": 2829,
+          "web": [
+            960,
+            1920
+          ]
+        },
+        {
+          "src": "assets/portfolio/hakkaisan/02-mokkiri-sake-promotion.png",
+          "type": "Promotion",
+          "caption": "Mokkiri",
+          "width": 2000,
+          "height": 2829,
+          "web": [
+            960,
+            1920
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wagokoro-pizza",
+      "title": "Wagokoro Pizza",
+      "client": "Wagokoro Pizza",
+      "order": 65,
+      "types": [
+        "Menu",
+        "Promotion"
+      ],
+      "categories": [
+        "food",
+        "menu",
+        "print"
+      ],
+      "status": "published",
+      "visible": true,
+      "featured": false,
+      "year": null,
+      "regions": [],
+      "summary": null,
+      "cover": 0,
+      "assets": [
+        {
+          "src": "assets/portfolio/wagokoro-pizza/01-pocket-pizza-promotion.png",
+          "type": "Promotion",
+          "caption": "Pocket Pizza",
+          "width": 2000,
+          "height": 1415,
+          "web": [
+            960,
+            1920
+          ]
+        }
+      ]
     }
   ]
 }
