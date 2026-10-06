@@ -36,6 +36,12 @@ jobs:
           VITE_BRAND=cijd npx vite build --base=/ --outDir dist-cijd-preview
           PORTFOLIO_HRK_BUILD=dist-preview PORTFOLIO_CIJD_BUILD=dist-cijd-preview npm run check:builds
 
+      - name: Require stable Cloudflare Pages credentials
+        if: env.CLOUDFLARE_API_TOKEN == '' || env.CLOUDFLARE_ACCOUNT_ID == ''
+        run: |
+          echo "::error title=Cloudflare Preview credentials missing::Set CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID as GitHub Actions secrets. Temporary Workers previews cannot serve preserved artwork originals larger than the Workers asset limit."
+          exit 1
+
       - name: Deploy HRK branch preview
         if: env.CLOUDFLARE_API_TOKEN != ''
         run: |
@@ -54,18 +60,6 @@ jobs:
             --project-name="$CIJD_PROJECT" --branch=portfolio-2026-refresh \
             --commit-hash="$GITHUB_SHA" | tee deploy-cijd.log
 
-      - name: Deploy temporary HRK preview
-        if: env.CLOUDFLARE_API_TOKEN == ''
-        run: |
-          npx --yes wrangler@4 deploy --temporary --assets ./dist-preview \
-            --name "$HRK_PROJECT" --compatibility-date 2026-10-01 2>&1 | tee deploy-hrk.log
-
-      - name: Deploy temporary CIJD preview
-        if: env.CLOUDFLARE_API_TOKEN == ''
-        run: |
-          npx --yes wrangler@4 deploy --temporary --assets ./dist-cijd-preview \
-            --name "$CIJD_PROJECT" --compatibility-date 2026-10-01 2>&1 | tee deploy-cijd.log
-
       - name: Publish and verify preview URLs
         id: urls
         if: always()
@@ -77,7 +71,7 @@ jobs:
           {
             echo "### Portfolio previews"
             echo ""
-            echo "Commit: `$GITHUB_SHA`"
+            echo "Commit: $GITHUB_SHA"
             echo ""
             echo "HRK: ${HRK_URL:-not found — see deploy-hrk.log}"
           echo ""
