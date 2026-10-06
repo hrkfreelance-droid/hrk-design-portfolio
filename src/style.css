@@ -511,6 +511,163 @@ dt {
   }
 }
 
+/* ------------------------------------------------------- moodboard preview */
+
+.moodboard-grid.is-previewing .mood-tile {
+  pointer-events: none;
+  filter: blur(3px) brightness(.72);
+  transition: filter 280ms ease;
+}
+
+.mood-preview-layer {
+  position: fixed;
+  z-index: 10000;
+  inset: 0;
+  display: block;
+  background: rgb(0 0 0 / 40%);
+  -webkit-backdrop-filter: blur(5px) brightness(.72);
+  backdrop-filter: blur(5px) brightness(.72);
+  opacity: 0;
+  overscroll-behavior: contain;
+  touch-action: none;
+  transition: opacity 300ms ease;
+}
+
+.mood-preview-layer.is-open {
+  opacity: 1;
+}
+
+.mood-preview-card {
+  position: fixed;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: var(--bg);
+  color: var(--fg);
+  box-shadow: 0 24px 80px rgb(0 0 0 / 24%);
+  transform-origin: 50% 42%;
+  backface-visibility: hidden;
+  will-change: left, top, width, height, transform;
+}
+
+.mood-preview-image {
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 0;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  max-height: 70vh;
+  object-fit: contain;
+  object-position: center;
+}
+
+.mood-preview-meta {
+  flex: 0 0 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 9px 14px 10px;
+  border-top: 1px solid var(--line);
+}
+
+.mood-preview-client,
+.mood-preview-year {
+  display: block;
+  color: var(--muted);
+  font: 400 9px/1.4 var(--mono);
+  letter-spacing: .07em;
+  text-transform: uppercase;
+}
+
+.mood-preview-meta h2 {
+  margin: 2px 0 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.25;
+}
+
+.mood-preview-project {
+  flex: 0 0 auto;
+  color: var(--accent);
+  font: 400 10px/1.4 var(--mono);
+  letter-spacing: .06em;
+  white-space: nowrap;
+}
+
+.mood-preview-close {
+  position: absolute;
+  z-index: 2;
+  top: 9px;
+  right: 9px;
+  min-width: 54px;
+  padding: 6px 8px;
+  border: 1px solid var(--line);
+  background: var(--bg);
+  color: var(--fg);
+  cursor: pointer;
+  font: 400 9px/1.3 var(--mono);
+  letter-spacing: .06em;
+}
+
+.mood-preview-close span {
+  margin-left: 3px;
+  font-size: 13px;
+}
+
+.mood-preview-project:focus-visible,
+.mood-preview-close:focus-visible {
+  outline: 1px solid var(--accent);
+  outline-offset: 3px;
+}
+
+@media (max-width: 700px) {
+  .mood-preview-layer {
+    display: grid;
+    place-items: center;
+    padding: 0;
+    background: rgb(0 0 0 / 54%);
+    -webkit-backdrop-filter: blur(4px) brightness(.68);
+    backdrop-filter: blur(4px) brightness(.68);
+  }
+
+  .mood-preview-card {
+    border-radius: 1px;
+    max-width: calc(100vw - 28px);
+    max-height: calc(100dvh - 32px);
+  }
+
+  .mood-preview-image {
+    max-height: calc(100dvh - 190px);
+  }
+
+  .mood-preview-meta {
+    flex-basis: 92px;
+    align-items: flex-end;
+    gap: 8px;
+    padding: 12px 10px;
+  }
+
+  .mood-preview-meta h2 {
+    max-width: 52vw;
+    font-size: 13px;
+  }
+
+  .mood-preview-project {
+    font-size: 9px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mood-preview-layer,
+  .moodboard-grid.is-previewing .mood-tile {
+    transition: none !important;
+  }
+}
+
 .index-list {
   border-top: 1px solid var(--fg);
   padding-top: 10px;

@@ -122,7 +122,7 @@ export function renderMoodboard() {
       const wide = size !== "tall" && Math.random() < 0.2;
       const sameAsClient = project.client && project.title.normalize("NFKC").trim().toLocaleLowerCase("en") === project.client.normalize("NFKC").trim().toLocaleLowerCase("en");
       const metaTitle = sameAsClient ? project.year || "" : [project.title, project.year].filter(Boolean).join(" · ");
-      return `<a class="mood-tile" href="#/project/${esc(project.id)}" data-project="${esc(project.id)}" data-client="${esc(clientKey)}" data-from="all" data-asset="${assetIndex}" data-size="${size}" data-wide="${wide}" aria-label="${esc(label)} — open project" title="${esc(label)}">
+      return `<a class="mood-tile" href="#/project/${esc(project.id)}" data-project="${esc(project.id)}" data-client="${esc(clientKey)}" data-client-name="${esc(project.client || "")}" data-title="${esc(project.title)}" data-year="${esc(project.year || "")}" data-from="all" data-asset="${assetIndex}" data-size="${size}" data-wide="${wide}" aria-label="${esc(label)} — open project" title="${esc(label)}">
         ${img(asset, { alt: label, sizes: "(min-width: 1440px) 420px, 48vw", eager: index < 8 })}
         <span class="mood-tile-meta"><span class="mood-client">${esc(project.client || "")}</span><span class="mood-title">${esc(metaTitle)}</span></span>
       </a>`;
@@ -163,6 +163,11 @@ export function mountMoodboard(root) {
   let scrollDirection = 1;
   let manuallyPaused = false;
   let hovering = false;
+  let previewLayer = null;
+  let returnFocus = null;
+  let savedScrollY = 0;
+  let inertState = [];
+  let previewClosing = false;
   const canAutoScroll = window.matchMedia("(min-width: 900px) and (hover: hover) and (pointer: fine)").matches && !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   const stopAutoScroll = () => {
@@ -172,7 +177,7 @@ export function mountMoodboard(root) {
     scrollFraction = 0;
   };
   const tick = (now) => {
-    if (!canAutoScroll || manuallyPaused || hovering || document.hidden) {
+    if (!canAutoScroll || manuallyPaused || hovering || previewLayer || document.hidden) {
       stopAutoScroll();
       return;
     }
@@ -204,7 +209,7 @@ export function mountMoodboard(root) {
   };
   const beginAfterPause = (delay = 1800) => {
     clearTimeout(startTimer);
-    if (!canAutoScroll || manuallyPaused || hovering || document.hidden) return;
+    if (!canAutoScroll || manuallyPaused || hovering || previewLayer || document.hidden) return;
     startTimer = window.setTimeout(() => {
       lastTick = 0;
       autoFrame = requestAnimationFrame(tick);
@@ -218,7 +223,7 @@ export function mountMoodboard(root) {
     stopAutoScroll();
   };
   const resumeAfterIdle = () => {
-    if (!canAutoScroll) return;
+    if (!canAutoScroll || previewLayer) return;
     clearTimeout(idleTimer);
     idleTimer = window.setTimeout(() => {
       manuallyPaused = false;
@@ -232,6 +237,26 @@ export function mountMoodboard(root) {
   const onPointerDown = () => markManual();
   const onPointerUp = () => resumeAfterIdle();
   const onKeyDown = (event) => {
+    if (previewLayer) {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        closePreview();
+        return;
+      }
+      if (event.key === "Tab") {
+        const focusable = [...previewLayer.querySelectorAll("button, a[href]")];
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first.focus();
+        }
+      }
+      return;
+    }
     if (["PageDown", "PageUp", "ArrowDown", "ArrowUp", "Home", "End", " "].includes(event.key)) {
       markManual();
       resumeAfterIdle();
@@ -263,6 +288,139 @@ export function mountMoodboard(root) {
     }
   };
 
+  const releasePreview = () => {
+    if (!previewLayer) return;
+    const layer = previewLayer;
+    previewLayer = null;
+    layer.remove();
+    inertState.forEach(([element, wasInert]) => { element.inert = wasInert; });
+    inertState = [];
+    grid.classList.remove("is-previewing");
+    grid.querySelector("[data-preview-selected]")?.removeAttribute("data-preview-selected");
+    window.scrollTo(0, savedScrollY);
+    returnFocus?.focus({ preventScroll: true });
+    returnFocus = null;
+    hovering = false;
+    grid.classList.remove("has-hover");
+    previewClosing = false;
+    if (canAutoScroll) {
+      manuallyPaused = false;
+      beginAfterPause(2200);
+    }
+  };
+
+  const closePreview = async (animate = true) => {
+    if (!previewLayer || previewClosing) return;
+    previewClosing = true;
+    const layer = previewLayer;
+    const card = layer.querySelector(".mood-preview-card");
+    if (animate && card) {
+      const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const compact = window.matchMedia("(max-width: 700px)").matches || reduced;
+      if (compact) {
+        try { await card.animate([
+          { opacity: 1, transform: "translate(-50%, -50%) scale(1)" },
+          { opacity: 0, transform: "translate(-50%, -50%) scale(.96)" },
+        ], { duration: reduced ? 120 : 220, easing: "ease-in" }).finished; } catch {}
+      } else {
+        const original = layer._sourceRect;
+        const current = card.getBoundingClientRect();
+        try { await card.animate([
+          { left: `${current.left}px`, top: `${current.top}px`, width: `${current.width}px`, height: `${current.height}px`, transform: "perspective(1200px) rotateY(0deg) rotateX(0deg) scale(1)" },
+          { left: `${original.left}px`, top: `${original.top}px`, width: `${original.width}px`, height: `${original.height}px`, transform: "perspective(1200px) rotateY(-5deg) rotateX(2deg) scale(.96)" },
+        ], { duration: 380, easing: "cubic-bezier(.2,.75,.25,1)" }).finished; } catch {}
+      }
+    }
+    if (previewLayer === layer) releasePreview();
+  };
+
+  const openPreview = (tile) => {
+    if (previewLayer || !tile) return;
+    markManual();
+    hovering = false;
+    grid.classList.remove("has-hover");
+    savedScrollY = window.scrollY;
+    returnFocus = tile;
+    const sourceRect = tile.getBoundingClientRect();
+    const sourceImage = tile.querySelector("img");
+    const imageRatio = Number(sourceImage?.getAttribute("width")) / Number(sourceImage?.getAttribute("height")) || 0.8;
+    const compact = window.matchMedia("(max-width: 700px)").matches;
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const maxImageWidth = compact ? window.innerWidth - 32 : Math.min(window.innerWidth * 0.78, 1040);
+    const maxImageHeight = compact ? window.innerHeight - 190 : window.innerHeight * 0.70;
+    const imageWidth = Math.max(120, Math.min(maxImageWidth, maxImageHeight * imageRatio));
+    const imageHeight = imageWidth / imageRatio;
+    const finalHeight = imageHeight + (compact ? 92 : 76);
+    const finalLeft = (window.innerWidth - imageWidth) / 2;
+    const finalTop = (window.innerHeight - finalHeight) / 2;
+    const layer = document.createElement("div");
+    layer.className = `mood-preview-layer${compact ? " is-compact" : ""}`;
+    layer.setAttribute("data-mood-preview", "");
+    layer.innerHTML = `<section class="mood-preview-card" role="dialog" aria-modal="true" aria-label="${esc(tile.dataset.title || "Selected artwork")}" tabindex="-1">
+      <button class="mood-preview-close" type="button" aria-label="Close artwork preview">CLOSE <span aria-hidden="true">×</span></button>
+      <img class="mood-preview-image" src="${(sourceImage?.currentSrc || sourceImage?.src || "").replace(/&/g, "&amp;").replace(/"/g, "&quot;")}" width="${sourceImage?.getAttribute("width") || ""}" height="${sourceImage?.getAttribute("height") || ""}" alt="${(sourceImage?.alt || "Artwork").replace(/&/g, "&amp;").replace(/"/g, "&quot;")}">
+      <div class="mood-preview-meta"><div><span class="mood-preview-client">${esc(tile.dataset.clientName || "")}</span><h2>${esc(tile.dataset.title || "")}</h2><span class="mood-preview-year">${esc(tile.dataset.year || "")}</span></div><a class="mood-preview-project" href="#/project/${esc(tile.dataset.project)}" data-from="all">VIEW PROJECT <span aria-hidden="true">↗</span></a></div>
+    </section>`;
+    const card = layer.querySelector(".mood-preview-card");
+    layer._sourceRect = sourceRect;
+    if (compact || reduced) {
+      card.style.left = "50%";
+      card.style.top = "50%";
+      card.style.width = `${imageWidth}px`;
+      card.style.height = `${finalHeight}px`;
+      card.style.transform = "translate(-50%, -50%)";
+    } else {
+      card.style.left = `${sourceRect.left}px`;
+      card.style.top = `${sourceRect.top}px`;
+      card.style.width = `${sourceRect.width}px`;
+      card.style.height = `${sourceRect.height}px`;
+    }
+    document.body.append(layer);
+    inertState = [...document.body.children].filter((element) => element !== layer).map((element) => [element, element.inert]);
+    inertState.forEach(([element]) => { element.inert = true; });
+    grid.classList.add("is-previewing");
+    previewLayer = layer;
+    layer.addEventListener("click", (event) => {
+      if (event.target === layer || event.target.closest("[data-preview-dismiss]")) closePreview();
+    });
+    layer.addEventListener("wheel", (event) => event.preventDefault(), { passive: false });
+    layer.querySelector(".mood-preview-close").addEventListener("click", () => closePreview());
+    requestAnimationFrame(() => {
+      if (previewLayer !== layer) return;
+      layer.classList.add("is-open");
+      if (compact || reduced) {
+        card.animate([
+          { opacity: 0, transform: "translate(-50%, -50%) scale(.96)" },
+          { opacity: 1, transform: "translate(-50%, -50%) scale(1)" },
+        ], { duration: reduced ? 140 : 360, easing: "cubic-bezier(.2,.75,.25,1)" });
+      } else {
+        const animation = card.animate([
+          { left: `${sourceRect.left}px`, top: `${sourceRect.top}px`, width: `${sourceRect.width}px`, height: `${sourceRect.height}px`, transform: "perspective(1200px) rotateY(-8deg) rotateX(4deg) scale(.96)" },
+          { left: `${(sourceRect.left + finalLeft) / 2}px`, top: `${(sourceRect.top + finalTop) / 2}px`, width: `${(sourceRect.width + imageWidth) / 2}px`, height: `${(sourceRect.height + finalHeight) / 2}px`, transform: "perspective(1200px) rotateY(2deg) rotateX(-1deg) scale(1.015)" },
+          { left: `${finalLeft}px`, top: `${finalTop}px`, width: `${imageWidth}px`, height: `${finalHeight}px`, transform: "perspective(1200px) rotateY(0deg) rotateX(0deg) scale(1)" },
+        ], { duration: 460, easing: "cubic-bezier(.2,.75,.25,1)" });
+        animation.finished.then(() => {
+          if (previewLayer === layer) {
+            card.style.left = `${finalLeft}px`;
+            card.style.top = `${finalTop}px`;
+            card.style.width = `${imageWidth}px`;
+            card.style.height = `${finalHeight}px`;
+            card.style.transform = "perspective(1200px) rotateY(0deg) rotateX(0deg) scale(1)";
+          }
+        }).catch(() => {});
+      }
+      layer.querySelector(".mood-preview-close").focus({ preventScroll: true });
+    });
+  };
+
+  const onTileClick = (event) => {
+    const tile = event.target.closest?.(".mood-tile");
+    if (!tile) return;
+    event.preventDefault();
+    tile.dataset.previewSelected = "true";
+    openPreview(tile);
+  };
+  grid.addEventListener("click", onTileClick);
   grid.addEventListener("pointerover", onEnter);
   grid.addEventListener("pointerout", onLeave);
   grid.addEventListener("focusin", onEnter);
@@ -337,10 +495,12 @@ export function mountMoodboard(root) {
   layout();
   return () => {
     observer.disconnect();
+    closePreview(false);
     cancelAnimationFrame(frame);
     stopAutoScroll();
     clearTimeout(idleTimer);
     clearTimeout(startTimer);
+    grid.removeEventListener("click", onTileClick);
     grid.removeEventListener("pointerover", onEnter);
     grid.removeEventListener("pointerout", onLeave);
     grid.removeEventListener("focusin", onEnter);
