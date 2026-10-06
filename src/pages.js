@@ -1,5 +1,6 @@
 import { projects, categories, getProject, getCategory, neighbours, coverOf, imageAttrs } from "./data.js";
 import { renderQR } from "./qr.js";
+import { brand, isCijd } from "./brand.js";
 
 const TELEGRAM = "hiroki_pp";
 
@@ -275,6 +276,22 @@ export function renderProject(id, from) {
 /* ---------------------------------------------------------------- about */
 
 export function renderAbout() {
+  if (isCijd) {
+    return {
+      spine: "About",
+      html: `
+      <section class="plain">
+        <header class="page-head">
+          <p class="crumbs"><a href="#/">Index</a><span>/</span><span>About</span></p>
+          <h1 id="page-title" tabindex="-1">CIJD</h1>
+          <p class="head-note">Graphic design support in Cambodia.</p>
+        </header>
+        <div class="plain-body">
+          <p>CIJD provides graphic design support for businesses in Cambodia. Menus, packaging, signage and promotional materials are handled by an experienced Japanese designer, with local production support when required.</p>
+        </div>
+      </section>`,
+    };
+  }
   const list = (items) => `<ul>${items.map((item) => `<li>${item}</li>`).join("")}</ul>`;
   return {
     spine: "About",
@@ -300,6 +317,21 @@ export function renderAbout() {
 /* -------------------------------------------------------------- contact */
 
 export function renderContact() {
+  if (isCijd) {
+    return {
+      spine: "Contact",
+      html: `
+      <section class="plain">
+        <header class="page-head">
+          <p class="crumbs"><a href="#/">Index</a><span>/</span><span>Contact</span></p>
+          <h1 id="page-title" tabindex="-1">Contact</h1>
+        </header>
+        <dl class="facts">
+          <div><dt>Inquiry</dt><dd><a class="text-link" href="${brand.contactUrl}" target="_blank" rel="noopener">CamboInfo Contact ↗</a></dd></div>
+        </dl>
+      </section>`,
+    };
+  }
   return {
     spine: "Contact",
     html: `
@@ -317,6 +349,7 @@ export function renderContact() {
 }
 
 export function mountContact(root) {
+  if (isCijd) return;
   const el = root.querySelector("[data-qr]");
   if (el) renderQR(el, `https://t.me/${TELEGRAM}`);
 }

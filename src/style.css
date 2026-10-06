@@ -49,6 +49,14 @@
   color-scheme: dark;
 }
 
+:root[data-brand="cijd"] {
+  --accent: #006faf;
+}
+
+:root[data-brand="cijd"][data-theme="dark"] {
+  --accent: #0084d0;
+}
+
 @media (min-width: 900px) {
   :root {
     --spine: 48px;

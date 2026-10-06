@@ -5,6 +5,7 @@ import { readFileSync, appendFileSync } from "node:fs";
 import { chromium } from "playwright";
 
 const BASE = (process.env.PREVIEW_URL || "").replace(/\/?$/, "/");
+const EXPECTED_BRAND = process.env.EXPECTED_BRAND === "cijd" ? "cijd" : "hrk";
 if (!/^https?:\/\//.test(BASE)) throw new Error("PREVIEW_URL missing");
 
 const data = JSON.parse(readFileSync(new URL("../public/data/portfolio.json", import.meta.url)));
@@ -13,13 +14,14 @@ const cats = data.categories.filter((c) => pub.some((p) => p.categories.includes
 const routes = ["#/", "#/about", "#/contact", "#/category/all", ...cats.map((c) => `#/category/${c.id}`), ...pub.map((p) => `#/project/${p.id}`)];
 
 const problems = [];
+const routeView = (route) => route.replace(/^#\/?/, "").split("/")[0] || "index";
 const notes = [];
 const browser = await chromium.launch();
 
 for (const theme of ["light", "dark"]) {
   for (const [width, height] of [[1440, 900], [390, 844]]) {
     const ctx = await browser.newContext({ viewport: { width, height } });
-    await ctx.addInitScript((t) => localStorage.setItem("hrk-theme", t), theme);
+    await ctx.addInitScript((t, key) => localStorage.setItem(key, t), theme, `${EXPECTED_BRAND}-theme`);
     const page = await ctx.newPage();
     const tag = `${theme} ${width}`;
     page.on("pageerror", (e) => problems.push(`${tag} pageerror: ${e.message}`));
@@ -28,8 +30,22 @@ for (const theme of ["light", "dark"]) {
 
     for (const route of routes) {
       await page.goto(BASE + route);
+      await page.waitForFunction((view) => document.querySelector("[data-app]")?.dataset.view === view, routeView(route));
       await page.waitForTimeout(300);
       await page.waitForSelector("#page-title", { timeout: 15000 });
+      const identity = await page.evaluate(() => ({
+        brand: document.documentElement.dataset.brand,
+        label: document.querySelector(".logo")?.textContent,
+        title: document.title,
+        description: document.querySelector('meta[name="description"]')?.content || "",
+        canonical: document.querySelector('link[rel="canonical"]')?.href || "",
+        accent: getComputedStyle(document.documentElement).getPropertyValue("--accent").trim(),
+      }));
+      const expectedLabel = EXPECTED_BRAND === "cijd" ? "CIJD" : "hrk_design";
+      if (identity.brand !== EXPECTED_BRAND || identity.label !== expectedLabel) problems.push(`${tag} incorrect brand identity: ${JSON.stringify(identity)}`);
+      if (EXPECTED_BRAND === "cijd" && (/hrk_design|hiroki_pp/i.test(identity.description) || !identity.canonical.includes("cijd-design-portfolio-preview"))) {
+        problems.push(`${tag} incorrect CIJD metadata: ${JSON.stringify(identity)}`);
+      }
       await page.evaluate(async () => {
         for (let y = 0; y < document.body.scrollHeight; y += 600) {
           window.scrollTo(0, y);
@@ -60,6 +76,9 @@ for (const theme of ["light", "dark"]) {
         return out;
       });
       if (r.theme !== theme) problems.push(`${tag} ${route} theme is ${r.theme}`);
+      const expectedAccent = EXPECTED_BRAND === "cijd" ? theme === "dark" ? "#0084d0" : "#006faf" : theme === "dark" ? "#f0533c" : "#e23b24";
+      if (identity.accent !== expectedAccent) problems.push(`${tag} wrong ${EXPECTED_BRAND} accent ${identity.accent}`);
+      if (EXPECTED_BRAND === "cijd" && /hrk_design|@hiroki_pp|t\.me\/hiroki_pp/i.test(await page.locator("body").innerText())) problems.push(`${tag} ${route} includes HRK content`);
       if (r.squares) problems.push(`${tag} ${route} square counters present`);
       if (r.overflow) problems.push(`${tag} ${route} horizontal overflow`);
       r.broken.forEach((s) => problems.push(`${tag} ${route} broken ${s}`));

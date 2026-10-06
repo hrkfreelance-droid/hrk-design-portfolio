@@ -1,4 +1,4 @@
-const STORAGE_KEY = "hrk-theme";
+const STORAGE_KEY = `${import.meta.env.VITE_BRAND || "hrk"}-theme`;
 
 function read() {
   try {

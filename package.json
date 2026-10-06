@@ -6,7 +6,10 @@
   "scripts": {
     "dev": "vite",
     "check": "node scripts/check-data.mjs",
+    "check:builds": "node scripts/check-brand-builds.mjs",
     "build": "node scripts/check-data.mjs && vite build",
+    "build:hrk": "npm run build",
+    "build:cijd": "node scripts/check-data.mjs && VITE_BRAND=cijd vite build --outDir dist-cijd",
     "preview": "vite preview"
   },
   "devDependencies": {

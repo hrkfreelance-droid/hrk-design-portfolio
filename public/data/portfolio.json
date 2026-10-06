@@ -1600,17 +1600,20 @@
       "id": "the-japan-shop",
       "title": "The JAPAN SHOP",
       "client": "The JAPAN SHOP",
-      "status": "archived",
-      "visible": false,
+      "status": "published",
+      "visible": true,
       "featured": false,
-      "order": 900,
+      "order": 32,
       "year": null,
       "regions": [],
       "types": [
-        "Logo"
+        "Logo",
+        "Product Promotion"
       ],
       "categories": [
-        "branding"
+        "food",
+        "branding",
+        "print"
       ],
       "summary": null,
       "cover": 0,
@@ -1625,6 +1628,39 @@
           "web": [
             960,
             1758
+          ]
+        },
+        {
+          "src": "assets/portfolio/the-japan-shop/01-grand-tandoori-chicken.jpg",
+          "type": "Product Promotion",
+          "caption": "Tandoori Chicken Promotion",
+          "width": 2000,
+          "height": 2500,
+          "web": [
+            960,
+            1920
+          ]
+        },
+        {
+          "src": "assets/portfolio/the-japan-shop/02-roasted-garlic-chicken.jpg",
+          "type": "Product Promotion",
+          "caption": "Roasted Garlic Chicken Promotion",
+          "width": 2000,
+          "height": 2500,
+          "web": [
+            960,
+            1920
+          ]
+        },
+        {
+          "src": "assets/portfolio/the-japan-shop/03-green-onion-salt-chicken.jpg",
+          "type": "Product Promotion",
+          "caption": "Green Onion Salt Chicken Promotion",
+          "width": 2000,
+          "height": 2500,
+          "web": [
+            960,
+            1920
           ]
         }
       ]
@@ -2373,6 +2409,174 @@
           "caption": "Flyer / Back",
           "width": 2000,
           "height": 2838,
+          "web": [
+            960,
+            1920
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sushi-ya",
+      "title": "SUSHI YA",
+      "client": "SUSHI YA",
+      "status": "published",
+      "visible": true,
+      "featured": false,
+      "order": 34,
+      "year": null,
+      "regions": [],
+      "types": [
+        "Menu"
+      ],
+      "categories": [
+        "food",
+        "menu",
+        "print"
+      ],
+      "summary": null,
+      "cover": 0,
+      "assets": [
+        {
+          "src": "assets/portfolio/sushi-ya/01-sushi-menu.png",
+          "type": "Menu",
+          "caption": "Sushi Menu",
+          "width": 2000,
+          "height": 1415,
+          "web": [
+            960,
+            1920
+          ]
+        }
+      ]
+    },
+    {
+      "id": "demae-bento",
+      "title": "Demae Japan Bento",
+      "client": "Demae Japan Bento",
+      "status": "published",
+      "visible": true,
+      "featured": false,
+      "order": 35,
+      "year": null,
+      "regions": [],
+      "types": [
+        "Logo",
+        "Promotion"
+      ],
+      "categories": [
+        "food",
+        "branding",
+        "print"
+      ],
+      "summary": null,
+      "cover": 0,
+      "assets": [
+        {
+          "src": "assets/portfolio/demae-bento/01-logo-system.jpg",
+          "type": "Logo",
+          "caption": "Logo System",
+          "width": 2000,
+          "height": 1414,
+          "web": [
+            960,
+            1920
+          ]
+        },
+        {
+          "src": "assets/portfolio/demae-bento/02-bento-promotion.png",
+          "type": "Promotion",
+          "caption": "Bento Promotion",
+          "width": 2000,
+          "height": 1415,
+          "web": [
+            960,
+            1920
+          ]
+        }
+      ]
+    },
+    {
+      "id": "samurai-burger",
+      "title": "Samurai Burger",
+      "client": "Samurai Burger",
+      "status": "published",
+      "visible": true,
+      "featured": false,
+      "order": 36,
+      "year": null,
+      "regions": [],
+      "types": [
+        "Logo"
+      ],
+      "categories": [
+        "food",
+        "branding"
+      ],
+      "summary": null,
+      "cover": 0,
+      "assets": [
+        {
+          "src": "assets/portfolio/samurai-burger/01-horizontal-logo.jpg",
+          "type": "Logo",
+          "caption": "Horizontal Logo",
+          "width": 2000,
+          "height": 2000,
+          "web": [
+            960,
+            1920
+          ]
+        },
+        {
+          "src": "assets/portfolio/samurai-burger/02-round-logo.jpg",
+          "type": "Logo",
+          "caption": "Round Logo",
+          "width": 2000,
+          "height": 2000,
+          "web": [
+            960,
+            1920
+          ]
+        }
+      ]
+    },
+    {
+      "id": "onigiri-go",
+      "title": "OnigiriGo",
+      "client": "OnigiriGo",
+      "status": "published",
+      "visible": true,
+      "featured": false,
+      "order": 37,
+      "year": null,
+      "regions": [],
+      "types": [
+        "Logo"
+      ],
+      "categories": [
+        "food",
+        "branding"
+      ],
+      "summary": null,
+      "cover": 0,
+      "assets": [
+        {
+          "src": "assets/portfolio/onigiri-go/01-horizontal-logo.jpg",
+          "type": "Logo",
+          "caption": "Horizontal Logo",
+          "width": 2000,
+          "height": 2000,
+          "web": [
+            960,
+            1920
+          ]
+        },
+        {
+          "src": "assets/portfolio/onigiri-go/02-icon-logo.jpg",
+          "type": "Logo",
+          "caption": "Icon Logo",
+          "width": 2000,
+          "height": 2000,
           "web": [
             960,
             1920

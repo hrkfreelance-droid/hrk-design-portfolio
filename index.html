@@ -1,24 +1,24 @@
 <!doctype html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="light" data-brand="__BRAND_ID__">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>hrk_design — Index</title>
-  <meta name="description" content="hrk_design — an index of graphic design work: food and restaurant, menu, branding, packaging, print, editorial, signage and information design. Phnom Penh." />
-  <meta property="og:title" content="hrk_design — Index" />
-  <meta property="og:description" content="An index of graphic design work, organised by category." />
+  <title>__BRAND_META_TITLE__</title>
+  <meta name="description" content="__BRAND_META_DESCRIPTION__" />
+  <meta property="og:title" content="__BRAND_META_TITLE__" />
+  <meta property="og:description" content="__BRAND_OG_DESCRIPTION__" />
   <meta property="og:type" content="website" />
-  <meta name="theme-color" content="#ffffff" />
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <meta name="theme-color" content="__BRAND_THEME_COLOR__" />
+  <link rel="icon" href="__BRAND_FAVICON__" type="image/svg+xml" />
   <script>
-    try { if (localStorage.getItem("hrk-theme") === "dark") document.documentElement.dataset.theme = "dark"; } catch (e) {}
+    try { if (localStorage.getItem("__BRAND_ID__-theme") === "dark") document.documentElement.dataset.theme = "dark"; } catch (e) {}
   </script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
   <header class="site-header">
-    <a class="logo" href="#/">hrk_design</a>
+    <a class="logo" href="#/">__BRAND_LABEL__</a>
     <nav class="nav" aria-label="Primary">
       <a href="#/" data-nav="index">Index</a>
       <a href="#/about" data-nav="about">About</a>
@@ -32,8 +32,8 @@
   <main id="main" class="main" data-app tabindex="-1"></main>
 
   <footer class="site-footer">
-    <span>© <span data-year></span> hrk_design</span>
-    <a href="https://t.me/hiroki_pp" target="_blank" rel="noopener">Telegram / @hiroki_pp</a>
+    <span>© <span data-year></span> __BRAND_LABEL__</span>
+    <a href="__BRAND_FOOTER_HREF__" target="_blank" rel="noopener">__BRAND_FOOTER_LABEL__</a>
   </footer>
 
   <script type="module" src="/src/main.js"></script>

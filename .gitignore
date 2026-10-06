@@ -1,3 +1,6 @@
 node_modules
 dist
+dist-cijd
+dist-preview
+dist-cijd-preview
 .DS_Store

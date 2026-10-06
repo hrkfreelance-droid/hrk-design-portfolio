@@ -17,6 +17,7 @@ import {
   renderNotFound,
 } from "./pages.js";
 import { openViewer, closeViewerSilently } from "./viewer.js";
+import { brand } from "./brand.js";
 
 const app = document.querySelector("[data-app]");
 const spine = document.querySelector("[data-spine]");
@@ -37,6 +38,7 @@ let firstRender = true;
 
 if ("scrollRestoration" in history) history.scrollRestoration = "manual";
 document.querySelector("[data-year]").textContent = new Date().getFullYear();
+document.documentElement.dataset.brand = brand.id;
 initTheme();
 
 function setContext(id) {
@@ -69,29 +71,29 @@ function render() {
   currentKey = key;
 
   let page;
-  let title = "hrk_design";
+  let title = brand.pageTitle;
   if (path === "index") {
     page = renderIndex();
-    title = "hrk_design — Index";
+    title = `${brand.pageTitle} — Index`;
   } else if (path === "category") {
     setContext(param);
     page = renderCategory(param);
     const label = param === "all" ? "All projects" : getCategory(param)?.label || "Not found";
-    title = `${label} — hrk_design`;
+    title = `${label} — ${brand.pageTitle}`;
   } else if (path === "project") {
     const project = getProject(param);
     page = renderProject(param, context);
-    title = project ? `${project.title} — hrk_design` : "Not found — hrk_design";
+    title = project ? `${project.title} — ${brand.pageTitle}` : `Not found — ${brand.pageTitle}`;
     if (project) setContext(projectContext(project, context).id);
   } else if (path === "about") {
     page = renderAbout();
-    title = "About — hrk_design";
+    title = `About — ${brand.pageTitle}`;
   } else if (path === "contact") {
     page = renderContact();
-    title = "Contact — hrk_design";
+    title = `Contact — ${brand.pageTitle}`;
   } else {
     page = renderNotFound();
-    title = "Not found — hrk_design";
+    title = `Not found — ${brand.pageTitle}`;
   }
 
   app.innerHTML = page.html;
