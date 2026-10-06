@@ -7,6 +7,20 @@ const BASE = import.meta.env.BASE_URL;
 
 export let projects = [];
 export let categories = [];
+export let clients = [];
+
+function clientKey(value) {
+  return value.normalize("NFKC").trim().replace(/\s+/g, " ").toLocaleLowerCase("en");
+}
+
+function clientSlug(value) {
+  return value
+    .normalize("NFKD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLocaleLowerCase("en")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+}
 
 function isPublic(project) {
   return (
@@ -35,18 +49,45 @@ export async function loadData() {
     }))
     .filter((category) => category.projects.length > 0)
     .map((category, index) => ({ ...category, number: index + 1 }));
+
+  const groups = new Map();
+  for (const project of projects) {
+    if (typeof project.client !== "string" || !project.client.trim()) continue;
+    const key = clientKey(project.client);
+    if (!groups.has(key)) groups.set(key, []);
+    groups.get(key).push(project);
+  }
+  const slugs = new Set();
+  clients = [...groups.values()]
+    .map((group) => {
+      const sourceName = group[0].client.trim().replace(/\s+/g, " ");
+      const baseId = clientSlug(sourceName) || group[0].id;
+      let id = baseId;
+      let suffix = 2;
+      while (slugs.has(id)) id = `${baseId}-${suffix++}`;
+      slugs.add(id);
+      return {
+        id,
+        name: sourceName.toLocaleUpperCase("en"),
+        projects: group,
+      };
+    })
+    .sort((a, b) => a.name.localeCompare(b.name, "en", { sensitivity: "base" }))
+    .map((client, index) => ({ ...client, number: index + 1 }));
 }
 
 export const getProject = (id) => projects.find((project) => project.id === id);
 export const getCategory = (id) => categories.find((category) => category.id === id);
+export const getClient = (id) => clients.find((client) => client.id === id);
 
-// The list a project is being browsed in: its category when known, else everything.
-export function listFor(categoryId) {
-  return getCategory(categoryId)?.projects || projects;
+// A project's previous/next context can be a category, a client, or all work.
+export function listFor(contextId) {
+  if (contextId?.startsWith("client:")) return getClient(contextId.slice(7))?.projects || projects;
+  return getCategory(contextId)?.projects || projects;
 }
 
-export function neighbours(id, categoryId) {
-  const list = listFor(categoryId);
+export function neighbours(id, contextId) {
+  const list = listFor(contextId);
   const index = list.findIndex((project) => project.id === id);
   const count = list.length;
   return {

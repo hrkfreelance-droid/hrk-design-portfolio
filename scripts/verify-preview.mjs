@@ -11,7 +11,17 @@ if (!/^https?:\/\//.test(BASE)) throw new Error("PREVIEW_URL missing");
 const data = JSON.parse(readFileSync(new URL("../public/data/portfolio.json", import.meta.url)));
 const pub = data.projects.filter((p) => p.visible && p.status === "published");
 const cats = data.categories.filter((c) => pub.some((p) => p.categories.includes(c.id)));
-const routes = ["#/", "#/about", "#/contact", "#/category/all", ...cats.map((c) => `#/category/${c.id}`), ...pub.map((p) => `#/project/${p.id}`)];
+const clientGroups = new Map();
+for (const project of pub) {
+  if (typeof project.client !== "string" || !project.client.trim()) continue;
+  const name = project.client.trim().replace(/\s+/g, " ");
+  const key = name.normalize("NFKC").toLocaleLowerCase("en");
+  if (!clientGroups.has(key)) clientGroups.set(key, { name, projects: [] });
+  clientGroups.get(key).projects.push(project);
+}
+const clientSlug = (value) => value.normalize("NFKD").replace(/[\u0300-\u036f]/g, "").toLocaleLowerCase("en").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+const clients = [...clientGroups.values()].map((client) => ({ ...client, id: clientSlug(client.name) || client.projects[0].id })).sort((a, b) => a.name.localeCompare(b.name, "en", { sensitivity: "base" }));
+const routes = ["#/", "#/clients", ...clients.map((client) => `#/client/${client.id}`), "#/about", "#/contact", "#/category/all", ...cats.map((c) => `#/category/${c.id}`), ...pub.map((p) => `#/project/${p.id}`)];
 
 const problems = [];
 const routeView = (route) => route.replace(/^#\/?/, "").split("/")[0] || "index";
@@ -79,6 +89,60 @@ for (const theme of ["light", "dark"]) {
       const expectedAccent = EXPECTED_BRAND === "cijd" ? theme === "dark" ? "#0084d0" : "#006faf" : theme === "dark" ? "#f0533c" : "#e23b24";
       if (identity.accent !== expectedAccent) problems.push(`${tag} wrong ${EXPECTED_BRAND} accent ${identity.accent}`);
       if (EXPECTED_BRAND === "cijd" && /hrk_design|@hiroki_pp|t\.me\/hiroki_pp/i.test(await page.locator("body").innerText())) problems.push(`${tag} ${route} includes HRK content`);
+      if (route === "#/contact") {
+        if (EXPECTED_BRAND === "cijd") {
+          const contact = await page.evaluate(() => ({
+            hrefs: [...document.querySelectorAll(".cijd-contact a, .contact-inquiry a")].map((a) => a.getAttribute("href")),
+            columns: getComputedStyle(document.querySelector(".cijd-contact")).gridTemplateColumns.split(" ").length,
+            addressTarget: document.querySelector(".contact-address")?.target,
+            inquiryTarget: document.querySelector(".contact-inquiry a")?.target,
+          }));
+          for (const href of [
+            "mailto:info@camboinfo.com",
+            "tel:+855968886688",
+            "tel:+815036921192",
+            "https://www.google.com/maps/search/?api=1&query=CIJD%20Co.%2C%20Ltd%2C%201A%20Street%2057%2C%20Sangkat%20Bong%20Keng%20Kang%201%2C%20Khan%20Chamkarmon%2C%20Phnom%20Penh%2C%20Cambodia",
+            "https://camboinfo.com/contacts/",
+          ]) if (!contact.hrefs.includes(href)) problems.push(`${tag} CIJD contact missing ${href}`);
+          const expectedColumns = width < 760 ? 1 : 3;
+          if (contact.columns !== expectedColumns) problems.push(`${tag} CIJD contact uses ${contact.columns} columns, expected ${expectedColumns}`);
+          if (contact.addressTarget !== "_blank" || contact.inquiryTarget !== "_blank") problems.push(`${tag} CIJD external contact links should open in a new tab`);
+          if (contact.hrefs.some((href) => href?.startsWith("https://t.me/"))) problems.push(`${tag} CIJD contact contains an unverified Telegram link`);
+        } else if (/CIJD Co\., Ltd|info@camboinfo\.com|096 888 6688|050 3692 1192/.test(await page.locator("body").innerText())) {
+          problems.push(`${tag} HRK contact contains CIJD details`);
+        }
+      }
+      if (route === "#/clients") {
+        const browse = await page.evaluate(() => ({
+          active: document.querySelector('.index-switch a[aria-current="page"]')?.textContent.trim(),
+          rows: [...document.querySelectorAll(".index-list > li")].map((li) => ({
+            href: li.querySelector("a")?.getAttribute("href"),
+            name: li.querySelector(".label")?.childNodes[0]?.textContent.trim(),
+            count: Number(li.querySelector(".count")?.textContent.trim()),
+          })),
+        }));
+        if (browse.active?.toLowerCase() !== "client") problems.push(`${tag} CLIENT switch is not active`);
+        if (browse.rows.length !== clients.length) problems.push(`${tag} client list count ${browse.rows.length}, expected ${clients.length}`);
+        clients.forEach((client, index) => {
+          const row = browse.rows[index];
+          if (row?.href !== `#/client/${client.id}` || row.name !== client.name.toLocaleUpperCase("en") || row.count !== client.projects.length) {
+            problems.push(`${tag} incorrect client row ${index + 1}: ${JSON.stringify(row)}`);
+          }
+        });
+      }
+      if (route.startsWith("#/client/")) {
+        const client = clients.find((item) => route === `#/client/${item.id}`);
+        const detail = await page.evaluate(() => ({
+          title: document.querySelector("#page-title")?.textContent.trim(),
+          count: document.querySelector(".client-count")?.textContent.trim(),
+          projects: [...document.querySelectorAll(".plist .prow")].map((row) => row.getAttribute("href")),
+        }));
+        if (!client || detail.title !== client.name.toLocaleUpperCase("en") || !detail.count?.startsWith(String(client.projects.length).padStart(2, "0")) || detail.projects.length !== client.projects.length) {
+          problems.push(`${tag} incorrect client page ${route}: ${JSON.stringify(detail)}`);
+        } else if (detail.projects.some((href, index) => href !== `#/project/${client.projects[index].id}`)) {
+          problems.push(`${tag} incorrect projects on ${route}`);
+        }
+      }
       if (r.squares) problems.push(`${tag} ${route} square counters present`);
       if (r.overflow) problems.push(`${tag} ${route} horizontal overflow`);
       r.broken.forEach((s) => problems.push(`${tag} ${route} broken ${s}`));

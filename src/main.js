@@ -4,10 +4,11 @@ import "@fontsource/ibm-plex-mono/latin-400.css";
 import "@fontsource/ibm-plex-mono/latin-500.css";
 import "./style.css";
 import { initTheme } from "./theme.js";
-import { loadData, getProject, getCategory } from "./data.js";
+import { loadData, getProject, getCategory, getClient } from "./data.js";
 import {
   renderIndex,
   renderCategory,
+  renderClient,
   mountCategory,
   renderProject,
   projectContext,
@@ -75,11 +76,19 @@ function render() {
   if (path === "index") {
     page = renderIndex();
     title = `${brand.pageTitle} — Index`;
+  } else if (path === "clients") {
+    page = renderIndex("client");
+    title = `Clients — ${brand.pageTitle}`;
   } else if (path === "category") {
     setContext(param);
     page = renderCategory(param);
     const label = param === "all" ? "All projects" : getCategory(param)?.label || "Not found";
     title = `${label} — ${brand.pageTitle}`;
+  } else if (path === "client") {
+    setContext(`client:${param}`);
+    const client = getClient(param);
+    page = renderClient(param);
+    title = client ? `${client.name} — ${brand.pageTitle}` : `Not found — ${brand.pageTitle}`;
   } else if (path === "project") {
     const project = getProject(param);
     page = renderProject(param, context);
@@ -102,7 +111,7 @@ function render() {
   document.title = title;
   setActiveNav(path);
 
-  if (path === "category") mountCategory(app);
+  if (path === "category" || path === "client") mountCategory(app);
   if (path === "contact") mountContact(app);
   if (path === "project") mountProject(param);
 

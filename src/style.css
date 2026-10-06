@@ -349,6 +349,15 @@ dt {
   margin-top: clamp(56px, 9vh, 96px);
 }
 
+.index-main .index-switch {
+  margin: 0 0 10px;
+}
+
+.index-main .index-switch a {
+  padding-right: 18px;
+  text-transform: uppercase;
+}
+
 .index-list {
   border-top: 1px solid var(--fg);
   padding-top: 10px;
@@ -495,6 +504,13 @@ dt {
   font-weight: 400;
   letter-spacing: 0.06em;
   text-transform: uppercase;
+}
+
+.client-count {
+  margin-top: 10px;
+  color: var(--muted);
+  font: 400 11px/1.5 var(--mono);
+  letter-spacing: 0.06em;
 }
 
 .head-note {
@@ -842,6 +858,10 @@ dt {
   color: var(--muted);
 }
 
+.cijd-about-copy p + p {
+  margin-top: 12px;
+}
+
 .facts {
   display: grid;
   gap: 28px;
@@ -859,6 +879,50 @@ dt {
 .facts dd {
   font-size: 15px;
   line-height: 1.7;
+}
+
+.cijd-contact .contact-list {
+  display: grid;
+  justify-items: start;
+  gap: 2px;
+}
+
+.cijd-contact .contact-sub-label {
+  margin-top: 8px;
+}
+
+.cijd-services {
+  margin-top: clamp(32px, 6vh, 64px);
+}
+
+.cijd-services dd > p {
+  margin: 0;
+}
+
+.cijd-service-list {
+  margin-top: 8px !important;
+  color: var(--muted);
+}
+
+.cijd-about-closing {
+  max-width: 34em;
+  margin: 24px 0 0;
+  color: var(--muted);
+}
+
+.cijd-contact .text-link,
+.contact-inquiry .text-link {
+  color: var(--accent);
+}
+
+.contact-address {
+  display: inline-block;
+}
+
+.contact-inquiry {
+  margin-top: 24px;
+  font: 11px/1.5 var(--mono);
+  letter-spacing: 0.04em;
 }
 
 @media (min-width: 760px) {
