@@ -160,6 +160,7 @@ export function mountMoodboard(root) {
   let startTimer = 0;
   let lastTick = 0;
   let scrollFraction = 0;
+  let scrollDirection = 1;
   let manuallyPaused = false;
   let hovering = false;
   const canAutoScroll = window.matchMedia("(min-width: 900px) and (hover: hover) and (pointer: fine)").matches && !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -178,11 +179,23 @@ export function mountMoodboard(root) {
     if (lastTick) {
       const elapsed = Math.min(now - lastTick, 80);
       const bottom = document.documentElement.scrollHeight - window.innerHeight;
-      if (window.scrollY < bottom - 1) {
-        scrollFraction += elapsed * 0.003;
-        if (scrollFraction >= 0.5) {
-          window.scrollBy(0, scrollFraction);
-          scrollFraction = 0;
+      if (bottom > 0) {
+        // 0.024 CSS px/ms = 24 px/s. Whole-pixel steps prevent browsers
+        // rounding away tiny scrollBy deltas; reverse smoothly at either end.
+        scrollFraction += elapsed * 0.024;
+        const pixels = Math.floor(scrollFraction);
+        if (pixels > 0) {
+          scrollFraction -= pixels;
+          const target = window.scrollY + scrollDirection * pixels;
+          if (target >= bottom) {
+            window.scrollTo(0, bottom);
+            scrollDirection = -1;
+          } else if (target <= 0) {
+            window.scrollTo(0, 0);
+            scrollDirection = 1;
+          } else {
+            window.scrollBy(0, scrollDirection * pixels);
+          }
         }
       }
     }
